@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+      <field name="name">sale_order_inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form" />
+      <field name="priority">10</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='payment_term_id']" position="after">
+          <field name="confirm_user_id"></field>
+        </xpath>
+
+
+      </field>
+    </record>
+  </data>
+
+  <menuitem id="education_management_root" name="Education Management" sequence="1" />
+  <menuitem id="education_management_sub_menu" name="Education " parent="education_management_root" sequence="1" />
+</odoo>

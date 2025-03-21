@@ -1,0 +1,26 @@
+
+.img1{
+padding: 40px;
+max-width: 50%;
+height: auto;
+}
+
+.container {
+   
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+
+.box {
+    width: 50%; 
+    padding: 20px;
+    text-align: left;
+    margin-top:-195px;
+    margin-left:142px;
+}
+span{
+    margin-left: 0px;
+    
+}

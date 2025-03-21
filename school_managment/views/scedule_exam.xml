@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Displays records in a table format (like an Excel sheet) -->
+    <record id="sceduleexam_model_list" model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
+        <field name="name">sceduleexam.model.list.view</field>
+        <field name="model">sceduleexam.model</field>
+        <field name="arch" type="xml">
+        <list>
+
+             <field name="std"/>
+                <field name="department_id" />
+                 <field name="date" string="Starting Date" />
+            <field name="timetable" widget="html"/>
+            </list>
+        </field>
+    </record>
+
+
+<record id="sceduleexam_model_form" model="ir.ui.view">
+        <field name="name">sceduleexam.model.form.view</field>
+        <field name="model">sceduleexam.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                
+                 <field name="std"/>
+                <field name="department_id" />
+                 <field name="date" string="Starting Date" />
+                 <field name="timetable" widget="html" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+ <record id="action_sceduleexam" model="ir.actions.act_window">
+        <field name="name">sceduleexam</field>
+        <field name="res_model">sceduleexam.model</field>  <!-- res_model=model to present views for -->
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,588 @@
+<odoo>
+    <record id="view_timetable_form" model="ir.ui.view">
+        <field name="name">timetable.model.form.view</field>
+        <field name="model">timetable.model</field>
+        <field name="arch" type="xml">
+            <form>
+
+                    <h1>Class-11(Sceince)</h1>
+                    <group>
+                        <field name="timetable_html" widget="html" />
+                        <table border="1" cellspacing="0" collasp-width="100%" cellpadding="10"  style="border-collapse: collapse; width: 100%; text-align: center;">
+                            <tr style="background-color: #f2f2f2;">
+                                <th>Day</th>
+                                <th>9:00 - 10:00</th>
+                                <th>10:00 - 11:00</th>
+                                <th>11:00 - 11:15</th>
+                                <th>11:15 - 12:15</th>
+                                <th>12:15 - 1:15</th>
+                                <th>1:15 - 2:00</th>
+                                <th>2:00 - 3:00</th>
+                                <th>3:00 - 4:00</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Monday</b>
+                                </td>
+                                <td>Physics</td>
+                                <td>Mathematics</td>
+                                <td rowspan="6" style="background-color: #f2f2f2;">
+                                    <b>Break</b>
+                                </td>
+                                <td>Chemistry</td>
+                                <td>English</td>
+                                <td rowspan="6" style="background-color: #f2f2f2;">
+                                    <b>Lunch</b>
+                                </td>
+                                <td>Biology</td>
+                                <td>Computer Science</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Tuesday</b>
+                                </td>
+                                <td>Chemistry</td>
+                                <td>Physics</td>
+                                <td>Mathematics</td>
+                                <td>English</td>
+                                <td>Biology</td>
+                                <td>Lab (Physics)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Wednesday</b>
+                                </td>
+                                <td>Mathematics</td>
+                                <td>Biology</td>
+                                <td>Chemistry</td>
+                                <td>Physics</td>
+                                <td>Computer Science</td>
+                                <td>Sports</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Thursday</b>
+                                </td>
+                                <td>Biology</td>
+                                <td>English</td>
+                                <td>Physics</td>
+                                <td>Mathematics</td>
+                                <td>Chemistry</td>
+                                <td>Lab (Chemistry)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Friday</b>
+                                </td>
+                                <td>Computer Science</td>
+                                <td>Physics</td>
+                                <td>Mathematics</td>
+                                <td>Chemistry</td>
+                                <td>English</td>
+                                <td>Lab (Biology)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Saturday</b>
+                                </td>
+                                <td>English</td>
+                                <td>Mathematics</td>
+                                <td>Chemistry</td>
+                                <td>Physics</td>
+                                <td>Computer Science</td>
+                                <td>Extra Activities</td>
+                            </tr>
+                        </table>
+
+                    </group>
+
+
+
+
+
+                    <h1>Class-11(Commerce)</h1>
+                    <group>
+
+                        <table border="1" cellspacing="0" cellpadding="10"
+                            style="border-collapse: collapse; width: 100%; text-align: center;">
+                            <tr style="background-color: #f2f2f2;">
+                                <th>Day</th>
+                                <th>9:00 - 10:00</th>
+                                <th>10:00 - 11:00</th>
+                                <th>11:00 - 11:15</th>
+                                <th>11:15 - 12:15</th>
+                                <th>12:15 - 1:15</th>
+                                <th>1:15 - 2:00</th>
+                                <th>2:00 - 3:00</th>
+                                <th>3:00 - 4:00</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Monday</b>
+                                </td>
+                                <td>Accountancy</td>
+                                <td>Economics</td>
+                                <td rowspan="6" style="background-color: #f2f2f2;">
+                                    <b>Break</b>
+                                </td>
+                                <td>Business Studies</td>
+                                <td>English</td>
+                                <td rowspan="6" style="background-color: #f2f2f2;">
+                                    <b>Lunch</b>
+                                </td>
+                                <td>Mathematics</td>
+                                <td>Computer Science</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Tuesday</b>
+                                </td>
+                                <td>Economics</td>
+                                <td>Accountancy</td>
+                                <td>Business Studies</td>
+                                <td>English</td>
+                                <td>Mathematics</td>
+                                <td>Lab (Computer)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Wednesday</b>
+                                </td>
+                                <td>Mathematics</td>
+                                <td>Business Studies</td>
+                                <td>Accountancy</td>
+                                <td>Economics</td>
+                                <td>Computer Science</td>
+                                <td>Sports</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Thursday</b>
+                                </td>
+                                <td>Business Studies</td>
+                                <td>English</td>
+                                <td>Economics</td>
+                                <td>Mathematics</td>
+                                <td>Accountancy</td>
+                                <td>Lab (Mathematics)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Friday</b>
+                                </td>
+                                <td>Computer Science</td>
+                                <td>Accountancy</td>
+                                <td>Economics</td>
+                                <td>Business Studies</td>
+                                <td>English</td>
+                                <td>Lab (Accountancy)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Saturday</b>
+                                </td>
+                                <td>English</td>
+                                <td>Mathematics</td>
+                                <td>Business Studies</td>
+                                <td>Economics</td>
+                                <td>Computer Science</td>
+                                <td>Extra Activities</td>
+                            </tr>
+                        </table>
+                    </group>
+
+
+
+                    <h1>Class-11(Arts)</h1>
+                    <group>
+
+                        <table border="1" cellspacing="0" cellpadding="10"
+                            style="border-collapse: collapse; width: 100%; text-align: center;">
+                            <tr style="background-color: #f2f2f2;">
+                                <th>Day</th>
+                                <th>9:00 - 10:00</th>
+                                <th>10:00 - 11:00</th>
+                                <th>11:00 - 11:15</th>
+                                <th>11:15 - 12:15</th>
+                                <th>12:15 - 1:15</th>
+                                <th>1:15 - 2:00</th>
+                                <th>2:00 - 3:00</th>
+                                <th>3:00 - 4:00</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Monday</b>
+                                </td>
+                                <td>History</td>
+                                <td>Political Science</td>
+                                <td rowspan="6" style="background-color: #f2f2f2;">
+                                    <b>Break</b>
+                                </td>
+                                <td>Geography</td>
+                                <td>English</td>
+                                <td rowspan="6" style="background-color: #f2f2f2;">
+                                    <b>Lunch</b>
+                                </td>
+                                <td>Psychology</td>
+                                <td>Physical Education</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Tuesday</b>
+                                </td>
+                                <td>Political Science</td>
+                                <td>History</td>
+                                <td>Geography</td>
+                                <td>Sociology</td>
+                                <td>English</td>
+                                <td>Lab (Geography)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Wednesday</b>
+                                </td>
+                                <td>Psychology</td>
+                                <td>Sociology</td>
+                                <td>Political Science</td>
+                                <td>Geography</td>
+                                <td>English</td>
+                                <td>Sports</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Thursday</b>
+                                </td>
+                                <td>Geography</td>
+                                <td>English</td>
+                                <td>Psychology</td>
+                                <td>History</td>
+                                <td>Political Science</td>
+                                <td>Extra Activities</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Friday</b>
+                                </td>
+                                <td>English</td>
+                                <td>History</td>
+                                <td>Sociology</td>
+                                <td>Political Science</td>
+                                <td>Psychology</td>
+                                <td>Lab (Psychology)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Saturday</b>
+                                </td>
+                                <td>Physical Education</td>
+                                <td>Geography</td>
+                                <td>History</td>
+                                <td>Sociology</td>
+                                <td>Political Science</td>
+                                <td>Debate Discussion</td>
+                            </tr>
+                        </table>
+
+                    </group>
+
+
+
+                <h1>Class-12(Science)</h1>
+                <group>
+                    <table border="1" cellspacing="0" cellpadding="10"
+                        style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th>Day</th>
+                            <th>9:00 - 10:00</th>
+                            <th>10:00 - 11:00</th>
+                            <th>11:00 - 11:15</th>
+                            <th>11:15 - 12:15</th>
+                            <th>12:15 - 1:15</th>
+                            <th>1:15 - 2:00</th>
+                            <th>2:00 - 3:00</th>
+                            <th>3:00 - 4:00</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Monday</b>
+                            </td>
+                            <td>Physics</td>
+                            <td>Chemistry</td>
+                            <td rowspan="6" style="background-color: #f2f2f2;">
+                                <b>Break</b>
+                            </td>
+                            <td>Mathematics</td>
+                            <td>English</td>
+                            <td rowspan="6" style="background-color: #f2f2f2;">
+                                <b>Lunch</b>
+                            </td>
+                            <td>Biology</td>
+                            <td>Lab (Physics)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Tuesday</b>
+                            </td>
+                            <td>Mathematics</td>
+                            <td>Physics</td>
+                            <td>Biology</td>
+                            <td>Chemistry</td>
+                            <td>English</td>
+                            <td>Computer Science</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Wednesday</b>
+                            </td>
+                            <td>Biology</td>
+                            <td>Mathematics</td>
+                            <td>Physics</td>
+                            <td>Chemistry</td>
+                            <td>English</td>
+                            <td>Lab (Chemistry)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Thursday</b>
+                            </td>
+                            <td>Chemistry</td>
+                            <td>English</td>
+                            <td>Mathematics</td>
+                            <td>Physics</td>
+                            <td>Computer Science</td>
+                            <td>Lab (Biology)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Friday</b>
+                            </td>
+                            <td>Mathematics</td>
+                            <td>Physics</td>
+                            <td>Biology</td>
+                            <td>Chemistry</td>
+                            <td>English</td>
+                            <td>Sports</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Saturday</b>
+                            </td>
+                            <td>English</td>
+                            <td>Physics</td>
+                            <td>Chemistry</td>
+                            <td>Mathematics</td>
+                            <td>Lab (Computer Science)</td>
+                            <td>Extra Activities</td>
+                        </tr>
+                    </table>
+
+
+                </group>
+
+
+                <h1>Class-12(Commerce)</h1>
+                <group>
+                    <table border="1" cellspacing="0" cellpadding="10"
+                        style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th>Day</th>
+                            <th>9:00 - 10:00</th>
+                            <th>10:00 - 11:00</th>
+                            <th>11:00 - 11:15</th>
+                            <th>11:15 - 12:15</th>
+                            <th>12:15 - 1:15</th>
+                            <th>1:15 - 2:00</th>
+                            <th>2:00 - 3:00</th>
+                            <th>3:00 - 4:00</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Monday</b>
+                            </td>
+                            <td>Accountancy</td>
+                            <td>Business Studies</td>
+                            <td rowspan="6" style="background-color: #f2f2f2;">
+                                <b>Break</b>
+                            </td>
+                            <td>Economics</td>
+                            <td>English</td>
+                            <td rowspan="6" style="background-color: #f2f2f2;">
+                                <b>Lunch</b>
+                            </td>
+                            <td>Mathematics</td>
+                            <td>Computer Application</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Tuesday</b>
+                            </td>
+                            <td>Business Studies</td>
+                            <td>Economics</td>
+                            <td>Accountancy</td>
+                            <td>English</td>
+                            <td>Statistics</td>
+                            <td>Business Law</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Wednesday</b>
+                            </td>
+                            <td>Economics</td>
+                            <td>Mathematics</td>
+                            <td>Business Studies</td>
+                            <td>Accountancy</td>
+                            <td>English</td>
+                            <td>Lab (Computer)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Thursday</b>
+                            </td>
+                            <td>Mathematics</td>
+                            <td>Accountancy</td>
+                            <td>Business Law</td>
+                            <td>Economics</td>
+                            <td>English</td>
+                            <td>Case Studies</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Friday</b>
+                            </td>
+                            <td>Statistics</td>
+                            <td>Business Studies</td>
+                            <td>Accountancy</td>
+                            <td>English</td>
+                            <td>Economics</td>
+                            <td>Sports</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Saturday</b>
+                            </td>
+                            <td>Computer Application</td>
+                            <td>Mathematics</td>
+                            <td>Economics</td>
+                            <td>Business Studies</td>
+                            <td>Accountancy</td>
+                            <td>Group Discussion</td>
+                        </tr>
+                    </table>
+
+
+                </group>
+
+
+
+                <h1>Class-12(Arts)</h1>
+                <group>
+
+                   
+                    <table border="1" cellspacing="0" cellpadding="10"
+                        style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th>Day</th>
+                            <th>9:00 - 10:00</th>
+                            <th>10:00 - 11:00</th>
+                            <th>11:00 - 11:15</th>
+                            <th>11:15 - 12:15</th>
+                            <th>12:15 - 1:15</th>
+                            <th>1:15 - 2:00</th>
+                            <th>2:00 - 3:00</th>
+                            <th>3:00 - 4:00</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Monday</b>
+                            </td>
+                            <td>History</td>
+                            <td>Political Science</td>
+                            <td rowspan="6" style="background-color: #f2f2f2;">
+                                <b>Break</b>
+                            </td>
+                            <td>Geography</td>
+                            <td>English</td>
+                            <td rowspan="6" style="background-color: #f2f2f2;">
+                                <b>Lunch</b>
+                            </td>
+                            <td>Psychology</td>
+                            <td>Physical Education</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Tuesday</b>
+                            </td>
+                            <td>Political Science</td>
+                            <td>History</td>
+                            <td>Geography</td>
+                            <td>Sociology</td>
+                            <td>English</td>
+                            <td>Lab (Geography)</td>
+                        </tr>
+                         <tr>
+        <td><b>Wednesday</b></td>
+        <td>Psychology</td>
+        <td>History</td>
+        <td>Political Science</td>
+        <td>Geography</td>
+        <td>English</td>
+        <td>Case Studies</td>
+    </tr>
+    <tr>
+        <td><b>Thursday</b></td>
+        <td>History</td>
+        <td>Sociology</td>
+        <td>Geography</td>
+        <td>Political Science</td>
+        <td>English</td>
+        <td>Lab (Psychology)</td>
+    </tr>
+    <tr>
+        <td><b>Friday</b></td>
+        <td>Political Science</td>
+        <td>Geography</td>
+        <td>Sociology</td>
+        <td>History</td>
+        <td>English</td>
+        <td>Debate and  Discussions</td>
+    </tr>
+    <tr>
+        <td><b>Saturday</b></td>
+        <td>English</td>
+        <td>Psychology</td>
+        <td>History</td>
+        <td>Political Science</td>
+        <td>General Knowledge</td>
+        <td>Sports and Cultural Activities</td>
+        </tr>
+                    </table>
+
+
+                </group>
+
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_timetable_list" model="ir.ui.view">
+        <field name="name">timetable.model.list.view</field>
+        <field name="model">timetable.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="timetable_html" widget="html" />
+            </list>
+        </field>
+    </record>
+
+
+    <record id="action_timetable" model="ir.actions.act_window">
+        <field name="name">Time Table</field>
+        <field name="res_model">timetable.model</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_timetable_form" />
+        <field name="target">current</field>
+    </record>
+
+</odoo>

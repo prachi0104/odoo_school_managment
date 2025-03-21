@@ -1,0 +1,42 @@
+
+
+<odoo>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.school_managment</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="school_managment" id="school_managment" string="School Managment" name="school_managment" data-key="school_managment">
+                        <block title="School Management" id="school_settings">
+                            <setting string="End Date Contract Alert">
+                                <div class="text-muted content-group mt16">
+                                    <span>Cancellation Before</span>
+                                    <field name="cancel_days" class="text-center" style="width: 10%; min-width: 4rem;" />
+                                    <span> days</span>
+                                </div>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="school_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'school_managment', 'bin_size': False}</field>
+        </record>
+
+        <menuitem id="school_config_settings_menu"
+            name="Settings"
+            parent="education_management_root"
+            sequence="10"
+            action="school_config_settings_action"
+            groups="base.group_system"
+        />
+
+</odoo>

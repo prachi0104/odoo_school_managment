@@ -1,0 +1,35 @@
+<odoo>
+
+    <record id="dept_computer_science" model="department.model">
+        <field name="name">Computer Science</field>
+    </record>
+
+    <record id="teacher_jane_smith" model="teacher.model">
+        <field name="name">Jane Smith</field>
+        <field name="qualification">M.Sc in Computer Science</field>
+        <field name="dob">1990-08-27</field>
+    </record>
+
+
+    <record id="student_8" model="stulist.model">
+        <field name="name">Hemang</field>
+        <field name="enrollment">09</field>
+        <field name="std">11</field>
+        <field name="age">17</field>
+        <field name="date_of_birth">1999-08-31</field>
+        <field name="department_id" ref="dept_computer_science"/>
+        <field name="total_marks">455</field>
+        <field name="gender">male</field>
+        <field name="fees_status">Paid</field>
+        <field name="teacher_id" ref="teacher_jane_smith"/>
+        <field name="guide_ids" eval="[(6, 0, [ref('teacher_jane_smith')])]"/>
+    </record>
+
+   
+    <record id="attend_1" model="attandence.model">
+        <field name="stulist_id" ref="student_8"/>
+        <field name="date">2025-03-17</field>
+        <field name="status">present</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Displays records in a table format (like an Excel sheet) -->
+    <record id="attandence_model_list" model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
+        <field name="name">attandence.model.list.view</field>
+        <field name="model">attandence.model</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="status=='absent'" decoration-success="status=='present'">
+                <field name="stulist_id"/>
+                <field name="date" />
+                <field name="status" />
+            </list>
+        </field>
+    </record>
+
+
+<record id="attandence_model_form" model="ir.ui.view">
+        <field name="name">attandence.model.form.view</field>
+        <field name="model">attandence.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                <field name="stulist_id" />
+                <field name="date" />
+                <field name="status" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="attandance_model_search" model="ir.ui.view">
+        <field name="name">attandence.model.search.view</field>
+        <field name="model">attandence.model</field>
+        <field name="arch" type="xml">
+
+            <search string="Attandance">
+                <group expand="1" string="GROUP_BY">
+                    <filter string="Group_by_Date" name="Group_by_Date" context="{'group_by':'date'}" />
+                </group>
+            </search>
+
+        </field>
+    </record>
+
+ <record id="action_attandence" model="ir.actions.act_window">
+        <field name="name">Attandence</field>
+        <field name="res_model">attandence.model</field>
+        <field name="view_mode">list,form,search</field>
+        <field name="view_id" ref="attandence_model_list"/>
+        <field name="context">{'search_default_group_by': 'date'}</field>
+    </record>
+</odoo>
