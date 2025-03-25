@@ -17,10 +17,12 @@
                 <field name="gender" />
                 <field name="fees_status" decoration-success="fees_status=='Paid'"
                     decoration-danger="fees_status=='Unpaid'" widget="badge" />
+                <field name="fees_due_date" />
                 <field name="image" />
                 <field name="record_status"/>
                 <field name="teacher_id" />
                 <field name="guide_ids" />
+
             </list>
         </field>
     </record>
@@ -73,6 +75,7 @@
                 <group>
                 <field name="gender" widget="selection"/>
                     <field name="fees_status"/>
+                     <field name="fees_due_date"/>
                     <field name="teacher_id"/>
                     <field name="record_status"/>
                     <field name="guide_ids"/>

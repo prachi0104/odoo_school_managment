@@ -1,6 +1,6 @@
 from odoo import models,fields,api,_
 from odoo.exceptions import UserError,ValidationError
-from datetime import date
+from datetime import date, timedelta
 
 
 class Stulist(models.Model):
@@ -11,7 +11,7 @@ class Stulist(models.Model):
     name=fields.Char("Name",required=True)
     enrollment=fields.Char("Enrol")
     std=fields.Integer(string="Standerd")
-    age=fields.Integer(string="Age",compute='_compute_age')
+    age=fields.Integer(string="Age",compute='_compute_age',store="True")
     date_of_birth=fields.Date(string="Date of birth")
     department_id = fields.Many2one("department.model", string="Department", ondelete="set null")
     total_marks=fields.Integer()
@@ -25,8 +25,11 @@ class Stulist(models.Model):
     ptm_ids = fields.One2many('parentsteachermeeting.model', 'name', string="PTM Records")
     record_status= fields.Char("Record Status")
     student_hostel = fields.One2many("hostel.admission", "name", string="Student hostel detail")
+    fees_due_date=fields.Date(string="Fees Due Date")
 
 
+    def create(sef,vals):
+      vals['fees_due_date']= date.tody + timedelta(3)
 
 
     @api.constrains('date_of_birth')
@@ -36,8 +39,6 @@ class Stulist(models.Model):
                 raise ValidationError(_("The Entered Date Of birth is not accapteble"))
 
 
-
-    # @api.model
     def create(self,vals):
         print(vals)
         vals['enrollment'] = self.env['ir.sequence'].next_by_code('stulist.model')
@@ -59,15 +60,10 @@ class Stulist(models.Model):
         print(vals)
         print(self.name)
         vals['record_status'] = "Edited Record"
-
-
-
             # for record in self:
             #     if not record.name.startswith('#'):
             #         vals['name'] = '#' + record.name
         return super(Stulist, self).write(vals)
-
-
 
 
     def action_open_student_list(self):
