@@ -94,6 +94,9 @@
                     <page string="Parents Teacher Meeting" name="syllabus">
                        <field name="ptm_ids" widget="one2many_list"  readonly="1"></field>
                     </page>
+                    <page string="Student Hostel Detail" name="Hostel">
+                       <field name="student_hostel" widget="one2many_list"  readonly="1"></field>
+                    </page>
                 </notebook>
             </sheet>
         </form>

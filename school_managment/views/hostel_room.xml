@@ -5,10 +5,11 @@
         <field name="model">hostel.room</field>
         <field name="arch" type="xml">
             <list>
-                        <field name="room_number"/>
-                        <field name="capacity"/>
+                        <field name="room_type"/>
+                        <field name="total_room"/>
                         <field name="occupied"/>
                         <field name="available"/>
+
             </list>
         </field>
     </record>
@@ -20,27 +21,34 @@
         <field name="arch" type="xml">
             <form>
             <header>
-                    <button string="Confirm" class="btn-primary"/>
+                <button name="action_test" string="Test object button"  type="object" class="btn-primary" />
             </header>
                 <sheet>
                     <group>
-                        <field name="room_number"/>
-                        <field name="capacity"/>
+                        <field name="room_type"/>
+                        <field name="total_room"/>
                         <field name="occupied"/>
                         <field name="available"/>
                     </group>
+                    <notebook>
+                        <page string="Allocated Room Details" name="Hostel">
+                            <field name="student_hostel" widget="one2many_list" readonly="1">
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
-
-
-
             </form>
         </field>
     </record>
+
+
+
 
     <!-- Action for Rooms -->
     <record id="action_hostel_room" model="ir.actions.act_window">
         <field name="name">Hostel Rooms</field>
         <field name="res_model">hostel.room</field>
         <field name="view_mode">list,form</field>
+
     </record>
 </odoo>

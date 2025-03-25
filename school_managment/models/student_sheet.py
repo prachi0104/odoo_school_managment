@@ -16,7 +16,7 @@ class Stulist(models.Model):
     department_id = fields.Many2one("department.model", string="Department", ondelete="set null")
     total_marks=fields.Integer()
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')] )
-    fees_status=fields.Char("Status")
+    fees_status=fields.Char(string="Status")
     teacher_id=fields.Many2one('teacher.model',string="Class_teacher")
     guide_ids=fields.Many2many('teacher.model',string="Guides")
     image=fields.Image("image")
@@ -24,6 +24,7 @@ class Stulist(models.Model):
     stu_syllabus=fields.One2many("syllabus.model","student_id",string="Syllabus")
     ptm_ids = fields.One2many('parentsteachermeeting.model', 'name', string="PTM Records")
     record_status= fields.Char("Record Status")
+    student_hostel = fields.One2many("hostel.admission", "name", string="Student hostel detail")
 
 
 
@@ -36,7 +37,7 @@ class Stulist(models.Model):
 
 
 
-    @api.model
+    # @api.model
     def create(self,vals):
         print(vals)
         vals['enrollment'] = self.env['ir.sequence'].next_by_code('stulist.model')
@@ -58,6 +59,9 @@ class Stulist(models.Model):
         print(vals)
         print(self.name)
         vals['record_status'] = "Edited Record"
+
+
+
             # for record in self:
             #     if not record.name.startswith('#'):
             #         vals['name'] = '#' + record.name

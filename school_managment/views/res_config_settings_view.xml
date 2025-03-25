@@ -34,7 +34,7 @@
         <menuitem id="school_config_settings_menu"
             name="Settings"
             parent="education_management_root"
-            sequence="10"
+            sequence="11"
             action="school_config_settings_action"
             groups="base.group_system"
         />

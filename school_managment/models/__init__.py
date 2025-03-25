@@ -9,6 +9,7 @@ from . import scedule_exam
 from . import res_config_settings
 from . import sale_order
 from . import hostel_room
+from . import hostel_admission
 
 
 

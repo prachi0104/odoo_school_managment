@@ -199,9 +199,9 @@
     <menuitem id="scedule_exam_root" name="Sceduled Exam" action="action_sceduleexam" parent="teacher_model_root" sequence="5"/>
 
 
-     <menuitem id="hostel_menu" name="Hostel Management" parent="education_management_root" sequence="10"/>
-
+     <menuitem id="hostel_menu" name="Hostel" parent="education_management_root" sequence="10"/>
     <menuitem id="room_menu" name="Rooms" parent="hostel_menu" action="action_hostel_room"/>
+     <menuitem id="admission_menu" name="Hostel Admission Form" parent="hostel_menu" action="action_hostel_admission_test"/>
 
 
 </odoo>

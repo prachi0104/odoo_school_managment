@@ -27,7 +27,12 @@
         "views/department.xml",
         "views/res_config_settings_view.xml",
         "views/hostel_room.xml",
+        "views/hostel_admission.xml",
         "views/teacher.xml",
+         "report/school_managment_views.xml",
+         "report/school_managment_template.xml",
+
+
 
 
 

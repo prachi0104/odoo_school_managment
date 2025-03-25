@@ -13,6 +13,7 @@
                                  <field name="date_of_ptm" />
                                  <field name="parents_email" />
                                  <field name="point_of_discussion" string="Point Of Discussion" />
+                        <field name="fees_status" />
 
 
                 </list>
@@ -38,6 +39,7 @@
                                  <field name="date_of_ptm" />
                                  <field name="parents_email" />
                                  <field name="point_of_discussion" string="Point Of Discussion" />
+                            <field name="fees_status" />
 
                         </group>
                         </sheet>
