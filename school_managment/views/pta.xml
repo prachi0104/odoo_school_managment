@@ -1,65 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>  
+<odoo>
     <!-- Displays records in a table format (like an Excel sheet) -->
-            <record id="parentsteachermeeting_model_list" model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
-                    <field name="name">parentsteachermeeting.model.list.view</field>
-                    <field name="model">parentsteachermeeting.model</field>
-                    <field name="arch" type="xml">              
-                    <list>
+    <record id="parentsteachermeeting_model_list"
+            model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
+        <field name="name">parentsteachermeeting.model.list.view</field>
+        <field name="model">parentsteachermeeting.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="enrollment"/>
+                <field name="depratment_name"/>
+                <field name="date_of_ptm"/>
+                <field name="parents_email"/>
+                <field name="point_of_discussion" string="Point Of Discussion"/>
+                <field name="fees_status"/>
+            </list>
+        </field>
+    </record>
 
-                                 <field name="name" />
-                                 <field name="enrollment" />
-                                 <field name="depratment_name" />
-                                 <field name="date_of_ptm" />
-                                 <field name="parents_email" />
-                                 <field name="point_of_discussion" string="Point Of Discussion" />
-                        <field name="fees_status" />
+    <!-- Displays detailed information about a single record -->
 
-
-                </list>
-                </field>       
-            </record>
-
-            <!-- Displays detailed information about a single record -->
-
-            <record id="parentsteachermeeting_model_form" model="ir.ui.view">
-                    <field name="name">parentsteachermeeting.model.form.view</field>
-                    <field name="model">parentsteachermeeting.model</field>
-                    <field name="arch" type="xml">
-                    <form>
-                    <header>
-                                <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}" statusbar_visible="draft,sceduled,done"/>
-                    
-                    </header>
-                        <sheet> 
-                        <group>
-                                <field name="name" />
-                                 <field name="enrollment" />
-                                 <field name="depratment_name" />
-                                 <field name="date_of_ptm" />
-                                 <field name="parents_email" />
-                                 <field name="point_of_discussion" string="Point Of Discussion" />
-                            <field name="fees_status" />
-
-                        </group>
-                        </sheet>
-                </form>
-                </field>      
-            </record>
-
-    
-
-        
-    
+    <record id="parentsteachermeeting_model_form" model="ir.ui.view">
+        <field name="name">parentsteachermeeting.model.form.view</field>
+        <field name="model">parentsteachermeeting.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}"
+                           statusbar_visible="draft,sceduled,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="enrollment"/>
+                        <field name="depratment_name"/>
+                        <field name="date_of_ptm"/>
+                        <field name="parents_email"/>
+                        <field name="point_of_discussion" string="Point Of Discussion"/>
+                        <field name="fees_status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
 
     <!-- This creates an action that tells Odoo to open the Teacher model (teacher.model).
     It will display the List View (table format) first and allow switching to Form View (detailed record).
     -->
-            <record id="action_pta" model="ir.actions.act_window">
-            <field name="name">Ptm</field>
-            <field name="res_model">parentsteachermeeting.model</field>  <!-- res_model=model to present views for -->
-            <field name="view_mode">list,form</field> 
-        </record>
+    <record id="action_pta" model="ir.actions.act_window">
+        <field name="name">Ptm</field>
+        <field name="res_model">parentsteachermeeting.model</field>  <!-- res_model=model to present views for -->
+        <field name="view_mode">list,form</field>
+    </record>
 </odoo>
         

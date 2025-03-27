@@ -13,10 +13,14 @@ class HostelRoom(models.Model):
     student_hostel = fields.One2many("hostel.admission", "room_type", string="Student hostel detail")
 
 
+
+
+
+
     @api.depends('total_room','occupied')
     def _compute_available(self):
         for room in self:
-            room.available = room.total_room - room.occupied
+                room.available = room.total_room - room.occupied
 
 
 

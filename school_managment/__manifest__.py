@@ -19,7 +19,7 @@
         'views/sale_order.xml',
         'views/templates.xml',
         "views/timetable.xml",
-        "views/student.xml",
+         "views/student.xml",
         "views/scedule_exam.xml",
         "views/attandence.xml",
         "views/syllabus.xml",
@@ -29,6 +29,7 @@
         "views/hostel_room.xml",
         "views/hostel_admission.xml",
         "views/teacher.xml",
+        "views/result.xml",
          "report/school_managment_views.xml",
          "report/school_managment_template.xml",
 

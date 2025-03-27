@@ -1,6 +1,7 @@
 from odoo import models,fields,api,_
 from odoo.exceptions import UserError,ValidationError
 from datetime import date, timedelta
+from dateutil import relativedelta
 
 
 class Stulist(models.Model):
@@ -11,10 +12,10 @@ class Stulist(models.Model):
     name=fields.Char("Name",required=True)
     enrollment=fields.Char("Enrol")
     std=fields.Integer(string="Standerd")
-    age=fields.Integer(string="Age",compute='_compute_age',store="True")
+    age=fields.Integer(string="Age",compute='_compute_age',inverse='_inverse_compute_age', store="True")
     date_of_birth=fields.Date(string="Date of birth")
     department_id = fields.Many2one("department.model", string="Department", ondelete="set null")
-    total_marks=fields.Integer()
+    total_marks=fields.Integer(compute='_compute_total_marks')
     gender = fields.Selection(selection=[('male', 'Male'), ('female', 'Female')] )
     fees_status=fields.Char(string="Status")
     teacher_id=fields.Many2one('teacher.model',string="Class_teacher")
@@ -25,11 +26,20 @@ class Stulist(models.Model):
     ptm_ids = fields.One2many('parentsteachermeeting.model', 'name', string="PTM Records")
     record_status= fields.Char("Record Status")
     student_hostel = fields.One2many("hostel.admission", "name", string="Student hostel detail")
-    fees_due_date=fields.Date(string="Fees Due Date")
+    fees_due_date = fields.Date(string="fees_due_date", default=lambda self: self._get_default_date())
 
+    result_ids = fields.One2many('result.model', 'name', string="Results")
 
-    def create(sef,vals):
-      vals['fees_due_date']= date.tody + timedelta(3)
+    @api.depends('result_ids.total_obtain')
+    def _compute_total_marks(self):
+        for record in self:
+            total_marks = sum(result.total_obtain for result in record.result_ids)
+            record.total_marks = total_marks
+
+    def _get_default_date(self):
+        default_date = fields.Date.context_today(self) + timedelta(days=2)
+        print(default_date)
+        return default_date
 
 
     @api.constrains('date_of_birth')
@@ -83,6 +93,15 @@ class Stulist(models.Model):
                 rec.age = today.year - rec.date_of_birth.year
          else:
                 rec.age = 0
+
+    @api.depends('age')
+    def _inverse_compute_age(self):#to make age field editable
+        today = date.today()
+        for rec in self:
+            rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age)
+
+
+
 
 
 

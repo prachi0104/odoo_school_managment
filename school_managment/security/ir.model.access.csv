@@ -10,6 +10,7 @@ sceduleexam_model.access_sceduleexam_model,access_sceduleexam_model,model_scedul
 access_sale_order,access_sale_order,model_sale_order,base.group_user,1,1,1,1
 hostel_room.access_hostel_room,access_hostel_room,model_hostel_room,base.group_user,1,1,1,1
 hostel_admission.access_hostel_admission,access_hostel_admission,model_hostel_admission,base.group_user,1,1,1,1
+result_model.access_result_model,access_result_model,model_result_model,base.group_user,1,1,1,1
 create_pta_wizard.access_create_pta_wizard,access_create_pta_wizard,model_create_pta_wizard,base.group_user,1,1,1,1
 
 

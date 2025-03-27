@@ -6,9 +6,9 @@
         <field name="arch" type="xml">
             <list>
                         <field name="room_type"/>
-                        <field name="total_room"/>
+                        <field name="total_room" sum="total_room"/>
                         <field name="occupied"/>
-                        <field name="available"/>
+                        <field name="available" sum="available"/>
 
             </list>
         </field>
@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <form>
             <header>
-                <button name="action_test" string="Test object button"  type="object" class="btn-primary" />
+                <button name="action_test" string="List of Students"  type="object" class="btn-primary" />
             </header>
                 <sheet>
                     <group>

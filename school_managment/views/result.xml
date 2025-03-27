@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="result_model_list" model="ir.ui.view">
+        <field name="name">result.model.list.view</field>
+        <field name="model">result.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" decoration-warning="name"/>
+                <field name="roll_no" decoration-warning="roll_no"/>
+                <field name="std" decoration-warning="std"/>
+                <field name="acadmic_year" widget="char" decoration-warning="std"/>
+                <field name="physics" decoration-success="physics &gt;= 33" decoration-danger="physics  &lt;= 33"/>
+                <field name="chemistry" decoration-success="chemistry &gt;= 33" decoration-danger="chemistry  &lt;= 33"/>
+                <field name="biology" decoration-success="biology &gt;= 33" decoration-danger="biology  &lt;= 33"/>
+                <field name="mathematics" decoration-success="mathematics &gt;= 33" decoration-danger="mathematics  &lt;= 33"/>
+                <field name="computer" decoration-success="computer &gt;= 33" decoration-danger="computer  &lt;=  33"/>
+                <field name="total_marks" decoration-info="total_marks"/>
+                <field name="total_obtain" decoration-info="total_obtain"/>
+                <field name="percentage" decoration-info="percentage"/>
+                <field name="result" decoration-success="result == 'Qualified'" decoration-danger="result == 'Not Qualified'"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="result_model_form_view" model="ir.ui.view">
+        <field name="name">result.model.form.view</field>
+        <field name="model">result.model</field>
+        <field name="arch" type="xml">
+            <form>
+                 <header>
+                    <button name="action_print_pdf" type="object" class="oe_highlight" string="Preview"/>
+                </header>
+
+                <sheet>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="roll_no"/>
+                        <field name="std"/>
+                        <field name="acadmic_year" widget="char"/>
+                        <field name="physics"/>
+                        <field name="chemistry"/>
+                        <field name="biology"/>
+                    </group>
+                    <group>
+                        <field name="mathematics"/>
+                        <field name="computer"/>
+                        <field name="total_marks"/>
+                        <field name="total_obtain"/>
+                        <field name="percentage"/>
+                        <field name="result"/>
+                    </group>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="action_result" model="ir.actions.act_window">
+            <field name="name">result model</field>
+            <field name="res_model">result.model</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+     <menuitem id="result_menu"
+        name="Result"
+        parent="education_management_root"
+        sequence="10"
+        action="action_result"/>
+
+</odoo>
+
+
+
+

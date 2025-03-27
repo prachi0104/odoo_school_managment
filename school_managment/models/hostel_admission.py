@@ -1,4 +1,5 @@
 from odoo import fields,models,api
+from odoo.exceptions import UserError
 
 
 class HostelAdmission(models.Model):
@@ -11,8 +12,23 @@ class HostelAdmission(models.Model):
     room_type = fields.Many2one('hostel.room',string="room type")
     per_sem_charge = fields.Integer()
     state = fields.Selection([('allocated', 'Allocated'), ('deallocated', 'Deallocated')],
-                         string="Status",default='allocated', required=True)
+                         string="Status",default='deallocated', required=True)
 
+
+
+    def action_allocate_room(self):
+        for rec in self:
+            rec.state = 'allocated'
+
+    def action_deallocate_room(self):
+        for rec in self:
+            rec.state = 'deallocated'
+
+    @api.ondelete(at_uninstall=False)
+    def check_allocation(self):
+        for rec in self:
+            if rec.state == 'allocated':
+                raise UserError("You can't delete record with state allocated")
 
 
     def _get_default_date(self):
@@ -56,7 +72,9 @@ class HostelAdmission(models.Model):
         return super(HostelAdmission, self).write(vals)
 
 
-
+    def action_print_pdf(self):
+        self.ensure_one()
+        return self.env.ref('school_managment.student_hostel_receipt').report_action(self.id)
 
 
 

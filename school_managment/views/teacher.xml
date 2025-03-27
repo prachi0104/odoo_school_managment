@@ -8,6 +8,7 @@
         <field name="name">teacher.model.list.view</field>
         <field name="model">teacher.model</field>
         <field name="arch" type="xml">
+
             <list>
                 <field name="name" />
                 <field name="dob" />
@@ -16,6 +17,7 @@
                 <field name="salary" />
                 <field name="qualification" />
                 <field name="address" />
+
             </list>
         </field>
     </record>
@@ -41,8 +43,13 @@
                         </button>
                     </div>
 
+                    <h2>
+                        <label for="name" string="Name"  class="oe_edit_only" />
+                         <field name="name"/>
+                    </h2>
+
                     <group>
-                        <field name="name" />
+
                         <field name="dob" />
                         <field name="age" />
                         <field name="department_id" />
@@ -187,7 +194,7 @@
     <menuitem id="teacher_model_root_sub" name="Teacher" parent="teacher_model_root"
         action="action_teacher" sequence="3" />
     <menuitem id="stulist_model_root_main" name="Student" parent="education_management_root" sequence="9"/>
-    <menuitem id="stulist_model_sub" name="Student Detail" action="action_student" parent="stulist_model_root_main" sequence="6"/>
+    <menuitem id="stulist_model_sub" name="Student Detail" action="action_student_test" parent="stulist_model_root_main" sequence="6"/>
 
     <menuitem id="Parentsteachermeeting_model_root" name="Ptm" parent="education_management_root"
         action="action_pta" />

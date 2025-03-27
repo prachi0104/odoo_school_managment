@@ -7,122 +7,117 @@
         <field name="model">stulist.model</field>
         <field name="arch" type="xml">
             <list decoration-danger="fees_status=='Unpaid'" decoration-success="fees_status=='Paid'">
-                <field name="name" />
-                <field name="enrollment" />
-                <field name="std" />
-                <field name="age" />
-                <field name="date_of_birth" />
+                <field name="name"/>
+                <field name="enrollment"/>
+                <field name="std"/>
+                <field name="date_of_birth"/>
+                <field name="age"/>
                 <field name="department_id"/>
-                <field name="total_marks" />
-                <field name="gender" />
+                <field name="total_marks"/>
+                <field name="gender"/>
                 <field name="fees_status" decoration-success="fees_status=='Paid'"
-                    decoration-danger="fees_status=='Unpaid'" widget="badge" />
-                <field name="fees_due_date" />
-                <field name="image" />
+                       decoration-danger="fees_status=='Unpaid'" widget="badge"/>
+                <field name="image"/>
                 <field name="record_status"/>
-                <field name="teacher_id" />
-                <field name="guide_ids" />
-
+                <field name="teacher_id"/>
+                <field name="guide_ids"/>
             </list>
         </field>
     </record>
 
     <record id="stulist_model_form" model="ir.ui.view">
-    <field name="name">stulist.model.form.view</field>
-    <field name="model">stulist.model</field>
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <!-- Name at the Top Left -->
-                <div class="oe_title">
-                    <h1>
-                        <group><field name="name"/></group>
+        <field name="name">stulist.model.form.view</field>
+        <field name="model">stulist.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <group>
+                                <field name="name"/>
+                            </group>
 
-                    </h1>
-                </div>
+                        </h1>
+                    </div>
 
-                <!-- Button Box Section -->
-                <div class="oe_button_box" name="button_box"
-                    style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
-                    <button name="action_open_student_list" type="object" class="oe_stat_button"
-                        style="border: none; background-color: #007bff; color: white; padding: 10px 15px; 
+                    <!-- Button Box Section -->
+                    <div class="oe_button_box" name="button_box"
+                         style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+                        <button name="action_open_student_list" type="object" class="oe_stat_button"
+                                style="border: none; background-color: #007bff; color: white; padding: 10px 15px;
                         display: flex; align-items: center; border-radius: 6px; 
                         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
-                        <span class="fa fa-list" style="font-size: 18px; margin-right: 8px; color: blue;"></span>
-                        <span class="o_stat_text" style="font-size: 14px; font-weight: bold; white-space: nowrap;">
-                            Student List
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Two-Column Layout -->
-                <group>
+                            <span class="fa fa-list" style="font-size: 18px; margin-right: 8px; color: blue;"></span>
+                            <span class="o_stat_text" style="font-size: 14px; font-weight: bold; white-space: nowrap;">
+                                Student List
+                            </span>
+                        </button>
+                    </div>
                     <group>
-                     <field name="enrollment" />  <!--   readonly="1"-->
-                        <field name="std" />
-                        <field name="age"/>
-                      
+                        <group>
+                            <field name="enrollment"/>
+                            <field name="std"/>
+                            <field name="date_of_birth"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="department_id" required="std != ''"/>
+                            <field name="total_marks"/>
+                        </group>
                     </group>
                     <group>
-                      <field name="date_of_birth"/>
-                        <field name="department_id"/>
-                        <field name="total_marks"/>
-                        
+                        <group>
+                            <field name="gender" widget="radio"/> <!-- selection  -->
+                            <field name="fees_status"/>
+                            <field name="fees_due_date" invisible="fees_status == 'Paid'"/>
+
+                        </group>
+                        <group>
+                             <field name="teacher_id"/>
+                            <field name="record_status"/>
+                            <field name="guide_ids" widget="many2many_tags"/>
+
+                        </group>
+
                     </group>
-                </group>
 
-                <!-- Additional Fields Below -->
-                <group>
-                <field name="gender" widget="selection"/>
-                    <field name="fees_status"/>
-                     <field name="fees_due_date"/>
-                    <field name="teacher_id"/>
-                    <field name="record_status"/>
-                    <field name="guide_ids"/>
+                    <notebook>
+                        <page string="Track Attendance" name="attendance">
+                            <field name="track_attan" readonly="1">
+                                <list></list>
+                            </field>
+                        </page>
 
-                </group>
+                        <page string="Syllabus" name="syllabus">
+                            <field name="stu_syllabus" readonly="1"></field>
+                        </page>
 
-                <!-- Notebook for Tabs -->
-                <notebook>
-                    <page string="Track Attendance" name="attendance">
-                        <field name="track_attan" readonly="1">
-                        <list></list>
-                        </field>
-                    </page>
+                        <page string="Parents Teacher Meeting" name="syllabus">
+                            <field name="ptm_ids" widget="one2many_list" readonly="1"></field>
+                        </page>
 
-                    <page string="Syllabus" name="syllabus">
-                       <field name="stu_syllabus" readonly="1"></field>
-                    </page>
+                        <page string="Student Result" name="Hostel">
+                            <field name="result_ids" widget="one2many_list" readonly="1"></field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-                    <page string="Parents Teacher Meeting" name="syllabus">
-                       <field name="ptm_ids" widget="one2many_list"  readonly="1"></field>
-                    </page>
-                    <page string="Student Hostel Detail" name="Hostel">
-                       <field name="student_hostel" widget="one2many_list"  readonly="1"></field>
-                    </page>
-                </notebook>
-            </sheet>
-        </form>
-    </field>
-</record>
 
-    <!--search
-    Vi-->
     <record id="stulist_model_search" model="ir.ui.view">
         <field name="name">stulist.model.form.view</field>
         <field name="model">stulist.model</field>
         <field name="arch" type="xml">
             <search string="Fees Status">
-                <field name="fees_status" />
-                <filter string="fees_status" name="fees_status"
-                    domain="[('fees_status', '=', 'Unpaid')]" />
-                <!--<seprator/>
-                if we add seprator between two search fields than it will perform add opration -->
-
-                <!-- <group expand="1" string="GROUP_BY">
-                    <filter string="GRP_Department" name="Group_by_Department"
-                        context="{'group_by':'department'}" />
-                </group> -->
+                <!--                <field name="fees_status"/>-->
+                <!--                <filter string="fees_status" name="fees_status"-->
+                <!--                        domain="[('fees_status', '=', 'Unpaid')]"/>-->
+                <!--                <group expand="1" string="GROUP_BY">-->
+                <!--                    <filter string="GRP_Department" name="Group_by_Department"-->
+                <!--                        context="{'group_by':'std'}" />-->
+                <!--                </group>-->
             </search>
         </field>
     </record>
@@ -137,35 +132,42 @@
                     <div style="background-color: Black;" class="container box">
                         <t t-name="kanban-box"> <!-- Used to genrate dynamic html container -->
                             <div t-attf-class="oe_kanban_card oe_kanban_global_click"
-                                style="background-color:black;color:white;"><!--:
-                                A standard Odoo class used to style kanban
-                                cards."oe_kanban_global_click": A class that makes the entire kanban
-                                card clickable, usually for opening a record when clicked. -->
-                                <div class="o_kanban_content"> <!-- The "o_kanban_content" class is
-                                    used to hold the main content of the kanban card (like the
-                                    record’s name, description, images, etc.). -->
+                                 style="background-color:black;color:white;"> <!-- A standard Odoo class used to style kanban cards."oe_kanban_global_click": A class that makes the entire kanban card clickable, usually for opening a record when clicked. -->
+                                <div class="o_kanban_content">
                                     <div class="img1" style="margin-left:-30px;">
-                                        <field name="image" widget="image" />
+                                        <field name="image" widget="image"/>
                                     </div>
-
                                     <div class="box">
                                         <div style="margin-left:-25px;text-align:left;">
                                             <strong>
                                                 <field
-                                                    style="margin-left:24px;text-align:left;text-decoration:underline;"
-                                                    name="name" />
+                                                        style="margin-left:24px;text-align:left;text-decoration:underline;"
+                                                        name="name"/>
                                             </strong>
                                         </div>
                                         <group>
-
-                                        <group><div>Enrollment: <field name="enrollment" /></div>
-                                        <div>Department: <field name="department_id"/></div>
-                                        <div>Total_marks: <field name="total_marks" /></div></group>
-                                        
-                                       <group> <div>Gender: <field name="gender" /></div>
-                                        <div>Fees_status: <field name="fees_status" /></div>
-                                        <div>Class Teacher:<field name="teacher_id" /></div></group>
-                                            
+                                            <group>
+                                                <div>Enrollment:
+                                                    <field name="enrollment"/>
+                                                </div>
+                                                <div>Department:
+                                                    <field name="department_id"/>
+                                                </div>
+                                                <div>Total_marks:
+                                                    <field name="total_marks"/>
+                                                </div>
+                                            </group>
+                                            <group>
+                                                <div>Gender:
+                                                    <field name="gender"/>
+                                                </div>
+                                                <div>Fees_status:
+                                                    <field name="fees_status"/>
+                                                </div>
+                                                <div>Class Teacher:
+                                                    <field name="teacher_id"/>
+                                                </div>
+                                            </group>
                                         </group>
                                     </div>
                                 </div>
@@ -176,11 +178,8 @@
             </kanban>
         </field>
     </record>
-    <!-- This creates an action that tells Odoo to open the Teacher model (teacher.model).
-It will display the List View (table format) first and allow switching to Form View (detailed
-    record).
- -->
-    <record id="action_student" model="ir.actions.act_window">
+
+    <record id="action_student_test" model="ir.actions.act_window">
         <field name="name">Student</field>
         <field name="res_model">stulist.model</field>  <!-- res_model=model to present views for -->
         <field name="view_mode">list,form,kanban</field>

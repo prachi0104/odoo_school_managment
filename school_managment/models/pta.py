@@ -16,7 +16,6 @@ class Parentsteachermeeting(models.Model):
     point_of_discussion=fields.Text(string="Your Text Field", required=False,default="Regarding Result Discussion")
     state=fields.Selection([('draft','Draft'),('sceduled','sceduled'),('done','Done'),('cancel','Cancel')] ,default='draft',string="State",required=True)
     enrollment = fields.Char("Enrol")
-    # fees_status = fields.Char(related="name.fees_status")
     fees_status = fields.Char(string="Status",related="name.fees_status")
 
     @api.onchange('name')

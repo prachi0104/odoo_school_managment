@@ -7,6 +7,7 @@ from datetime import date
 class Department(models.Model):
     _name = "department.model"
     _description = "Department"
+    _log_access = False
 
     name = fields.Char(string="Department Name", required=True,unique=True)
     list_of_subjects=fields.Html(sanitize=False)
@@ -24,3 +25,6 @@ class Department(models.Model):
     _sql_constraints = [
         ('unique_department_name', 'UNIQUE(name)','Department Name must be unique for each department.')
     ]
+
+
+

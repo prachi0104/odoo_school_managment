@@ -46,3 +46,6 @@ class teacher(models.Model):
                 rec.age = today.year - rec.dob.year
          else:
                 rec.age = 0
+
+
+

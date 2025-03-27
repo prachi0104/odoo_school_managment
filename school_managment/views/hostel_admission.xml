@@ -4,12 +4,12 @@
         <field name="name">hostel.admission.list.view</field>
         <field name="model">hostel.admission</field>
         <field name="arch" type="xml">
-            <list>
+            <list  decoration-danger="state=='deallocated'">
                         <field name="name"/>
                         <field name="admission_date"/>
                         <field name="room_type"/>
                         <field name="per_sem_charge"/>
-                        <field name="state"/>
+                        <field name="state" decoration-success="state=='allocated'" decoration-danger="state=='deallocated'" widget="badge"/>
 
             </list>
         </field>
@@ -21,7 +21,12 @@
         <field name="arch" type="xml">
             <form>
             <header>
-               <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}" statusbar_visible="allocated,deallocated"/>
+                <button name="action_print_pdf" type="object" class="oe_highlight" string="Preview"/>
+
+             <button name="action_allocate_room" string="Allocate" type="object"  class="btn-primary" invisible="state == 'allocated'"/><!--     -->
+             <button name="action_deallocate_room" string="Deallocate" type="object"  class="btn-primary"  invisible="state == 'deallocated'" /> <!-- invisible = "[('state','=','deallocated')]"  -->
+                                             <!--options="{'clickable': '1'}"-->
+               <field name="state" widget="statusbar" nolabel="1"  statusbar_visible="allocated,deallocated"/>
             </header>
                 <sheet>
                     <group>
@@ -31,6 +36,9 @@
                         <field name="per_sem_charge"/>
                     </group>
                 </sheet>
+                <footer>
+
+                </footer>
             </form>
         </field>
     </record>
