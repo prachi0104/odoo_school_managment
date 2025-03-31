@@ -4,7 +4,7 @@
     "summary": "A sheet for teacher management",
     "version": "0.1.0",
     "category": "Productivity",
-    "sequence": 0,
+    "sequence": -1,
     "author": "prachi_brahmbhatt",
     "depends": [
         "base","sale"
@@ -16,6 +16,7 @@
         "security/ir.model.access.csv",
         #"data/teacher_data.xml",
         "data/sequence_data.xml",
+        "data/cron_test.xml",
         'views/sale_order.xml',
         'views/templates.xml',
         "views/timetable.xml",
@@ -30,6 +31,7 @@
         "views/hostel_admission.xml",
         "views/teacher.xml",
         "views/result.xml",
+        "views/inherits.xml",
          "report/school_managment_views.xml",
          "report/school_managment_template.xml",
 

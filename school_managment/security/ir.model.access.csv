@@ -12,6 +12,8 @@ hostel_room.access_hostel_room,access_hostel_room,model_hostel_room,base.group_u
 hostel_admission.access_hostel_admission,access_hostel_admission,model_hostel_admission,base.group_user,1,1,1,1
 result_model.access_result_model,access_result_model,model_result_model,base.group_user,1,1,1,1
 create_pta_wizard.access_create_pta_wizard,access_create_pta_wizard,model_create_pta_wizard,base.group_user,1,1,1,1
+school_managment.access_cron,access_cron,school_managment.model_cron,base.group_user,1,1,1,1
+school_managment.access_inherits,access_inherits,school_managment.model_inherits,base.group_user,1,1,1,1
 
 
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherits_model_list" model="ir.ui.view">
+        <field name="name">inherits.list.view</field>
+        <field name="model">inherits</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name" />
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="department_id"/>
+                <field name="salary"/>
+                <field name="qualification"/>
+                <field name="address"/>
+                <field name="phone" widget="phone"/>
+                <field name="email" widget="email"/>
+                <field name="gender" />
+
+            </list>
+        </field>
+    </record>
+
+    <!-- Displays detailed information about a single record -->
+
+    <record id="inherits_model_form" model="ir.ui.view">
+        <field name="name">inherits.form.view</field>
+        <field name="model">inherits</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+      <button string="show data" name="action_open_students" class="oe_state_button" icon="fa-star" type="object"/>
+                <field name="sequence" widget="handle"/>
+                <field name="name" />
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="department_id"/>
+                <field name="salary"/>
+                <field name="qualification"/>
+                <field name="address"/>
+                <field name="phone" widget="phone"/>
+                <field name="email" widget="email"/>
+                <field name="gender" />
+
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_inherits" model="ir.actions.act_window">
+        <field name="name">inherits</field>
+        <field name="res_model">inherits</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="action_inherits_test" name="Inherits" parent="education_management_root" action="action_inherits" sequence="12"/>
+
+</odoo>

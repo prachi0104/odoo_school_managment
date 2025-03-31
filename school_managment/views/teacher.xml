@@ -10,14 +10,16 @@
         <field name="arch" type="xml">
 
             <list>
+                <field name="sequence" widget="handle"/>
                 <field name="name" />
-                <field name="dob" />
-                <field name="age" />
-                <field name="department_id" />
-                <field name="salary" />
-                <field name="qualification" />
-                <field name="address" />
-
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="department_id"/>
+                <field name="salary"/>
+                <field name="qualification"/>
+                <field name="address"/>
+                <field name="phone" widget="phone"/>
+                <field name="email" widget="email"/>
             </list>
         </field>
     </record>
@@ -31,31 +33,25 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_open_students" type="object"
-                            class="oe_stat_button"
-                            style="border: none; background-color: #007bff; color: white; padding: 10px 15px; 
-                                display: flex; align-items: center; border-radius: 6px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
-                            <span class="fa fa-list" style="font-size: 18px; margin-right: 8px; color: blue;"></span>
-                            <span class="o_stat_text"
-                                style="font-size: 14px; font-weight: bold; white-space: nowrap;">
-                                <field name="student_count" widget="statinfo" />
-                            </span>
+                        <button name="action_open_students" class="oe_state_button" icon="fa-star" type="object">
+                            <field name="student_count" widget="statinfo"/>
                         </button>
                     </div>
-
                     <h2>
-                        <label for="name" string="Name"  class="oe_edit_only" />
-                         <field name="name"/>
+                        <label for="name" string="Name" class="oe_edit_only"/>
+                        <field name="name"/>
                     </h2>
 
                     <group>
 
-                        <field name="dob" />
-                        <field name="age" />
-                        <field name="department_id" />
-                        <field name="salary" />
-                        <field name="qualification" />
-                        <field name="address" />
+                        <field name="dob"/>
+                        <field name="age"/>
+                        <field name="department_id"/>
+                        <field name="salary"/>
+                        <field name="qualification"/>
+                        <field name="address"/>
+                        <field name="phone" widget="phone"/>
+                        <field name="email" widget="email"/>
                     </group>
                     <notebook>
                         <page string="Star students" name="star_student">
@@ -65,12 +61,12 @@
                                 </list>
                                 <form>
                                     <group>
-                                        <field name="name" />
-                                        <field name="enrollment" />
-                                        <field name="total_marks" />
-                                        <field name="gender" />
-                                        <field name="fees_status" />
-                                        <field name="teacher_id" />
+                                        <field name="name"/>
+                                        <field name="enrollment"/>
+                                        <field name="total_marks"/>
+                                        <field name="gender"/>
+                                        <field name="fees_status"/>
+                                        <field name="teacher_id"/>
                                     </group>
                                 </form>
                             </field>
@@ -79,8 +75,8 @@
                 </sheet>
 
                 <footer>
-    <chatter/>
-</footer>
+                    <chatter/>
+                </footer>
             </form>
         </field>
     </record>
@@ -92,19 +88,19 @@
         <field name="model">teacher.model</field>
         <field name="arch" type="xml">
             <search string="salary">
-                <field name="name" />
-                <field name="salary" />
-                <field name="qualification" />
-                <filter string="Salary>20000" name="salary_search" domain="[('salary', '>', 20000)]" />
+                <field name="name"/>
+                <field name="salary"/>
+                <field name="qualification"/>
+                <filter string="Salary>20000" name="salary_search" domain="[('salary', '>', 20000)]"/>
                 <!--<seprator/>
                 if we add seprator between two search fields than it will perform add opration -->
                 <filter string="Qualification" name="salary_search"
-                    domain="[('qualification', '=', 'BE')]" />
+                        domain="[('qualification', '=', 'BE')]"/>
                 <group expand="1" string="GROUP_BY">
                     <filter string="GRP_Qualification" name="Group_by_qualification"
-                        context="{'group_by':'qualification'}" />
+                            context="{'group_by':'qualification'}"/>
                 </group>
-            
+
             </search>
         </field>
     </record>
@@ -116,7 +112,7 @@
         <field name="model">teacher.model</field>
         <field name="arch" type="xml">
             <calendar string="Teacher Events" date_start="dob">
-                <field name="name" />
+                <field name="name"/>
             </calendar>
         </field>
     </record>
@@ -128,8 +124,8 @@
         <field name="model">teacher.model</field>
         <field name="arch" type="xml">
             <graph string="Teacher model Graph" type="bar">
-                <field name="salary" type="measure" />
-                <field name="name" type="row" />
+                <field name="salary" type="measure"/>
+                <field name="name" type="row"/>
 
             </graph>
         </field>
@@ -142,8 +138,9 @@
         <field name="model">teacher.model</field>
         <field name="arch" type="xml">
             <graph string="Teacher model pivot">
-                <field name="salary" type="row" />
-                <field name="name" type="col" />
+                <field name="salary" type="row"/>
+                <field name="name" type="col"/>
+
 
             </graph>
         </field>
@@ -162,12 +159,24 @@
                             <div class="o_kanban_content">
                                 <strong>
                                     <div class="oe_kanban_title">
-                                        <field name="name" />
+                                        <field name="name"/>
                                     </div>
                                 </strong>
-                                <div>salary: <field name="salary" /></div>
-                                <div>Qualification: <field name="qualification" /></div>
-                                <div>Department: <field name="department_id" /></div>
+                                <div>salary:
+                                    <field name="salary"/>
+                                </div>
+                                <div>Qualification:
+                                    <field name="qualification"/>
+                                </div>
+                                <div>Department:
+                                    <field name="department_id"/>
+                                </div>
+                                <div>Phone:
+                                    <field name="phone"/>
+                                </div>
+                                <div>Email:
+                                    <field name="email"/>
+                                </div>
                             </div>
                         </div>
                     </t>
@@ -189,26 +198,30 @@
 
 
     <!-- Parent Menu for the Module -->
-    <menuitem id="education_management_root" name="Education Management" sequence="1" />
+    <menuitem id="education_management_root" name="Education Management" sequence="1"/>
     <menuitem id="teacher_model_root" name="Teacher Data" parent="education_management_root" sequence="2"/>
     <menuitem id="teacher_model_root_sub" name="Teacher" parent="teacher_model_root"
-        action="action_teacher" sequence="3" />
+              action="action_teacher" sequence="3"/>
     <menuitem id="stulist_model_root_main" name="Student" parent="education_management_root" sequence="9"/>
-    <menuitem id="stulist_model_sub" name="Student Detail" action="action_student_test" parent="stulist_model_root_main" sequence="6"/>
+    <menuitem id="stulist_model_sub" name="Student Detail" action="action_student_test" parent="stulist_model_root_main"
+              sequence="6"/>
 
     <menuitem id="Parentsteachermeeting_model_root" name="Ptm" parent="education_management_root"
-        action="action_pta" />
+              action="action_pta"/>
     <menuitem id="attandence_model_root" name="Attandence" parent="teacher_model_root"
-        action="action_attandence" sequence="4" />
+              action="action_attandence" sequence="4"/>
     <menuitem id="syllabus_model_root" name="Syllabus" parent="stulist_model_root_main"
-        action="action_syllabus" sequence="7" />
-    <menuitem id="menu_timetable" name="Time Table" action="action_timetable" parent="stulist_model_root_main" sequence="8"/>
-    <menuitem id="scedule_exam_root" name="Sceduled Exam" action="action_sceduleexam" parent="teacher_model_root" sequence="5"/>
+              action="action_syllabus" sequence="7"/>
+    <menuitem id="menu_timetable" name="Time Table" action="action_timetable" parent="stulist_model_root_main"
+              sequence="8"/>
+    <menuitem id="scedule_exam_root" name="Sceduled Exam" action="action_sceduleexam" parent="teacher_model_root"
+              sequence="5"/>
 
 
-     <menuitem id="hostel_menu" name="Hostel" parent="education_management_root" sequence="10"/>
+    <menuitem id="hostel_menu" name="Hostel" parent="education_management_root" sequence="10"/>
     <menuitem id="room_menu" name="Rooms" parent="hostel_menu" action="action_hostel_room"/>
-     <menuitem id="admission_menu" name="Hostel Admission Form" parent="hostel_menu" action="action_hostel_admission_test"/>
+    <menuitem id="admission_menu" name="Hostel Admission Form" parent="hostel_menu"
+              action="action_hostel_admission_test"/>
 
 
 </odoo>

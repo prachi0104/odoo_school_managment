@@ -9,7 +9,9 @@ class Stulist(models.Model):
     _description="student list"
 
 
+
     name=fields.Char("Name",required=True)
+
     enrollment=fields.Char("Enrol")
     std=fields.Integer(string="Standerd")
     age=fields.Integer(string="Age",compute='_compute_age',inverse='_inverse_compute_age', store="True")
@@ -27,8 +29,8 @@ class Stulist(models.Model):
     record_status= fields.Char("Record Status")
     student_hostel = fields.One2many("hostel.admission", "name", string="Student hostel detail")
     fees_due_date = fields.Date(string="fees_due_date", default=lambda self: self._get_default_date())
-
     result_ids = fields.One2many('result.model', 'name', string="Results")
+    is_paid = fields.Boolean(string="Paid or Not",compute="_compute_fees_Paid_or_not")
 
     @api.depends('result_ids.total_obtain')
     def _compute_total_marks(self):
@@ -81,7 +83,7 @@ class Stulist(models.Model):
             'type':'ir.actions.act_window',
             'name':'Student_list',
             'res_model':'stulist.model',
-            'view_mode':'list',
+            'view_mode':'list,form',
             'target':'current'
         }
     
@@ -99,6 +101,19 @@ class Stulist(models.Model):
         today = date.today()
         for rec in self:
             rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age)
+
+
+    @api.depends('fees_status')
+    def _compute_fees_Paid_or_not(self):
+        for rec in self:
+            if rec.fees_status == 'Unpaid':
+                rec.is_paid = False
+            else:
+                rec.is_paid = True
+
+
+
+
 
 
 

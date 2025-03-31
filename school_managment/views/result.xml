@@ -18,6 +18,8 @@
                 <field name="total_obtain" decoration-info="total_obtain"/>
                 <field name="percentage" decoration-info="percentage"/>
                 <field name="result" decoration-success="result == 'Qualified'" decoration-danger="result == 'Not Qualified'"/>
+                <field name="progress" widget="progressbar"/>
+
             </list>
         </field>
     </record>
@@ -50,8 +52,15 @@
                         <field name="total_obtain"/>
                         <field name="percentage"/>
                         <field name="result"/>
+                         <field name="image"/>
                     </group>
                 </group>
+                      <notebook>
+                        <page string="Growth" name="result">
+                            <field name="progress" widget="gauge" readonly="1">
+                            </field>
+                        </page>
+                      </notebook>
                 </sheet>
             </form>
         </field>

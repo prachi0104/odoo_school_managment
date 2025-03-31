@@ -11,6 +11,7 @@ from . import sale_order
 from . import hostel_room
 from . import hostel_admission
 from . import result
-
+from . import inherits
+from . import cron
 
 

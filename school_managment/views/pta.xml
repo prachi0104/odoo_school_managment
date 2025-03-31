@@ -30,6 +30,11 @@
                            statusbar_visible="draft,sceduled,done"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_state_button" icon="fa-star">
+                            <field name="name"/>
+                        </button>
+                    </div>
                     <group>
                         <field name="name"/>
                         <field name="enrollment"/>
@@ -45,13 +50,24 @@
     </record>
 
 
+  <record id="parentsteachermeeting_model_calendar" model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
+        <field name="name">parentsteachermeeting.model.view.calendar</field>
+        <field name="model">parentsteachermeeting.model</field>
+        <field name="arch" type="xml">
+            <calendar string="Parents Teacher Meeting" date_start="date_of_ptm" color="state" >
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+
     <!-- This creates an action that tells Odoo to open the Teacher model (teacher.model).
     It will display the List View (table format) first and allow switching to Form View (detailed record).
     -->
     <record id="action_pta" model="ir.actions.act_window">
         <field name="name">Ptm</field>
         <field name="res_model">parentsteachermeeting.model</field>  <!-- res_model=model to present views for -->
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">list,form,calendar</field>
     </record>
 </odoo>
         

@@ -21,6 +21,8 @@ class Result(models.Model):
     total_obtain = fields.Integer(string="Total Obtain",compute='_compute_total_obtain_marks')
     percentage = fields.Float(string="Percentage",compute='_compute_percentage')
     result = fields.Char(string="Result",compute='_compute_result')
+    image=fields.Image("image")
+    progress= fields.Integer(String="Growth",compute='_compute_progress')
 
 
     @api.onchange('name')
@@ -60,6 +62,19 @@ class Result(models.Model):
     def action_print_pdf(self):
         self.ensure_one()
         return self.env.ref('school_managment.student_result').report_action(self.id)
+
+    @api.depends('percentage')
+    def _compute_progress(self):
+        for rec in self:
+            if rec.percentage <= 25:
+                rec.progress = 25
+            elif rec.percentage <= 50:
+                rec.progress = 50
+            elif  rec.percentage <= 75:
+                rec.progress = 75
+            else:
+                rec.progress = 100
+
 
 
 

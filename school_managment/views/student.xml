@@ -7,7 +7,8 @@
         <field name="model">stulist.model</field>
         <field name="arch" type="xml">
             <list decoration-danger="fees_status=='Unpaid'" decoration-success="fees_status=='Paid'">
-                <field name="name"/>
+
+                <field name="name" />
                 <field name="enrollment"/>
                 <field name="std"/>
                 <field name="date_of_birth"/>
@@ -31,6 +32,26 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+<!--Smart button code-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_student_list" class="oe_state_button" icon="fa-star" type="object" >
+                            <field name="name"/>
+                        </button>
+                    </div>
+
+<!-- notofication bar code-->
+                    <div class="alert alert-info text-center o_form_header" style="--alert-bg: #ea5151a3; --alert-border-color: #c15c5c;" role="alert" invisible="is_paid == True">
+                        <a class="close" data-dismiss="alert" href="#"></a>
+                        <div>
+                            <strong>Your Fees Is Pending Pay Till</strong>
+                        </div>
+
+                        <div>
+                            <strong><field name="fees_due_date"/></strong>
+                        </div>
+                    </div>
+
+
                     <div class="oe_title">
                         <h1>
                             <group>
@@ -40,19 +61,6 @@
                         </h1>
                     </div>
 
-                    <!-- Button Box Section -->
-                    <div class="oe_button_box" name="button_box"
-                         style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
-                        <button name="action_open_student_list" type="object" class="oe_stat_button"
-                                style="border: none; background-color: #007bff; color: white; padding: 10px 15px;
-                        display: flex; align-items: center; border-radius: 6px; 
-                        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
-                            <span class="fa fa-list" style="font-size: 18px; margin-right: 8px; color: blue;"></span>
-                            <span class="o_stat_text" style="font-size: 14px; font-weight: bold; white-space: nowrap;">
-                                Student List
-                            </span>
-                        </button>
-                    </div>
                     <group>
                         <group>
                             <field name="enrollment"/>
@@ -73,7 +81,7 @@
 
                         </group>
                         <group>
-                             <field name="teacher_id"/>
+                            <field name="teacher_id"/>
                             <field name="record_status"/>
                             <field name="guide_ids" widget="many2many_tags"/>
 

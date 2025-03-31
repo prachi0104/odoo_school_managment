@@ -1,31 +1,45 @@
 <odoo>
 
-<template id="print_receipt">
+    <template id="print_receipt">
         <t t-call="web.html_container">
             <t t-call="web.internal_layout">
                 <t t-foreach="docs" t-as="group">
-                    <bold><center><h2>Student Hostel Receipt</h2></center></bold>
+                    <bold>
+                        <center>
+                            <h2>Student Hostel Receipt</h2>
+                        </center>
+                    </bold>
                     <hr></hr>
                     <div class="page">
                         <br/>
                         <div>
-                            <h1><bold><span t-field="docs.name"/></bold></h1>
+                            <h1>
+                                <bold>
+                                    <span t-field="docs.name"/>
+                                </bold>
+                            </h1>
                         </div>
                         <div>
-                       <h3>Admission Date: <span t-field="docs.admission_date"/></h3>
+                            <h3>Admission Date:
+                                <span t-field="docs.admission_date"/>
+                            </h3>
                         </div>
                         <div>
-                            <h3>Room Type: <span t-field="docs.room_type"/></h3>
+                            <h3>Room Type:
+                                <span t-field="docs.room_type"/>
+                            </h3>
                         </div>
                         <div>
-                            <h3>State: <span t-field="docs.state"/></h3>
+                            <h3>State:
+                                <span t-field="docs.state"/>
+                            </h3>
                         </div>
                         <hr></hr>
-                         <div>
-                            <h3>Student Total Charge: <span t-field="docs.per_sem_charge"/></h3>
+                        <div>
+                            <h3>Student Total Charge:
+                                <span t-field="docs.per_sem_charge"/>
+                            </h3>
                         </div>
-
-
                     </div>
                 </t>
             </t>
@@ -38,69 +52,132 @@
             <t t-call="web.internal_layout">
                 <t t-foreach="docs" t-as="group">
                     <!-- Title Section -->
-                    <div style="background-color:#160144;color:white;">
-                        <center><h2 style="padding:50px;color:white;"><b>Result of Final Exam</b></h2></center>
+                    <div style="background-color:#120a22;color:white;">
+                        <center>
+                            <h2 style="padding:50px;color:white;">
+                                <b>Result of Final Exam</b>
+                            </h2>
+                        </center>
                         <hr/>
                         <div style="padding:30px;color:white;">
-                        <div style="width:50%;disply:flex;">
-                            <h3 style="color:white;"><b>Student Name: </b><span t-field="group.name"/></h3>
-                            <h4 style="color:white;"><b>Roll No: </b><span t-field="group.roll_no"/></h4>
+                            <div style="width:30%;disply:flex;">
+                                <h3 style="color:white;">
+                                    <b>Student Name:</b>
+                                    <span t-field="group.name"/>
+                                </h3>
+                                <h4 style="color:white;">
+                                    <b>Roll No:</b>
+                                    <span t-field="group.roll_no"/>
+                                </h4>
+                            </div>
+<!--                            <div style="width:30%;margin-left:1187px;margin-top:-79px;">-->
+<!--&lt;!&ndash;                                <span t-field="group.image" t-options='{"widget": "image"}'/>&ndash;&gt;-->
+<!--                                <img t-att-src="'/school_managment/static/src/img/image.png'" />-->
+<!--                            </div>-->
+                            <div style="width:30%;margin-left:1187px;margin-top:-79px;">
+                                <h4 style="color:white;">
+                                    <b>Acadmic Year:</b>
+                                    <span t-field="group.acadmic_year" t-options="{'widget': 'char'}"/>
+                                </h4>
+                                <h4 style="color:white;">
+                                    <b>Standard:</b>
+                                    <span t-field="group.std"/>
+                                </h4>
+                            </div>
                         </div>
-                        <div style="width:50%;margin-left:1187px;margin-top:-79px;">
-                            <h4 style="color:white;"><b>Acadmic Year: </b><span t-field="group.acadmic_year" t-options="{'widget': 'char'}"/></h4>
-                            <h4 style="color:white;"><b>Standard: </b><span t-field="group.std"/></h4>
-                        </div>
-</div>
                         <hr/>
 
                         <div style="padding:20px;">
-                        <table style="width: 100%; border: 3px solid #ece5e5; border-collapse: collapse;">
-                            <thead>
-                                <tr>
-                                    <bold><th style="border: 1px solid #000; padding: 8px; text-align: center;">Subject</th></bold>
-                                    <bold><th style="border: 1px solid #000; padding: 8px; text-align: center;">Marks Obtained</th></bold>
-                                    <bolf><th style="border: 1px solid #000; padding: 8px; text-align: center;">Total Marks</th></bolf>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="border: 1px solid #000; padding: 8px;">Physics</td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center;"><span t-field="group.physics"/></td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center"><span t-field="group.total_marks"/></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #000; padding: 8px;">Chemistry</td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center;"><span t-field="group.chemistry"/></td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center"><span t-field="group.total_marks"/></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #000; padding: 8px;">Biology</td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center;"><span t-field="group.biology"/></td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center"><span t-field="group.total_marks"/></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #000; padding: 8px;">Mathematics</td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center;"><span t-field="group.mathematics"/></td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center"><span t-field="group.total_marks"/></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #000; padding: 8px;">Computer</td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center;"><span t-field="group.computer"/></td>
-                                    <td style="border: 1px solid #000; padding: 8px; text-align: center"><span t-field="group.total_marks"/></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <table style="width: 100%; border: 3px solid #ece5e5; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <bold>
+                                            <th style="border: 1px solid #000; padding: 8px; text-align: center;">
+                                                Subject
+                                            </th>
+                                        </bold>
+                                        <bold>
+                                            <th style="border: 1px solid #000; padding: 8px; text-align: center;">Marks
+                                                Obtained
+                                            </th>
+                                        </bold>
+                                        <bolf>
+                                            <th style="border: 1px solid #000; padding: 8px; text-align: center;">Total
+                                                Marks
+                                            </th>
+                                        </bolf>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #000; padding: 8px;">Physics</td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center;">
+                                            <span t-field="group.physics"/>
+                                        </td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center">
+                                            <span t-field="group.total_marks"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #000; padding: 8px;">Chemistry</td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center;">
+                                            <span t-field="group.chemistry"/>
+                                        </td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center">
+                                            <span t-field="group.total_marks"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #000; padding: 8px;">Biology</td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center;">
+                                            <span t-field="group.biology"/>
+                                        </td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center">
+                                            <span t-field="group.total_marks"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #000; padding: 8px;">Mathematics</td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center;">
+                                            <span t-field="group.mathematics"/>
+                                        </td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center">
+                                            <span t-field="group.total_marks"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #000; padding: 8px;">Computer</td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center;">
+                                            <span t-field="group.computer"/>
+                                        </td>
+                                        <td style="border: 1px solid #000; padding: 8px; text-align: center">
+                                            <span t-field="group.total_marks"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                         <hr/>
                         <div style="padding:20px;color:white;   ">
-                            <h3 style="color:white;"><b>Total Marks: </b><span t-field="group.total_obtain"/></h3>
-                            <h3 style="color:white;"><b>Percentage: </b><span t-field="group.percentage"/>%</h3>
-                            <h3 style="color:white;"><b>Result: </b><span t-field="group.result"/></h3>
+                            <h3 style="color:white;">
+                                <b>Total Marks:</b>
+                                <span t-field="group.total_obtain"/>
+                            </h3>
+                            <h3 style="color:white;">
+                                <b>Percentage:</b>
+                                <span t-field="group.percentage"/>%
+                            </h3>
+                            <h3 style="color:white;">
+                                <b>Result:</b>
+                                <span t-field="group.result"/>
+                            </h3>
                         </div>
                         <hr/>
                         <footer style="text-align: center; margin-top: 30px;">
-                            <p><i>Generated by School Management System</i></p>
+                            <p>
+                                <i>Generated by School Management System</i>
+                            </p>
                         </footer>
                     </div>
                 </t>

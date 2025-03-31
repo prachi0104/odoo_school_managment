@@ -14,7 +14,7 @@ class Parentsteachermeeting(models.Model):
     date_of_ptm=fields.Date(string="Date of Meeting",default=lambda self: self._get_default_date())
     parents_email=fields.Char(string="Email", size=100, help="Email address")
     point_of_discussion=fields.Text(string="Your Text Field", required=False,default="Regarding Result Discussion")
-    state=fields.Selection([('draft','Draft'),('sceduled','sceduled'),('done','Done'),('cancel','Cancel')] ,default='draft',string="State",required=True)
+    state=fields.Selection([('draft','Draft'),('sceduled','sceduled'),('done','Done'),('cancel','Cancel')] ,default='draft',string="State")
     enrollment = fields.Char("Enrol")
     fees_status = fields.Char(string="Status",related="name.fees_status")
 
@@ -45,6 +45,8 @@ class Parentsteachermeeting(models.Model):
             if i.state == 'done':
                 raise ValidationError("You can not delete this record with done status")
         return super().unlink()
+
+
 
 
     

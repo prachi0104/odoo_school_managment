@@ -5,7 +5,9 @@ class teacher(models.Model):
     _name='teacher.model'
     _description='teacher model'
     _inherit = ['mail.thread']
+    _order = 'sequence,id'
 
+    sequence = fields.Integer(string="Sequence")
     name=fields.Char("Name",required=True)
     age = fields.Integer(string="Age", compute='_compute_age')
     dob= fields.Date(string="DOB", required=True, help="Date of Birth")
@@ -14,6 +16,8 @@ class teacher(models.Model):
     qualification=fields.Char("Qualification",required=True)
     address=fields.Text(string='Address')
     star_ids=fields.One2many('stulist.model','teacher_id',string='Star Students')
+    phone = fields.Char(String="Pnone")
+    email = fields.Char(string="Email")
     
     # Compute total number of students
     student_count = fields.Integer(string="Student Count", compute="_compute_student_count")

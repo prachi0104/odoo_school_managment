@@ -77,5 +77,11 @@ class HostelAdmission(models.Model):
         return self.env.ref('school_managment.student_hostel_receipt').report_action(self.id)
 
 
-
+    #cron method to change state from allocated to deallocate written in cron file
+    @api.model
+    def update_meeting_state(self):
+        meetings = self.search([('state', '=', 'allocated')])
+        for meeting in meetings:
+            meeting.write({'state': 'deallocated'})
+        return True
 
