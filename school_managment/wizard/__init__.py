@@ -1,1 +1,1 @@
-from . import create_pta
+from . import student_admi

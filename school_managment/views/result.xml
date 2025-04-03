@@ -17,6 +17,7 @@
                 <field name="total_marks" decoration-info="total_marks"/>
                 <field name="total_obtain" decoration-info="total_obtain"/>
                 <field name="percentage" decoration-info="percentage"/>
+                <field name="parents_phone" decoration-info="percentage" widget="phone"/>
                 <field name="result" decoration-success="result == 'Qualified'" decoration-danger="result == 'Not Qualified'"/>
                 <field name="progress" widget="progressbar"/>
 
@@ -32,6 +33,7 @@
             <form>
                  <header>
                     <button name="action_print_pdf" type="object" class="oe_highlight" string="Preview"/>
+                      <button name="action_shar_whatsapp" type="object" class="oe_highlight" string="Send On Whatsapp" icon="fa-whatsapp"/>
                 </header>
 
                 <sheet>
@@ -52,6 +54,7 @@
                         <field name="total_obtain"/>
                         <field name="percentage"/>
                         <field name="result"/>
+                        <field name="parents_phone"/>
                          <field name="image"/>
                     </group>
                 </group>

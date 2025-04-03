@@ -1,45 +1,75 @@
 <odoo>
+    <record id="action_put_value" model="ir.actions.server">
+        <field name="name">Mass Edit</field>
+        <field name="model_id" ref="school_managment.model_hostel_admission"/>
+        <field name="binding_model_id" ref="school_managment.model_hostel_admission"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+            'type': 'ir.actions.act_window',
+            'name': 'Provide Charges',
+            'res_model': 'student.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+            'default_hostel_admission_ids': record.ids,
+        },
+            }
+        </field>
+    </record>
+
+
 
     <record id="hostel_admission_list" model="ir.ui.view">
         <field name="name">hostel.admission.list.view</field>
         <field name="model">hostel.admission</field>
         <field name="arch" type="xml">
-            <list  decoration-danger="state=='deallocated'">
-                        <field name="name"/>
-                        <field name="admission_date"/>
-                        <field name="room_type"/>
-                        <field name="per_sem_charge"/>
-                        <field name="state" decoration-success="state=='allocated'" decoration-danger="state=='deallocated'" widget="badge"/>
+
+            <list decoration-danger="state=='deallocated'" ><!--  editable=Top than you atr able to edit from list view           -->
+                <header>
+                    <button name="action_open_url" type="object" class="oe_highlight" string="Odoo document" display="always"/>
+                </header>
+                <field name="name"/>
+                <field name="admission_date"/>
+                <field name="room_type"/>
+                <field name="per_sem_charge"/>
+                <field name="charges_to_pay"/>
+                <field name="state" decoration-success="state=='allocated'" decoration-danger="state=='deallocated'"
+                       widget="badge"/>
 
             </list>
         </field>
     </record>
+
 
     <record id="hostel_admission_form" model="ir.ui.view">
         <field name="name">hostel.admission.form.view</field>
         <field name="model">hostel.admission</field>
         <field name="arch" type="xml">
             <form>
-            <header>
-                <button name="action_print_pdf" type="object" class="oe_highlight" string="Preview"/>
-
-             <button name="action_allocate_room" string="Allocate" type="object"  class="btn-primary" invisible="state == 'allocated'"/><!--     -->
-             <button name="action_deallocate_room" string="Deallocate" type="object"  class="btn-primary"  invisible="state == 'deallocated'" /> <!-- invisible = "[('state','=','deallocated')]"  -->
-                                             <!--options="{'clickable': '1'}"-->
-               <field name="state" widget="statusbar" nolabel="1"  statusbar_visible="allocated,deallocated"/>
-            </header>
+                <header>
+                    <button name="action_print_pdf" type="object" class="oe_highlight" string="Preview"/>
+                    <button name="action_allocate_room" string="Allocate" type="object" class="btn-primary"
+                            invisible="state == 'allocated'"/><!--     -->
+                    <button name="action_deallocate_room" string="Deallocate" type="object" class="btn-primary"
+                            invisible="state == 'deallocated'"/> <!-- invisible = "[('state','=','deallocated')]"  -->
+                    <!--options="{'clickable': '1'}"-->
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="allocated,deallocated"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
                         <field name="admission_date"/>
                         <field name="room_type"/>
                         <field name="per_sem_charge"/>
+                        <field name="charges_to_pay"/>
                     </group>
                 </sheet>
-                <footer>
+                <chatter/>
 
-                </footer>
             </form>
+
         </field>
     </record>
 

@@ -4,25 +4,50 @@ from odoo.exceptions import UserError
 
 class HostelAdmission(models.Model):
     _name = "hostel.admission"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "hostel admission form"
 
 
-    name = fields.Many2one('stulist.model',string="Student Name")
-    admission_date = fields.Date(string="Date of Admission", default=lambda self: self._get_default_date())
-    room_type = fields.Many2one('hostel.room',string="room type")
-    per_sem_charge = fields.Integer()
+    name = fields.Many2one('stulist.model',string="Student Name", tracking=True)
+    admission_date = fields.Date(string="Date of Admission", default=lambda self: self._get_default_date(),tracking=True)
+    room_type = fields.Many2one('hostel.room',string="room type",tracking=True)
+    per_sem_charge = fields.Integer(tracking=True)
+    charges_to_pay =fields.Integer(string="Charges To Pay",tracking=True)
     state = fields.Selection([('allocated', 'Allocated'), ('deallocated', 'Deallocated')],
-                         string="Status",default='deallocated', required=True)
+                         string="Status",default='deallocated', required=True,tracking=True)
+
 
 
 
     def action_allocate_room(self):
         for rec in self:
             rec.state = 'allocated'
+            message = "Student Room allocation done"
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'target': 'new',
+                'params': {
+
+                    'type': 'success',
+                    'message': message,
+                    'next': {'type': 'ir.actions.act_window_close'},
+                }}
 
     def action_deallocate_room(self):
         for rec in self:
             rec.state = 'deallocated'
+            message = "Student Room Deallocation done"
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'target': 'new',
+                'params': {
+
+                    'type': 'success',
+                    'message': message,
+                    'next': {'type': 'ir.actions.act_window_close'},
+                }}
 
     @api.ondelete(at_uninstall=False)
     def check_allocation(self):
@@ -84,4 +109,16 @@ class HostelAdmission(models.Model):
         for meeting in meetings:
             meeting.write({'state': 'deallocated'})
         return True
+
+    def action_open_url(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'self',
+            'url': 'https://www.odoo.com/documentation/18.0/',
+        }
+
+
+
+
+
 

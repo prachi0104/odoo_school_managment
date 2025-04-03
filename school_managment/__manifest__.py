@@ -7,7 +7,7 @@
     "sequence": -1,
     "author": "prachi_brahmbhatt",
     "depends": [
-        "base","sale"
+        "base","sale","mail"
         
         
     ],
@@ -15,6 +15,7 @@
         # This file defines user access rules, like who can read, write, create, or delete records in this module.
         "security/ir.model.access.csv",
         #"data/teacher_data.xml",
+        "data/mail_template.xml",
         "data/sequence_data.xml",
         "data/cron_test.xml",
         'views/sale_order.xml',
@@ -32,6 +33,7 @@
         "views/teacher.xml",
         "views/result.xml",
         "views/inherits.xml",
+        "wizard/student_admi.xml",
          "report/school_managment_views.xml",
          "report/school_managment_template.xml",
 

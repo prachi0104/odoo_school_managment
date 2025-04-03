@@ -1,0 +1,32 @@
+<odoo>
+    <record id="student_admi_form" model="ir.ui.view">
+        <field name="name">student.wizard.form.view</field>
+        <field name="model">student.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="ctop"/>
+                        <field name="student_state"/>
+                        <field name="room_type"/>
+                        <field name="hostel_admission_ids" widget='many2many_tags' options="{'no_create': True}"/>
+                    </group>
+                    <footer>
+                         <button name="action_apply_charges" type="object" string="Apply Charges" class="btn-primary"/>
+                         <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_student_wizard" model="ir.actions.act_window">
+    <field name="name">Student Wizard</field>
+    <field name="res_model">student.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+
+</odoo>

@@ -5,6 +5,7 @@ from datetime import date
 
 class Parentsteachermeeting(models.Model):
     _name='parentsteachermeeting.model'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description='parentsteachermeeting model'
 
 
@@ -16,6 +17,7 @@ class Parentsteachermeeting(models.Model):
     point_of_discussion=fields.Text(string="Your Text Field", required=False,default="Regarding Result Discussion")
     state=fields.Selection([('draft','Draft'),('sceduled','sceduled'),('done','Done'),('cancel','Cancel')] ,default='draft',string="State")
     enrollment = fields.Char("Enrol")
+    parents_phone = fields.Char(String="Pnone")
     fees_status = fields.Char(string="Status",related="name.fees_status")
 
     @api.onchange('name')
@@ -45,6 +47,44 @@ class Parentsteachermeeting(models.Model):
             if i.state == 'done':
                 raise ValidationError("You can not delete this record with done status")
         return super().unlink()
+
+    # server action code
+    def action_done(self):
+        for i in self:
+            if i.state == 'draft':
+                i.state = 'sceduled'
+
+
+
+    def action_sent_email(self):
+        template = self.env.ref('school_managment.pta_mail_template_1')
+        for rec in self:
+            template.send_mail(rec.id, force_send=True)
+            message = "Email Sent Successfully!"
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'target': 'new',
+                'params': {
+
+                    'type': 'success',
+                    'message': message,
+                    'next': {'type': 'ir.actions.act_window_close'},
+                }}
+
+        # whatsapp interation
+    def action_shar_whatsapp(self):
+            if not self.parents_phone:
+                raise ValidationError("Missing phone number in form")
+
+            msg = 'student name is *%s*,roll number is *%s*, *Point of discussion* for student is: *%s* ' % (
+            self.name.name, self.enrollment, self.point_of_discussion)
+            whatsapp_api_url = 'https://web.whatsapp.com/send?phone=%s&text=%s' % (self.parents_phone, msg)
+            return {
+                'type': 'ir.actions.act_url',
+                'target': 'new',
+                'url': whatsapp_api_url
+            }
 
 
 

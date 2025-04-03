@@ -1,6 +1,6 @@
 from odoo import fields,models,api
 from datetime import datetime, timedelta
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError,ValidationError
 
 
 class Result(models.Model):
@@ -22,6 +22,7 @@ class Result(models.Model):
     percentage = fields.Float(string="Percentage",compute='_compute_percentage')
     result = fields.Char(string="Result",compute='_compute_result')
     image=fields.Image("image")
+    parents_phone = fields.Char(String="Pnone")
     progress= fields.Integer(String="Growth",compute='_compute_progress')
 
 
@@ -74,6 +75,20 @@ class Result(models.Model):
                 rec.progress = 75
             else:
                 rec.progress = 100
+
+
+    #whatsapp interation
+    def action_shar_whatsapp(self):
+        if not self.parents_phone:
+            raise ValidationError("Missing phone number in form")
+
+        msg = 'student name is *%s*,roll number is *%s*, *percentage* of student is: *%s* ,collect full result from school' % (self.name.name,self.roll_no, self.percentage )
+        whatsapp_api_url = 'https://web.whatsapp.com/send?phone=%s&text=%s' % (self.parents_phone, msg)
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': whatsapp_api_url
+        }
 
 
 

@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Displays records in a table format (like an Excel sheet) -->
-    <record id="parentsteachermeeting_model_list"
-            model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
+
+     <record id="action_mark_as_done" model="ir.actions.server">
+        <field name="name">Mark As Done</field>
+        <field name="model_id" ref="school_managment.model_parentsteachermeeting_model"/>
+        <field name="binding_model_id" ref="school_managment.model_parentsteachermeeting_model"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            for i in records:
+                if i.state == 'draft':
+                     i.action_done()
+        </field>
+    </record>
+
+
+
+
+
+
+    <record id="parentsteachermeeting_model_list" model="ir.ui.view">  <!--  are what define how records should be displayed to end-users. -->
         <field name="name">parentsteachermeeting.model.list.view</field>
         <field name="model">parentsteachermeeting.model</field>
         <field name="arch" type="xml">
@@ -12,6 +29,7 @@
                 <field name="depratment_name"/>
                 <field name="date_of_ptm"/>
                 <field name="parents_email"/>
+                <field name="parents_phone"/>
                 <field name="point_of_discussion" string="Point Of Discussion"/>
                 <field name="fees_status"/>
             </list>
@@ -26,6 +44,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="action_shar_whatsapp" type="object" class="oe_highlight" string="Send On Whatsapp" icon="fa-whatsapp"/>
+                    <button name="action_sent_email" type="object" class="oe_highlight"  string="Sent Email"  />
                     <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}"
                            statusbar_visible="draft,sceduled,done"/>
                 </header>
@@ -41,6 +61,7 @@
                         <field name="depratment_name"/>
                         <field name="date_of_ptm"/>
                         <field name="parents_email"/>
+                        <field name="parents_phone"/>
                         <field name="point_of_discussion" string="Point Of Discussion"/>
                         <field name="fees_status"/>
                     </group>
