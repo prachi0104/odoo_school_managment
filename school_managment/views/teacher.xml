@@ -71,6 +71,11 @@
                                 </form>
                             </field>
                         </page>
+                        <page string="Assigned Task"  name="Assigned Task">
+
+                                 <field name="task_id"/>
+
+                        </page>
                     </notebook>
                 </sheet>
 
@@ -222,6 +227,7 @@
     <menuitem id="room_menu" name="Rooms" parent="hostel_menu" action="action_hostel_room"/>
     <menuitem id="admission_menu" name="Hostel Admission Form" parent="hostel_menu"
               action="action_hostel_admission_test"/>
+
 
 
 </odoo>

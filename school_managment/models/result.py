@@ -22,8 +22,8 @@ class Result(models.Model):
     percentage = fields.Float(string="Percentage",compute='_compute_percentage')
     result = fields.Char(string="Result",compute='_compute_result')
     image=fields.Image("image")
-    parents_phone = fields.Char(String="Pnone")
-    progress= fields.Integer(String="Growth",compute='_compute_progress')
+    parents_phone = fields.Char(string="Pnone")
+    progress= fields.Integer(string="Growth",compute='_compute_progress')
 
 
     @api.onchange('name')

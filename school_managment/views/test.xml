@@ -1,0 +1,40 @@
+<odoo>
+
+
+part of inherits
+    <record id="edit_result_list_view" model="ir.ui.view">
+        <field name="name">result.model.list.inherit</field>
+        <field name="model">result.model</field>
+        <field name="inherit_id" ref="school_managment.result_model_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='roll_no']" position="after">
+                <field name="checking_faculty"/>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="edit_result_form_view" model="ir.ui.view">
+        <field name="name">result.model.form.inherit</field>
+        <field name="model">result.model</field>
+        <field name="inherit_id" ref="school_managment.result_model_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='roll_no']" position="after">
+                <field name="checking_faculty"/>
+            </xpath>
+        </field>
+    </record>
+
+
+     <record id="action_inherits_test_2" model="ir.actions.act_window">
+        <field name="name">custom</field>
+        <field name="res_model">result.model</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+   <menuitem id="inherit_menu_action_2" name="custom_example" parent="education_management_root"
+              action="action_inherits_test_2"/>
+
+
+
+</odoo>

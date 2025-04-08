@@ -7,7 +7,7 @@
     "sequence": -1,
     "author": "prachi_brahmbhatt",
     "depends": [
-        "base","sale","mail"
+        "base","sale","mail","account"
         
         
     ],
@@ -27,13 +27,17 @@
         "views/syllabus.xml",
         "views/pta.xml",
         "views/department.xml",
-        "views/res_config_settings_view.xml",
+         "views/res_config_settings_view.xml",
         "views/hostel_room.xml",
         "views/hostel_admission.xml",
         "views/teacher.xml",
         "views/result.xml",
+        "views/inherit.xml",
         "views/inherits.xml",
+        "views/test.xml",
+        "views/school_task.xml",
         "wizard/student_admi.xml",
+
          "report/school_managment_views.xml",
          "report/school_managment_template.xml",
 

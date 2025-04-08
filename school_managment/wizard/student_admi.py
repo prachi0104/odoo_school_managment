@@ -7,8 +7,8 @@ class StudentAdmi(models.TransientModel):
 
     ctop = fields.Integer(string='Charges To Pay')
     student_state = fields.Selection([('allocated', 'Allocated'), ('deallocated', 'Deallocated')],
-                             string="Status", default='deallocated', required=True, tracking=True)
-    room_type = fields.Many2one('hostel.room', string="room type", tracking=True)
+                             string="Status", default='deallocated', required=True)
+    room_type = fields.Many2one('hostel.room', string="room type")
     hostel_admission_ids = fields.Many2many('hostel.admission', string="Hostel Admission")
 
     def action_apply_charges(self):

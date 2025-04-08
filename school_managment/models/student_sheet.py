@@ -71,10 +71,12 @@ class Stulist(models.Model):
     def write(self, vals):
         print(vals)
         print(self.name)
+        name=self.browse(76).name
+        print(name)
         vals['record_status'] = "Edited Record"
             # for record in self:
             #     if not record.name.startswith('#'):
-            #         vals['name'] = '#' + record.name
+            #         vals['name'] = '#' + record.  name
         return super(Stulist, self).write(vals)
 
 
@@ -110,6 +112,8 @@ class Stulist(models.Model):
                 rec.is_paid = False
             else:
                 rec.is_paid = True
+
+
 
 
 

@@ -1,20 +1,12 @@
 from odoo import models,fields,api,_
 from odoo.exceptions import ValidationError
-from datetime import timedelta
-from datetime import date
 
+
+#inherits model for inheriting existing model in our model and add extra fields or functionality
 class InheritsModel(models.Model):
     _name='inherits'
-    #_inherit = "teacher.model"
-    # _inherits={'res.partner':'partner_id'}
-    # partner_id=fields.Many2one("res.partner",string="Partner",required="true",ondelete="casecade")
+    _description = "inherits"
+
     _inherits = {'teacher.model': 'teacher_id'}
-    teacher_id = fields.Many2one("teacher.model", string="Partner", required="true", ondelete="casecade")
+    teacher_id = fields.Many2one("teacher.model", string="Partner", required=True, ondelete="cascade")
     gender = fields.Char(string="Gender")
-
-
-    def action_open_students(self):
-        print("success.....")
-        return super().action_open_students()
-
-

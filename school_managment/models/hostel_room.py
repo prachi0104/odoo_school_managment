@@ -15,13 +15,10 @@ class HostelRoom(models.Model):
 
 
 
-
-
     @api.depends('total_room','occupied')
     def _compute_available(self):
         for room in self:
                 room.available = room.total_room - room.occupied
-
 
 
     def action_test(self):

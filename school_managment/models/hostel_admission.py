@@ -22,7 +22,7 @@ class HostelAdmission(models.Model):
     def action_allocate_room(self):
         for rec in self:
             rec.state = 'allocated'
-            message = "Student Room allocation done"
+            message = "Student Room allocation done to",self.name.name
             return {
                 'type': 'ir.actions.client',
                 'tag': 'display_notification',

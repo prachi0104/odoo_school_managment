@@ -9,19 +9,19 @@ class teacher(models.Model):
 
     sequence = fields.Integer(string="Sequence")
     name=fields.Char("Name",required=True)
-    age = fields.Integer(string="Age", compute='_compute_age')
-    dob= fields.Date(string="DOB", required=True, help="Date of Birth")
+    age = fields.Integer(string="Age", compute='_compute_age',store=True)
+    dob= fields.Date(string="DOB", help="Date of Birth") #required=True
     department_id = fields.Many2one("department.model", string="Department", ondelete="set null")
     salary=fields.Integer()
-    qualification=fields.Char("Qualification",required=True)
+    qualification=fields.Char("Qualification") #required=True
     address=fields.Text(string='Address')
     star_ids=fields.One2many('stulist.model','teacher_id',string='Star Students')
-    phone = fields.Char(String="Pnone")
+    phone = fields.Char(string="Pnone")
     email = fields.Char(string="Email")
     
     # Compute total number of students
     student_count = fields.Integer(string="Student Count", compute="_compute_student_count")
-
+    task_id = fields.One2many('school.task', 'assign_to', string= "Assigned Task")
 
     @api.depends('star_ids')
     def _compute_student_count(self):
