@@ -18,16 +18,20 @@ class SchoolTask(models.Model):
             ('high', 'High')
         ], default='medium', string='Priority')
 
+        def create_task_from_email(self, subject, description, teacher_id=None):
+            # Ensure teacher_id is valid
+            if teacher_id:
+                teacher = self.env['teacher.model'].browse(teacher_id)
+                if not teacher.exists():
+                    raise ValueError(f"Teacher with ID {teacher_id} does not exist.")
+                assign_to = teacher
+            else:
+                assign_to = None
 
+            # Create the task record with the provided subject, description, and assignment
+            self.create({
+                'name': subject,
+                'description': description,
+                'assign_to': assign_to.id if assign_to else False,
+            })
 
-
-        def create_task_from_email(self, subject, description, assign_to=None, priority='medium'):
-            """
-         Creates a task from the provided email data.
-            """
-            return self.create({
-            'name': subject or 'No Subject',
-            'description': description or 'No Description',
-            'assign_to': assign_to.id if assign_to else self.env.user.id,
-            'priority': priority,
-        })

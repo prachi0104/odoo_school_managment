@@ -15,5 +15,7 @@ from . import inherit
 from . import inherits
 from . import cron
 from . import school_task
+from . import layout_draft
+
 
 

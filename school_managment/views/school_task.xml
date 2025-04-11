@@ -1,16 +1,21 @@
 <odoo>
 
+<odoo>
     <record id="action_create_task" model="ir.actions.server">
-        <field name="name">create task</field>
+        <field name="name">Create task</field>
         <field name="model_id" ref="school_managment.model_school_task"/>
         <field name="binding_model_id" ref="school_managment.model_school_task"/>
         <field name="binding_view_types">list</field>
         <field name="state">code</field>
         <field name="code">
             if record:
-                env['school.task'].create_task_from_email()
+                subject = record.name
+                description = record.description
+                teacher_id = 1  # Make sure this teacher exists in the teacher.model table
+                env['school.task'].create_task_from_email(subject, description, teacher_id)
         </field>
     </record>
+</odoo>
 
     <record id="view_school_task_form" model="ir.ui.view">
         <field name="name">school.task.form</field>
@@ -51,5 +56,5 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <menuitem id="menu_school_task" name="Tasks" parent="education_management_root" action="action_school_task"/>
+    <!--    <menuitem id="menu_school_task" name="Tasks" parent="education_management_root" action="action_school_task"/>-->
 </odoo>

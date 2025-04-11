@@ -11,13 +11,13 @@
                 <field name="name" />
                 <field name="enrollment"/>
                 <field name="std"/>
-                <field name="date_of_birth"/>
-                <field name="age"/>
+                <field name="date_of_birth" optional="show"/>
+                <field name="age" optional="show"/>
                 <field name="department_id"/>
                 <field name="total_marks"/>
-                <field name="gender"/>
+                <field name="gender" optional="show"/>
                 <field name="fees_status" decoration-success="fees_status=='Paid'"
-                       decoration-danger="fees_status=='Unpaid'" widget="badge"/>
+                       decoration-danger="fees_status=='Unpaid'" widget="badge" />
                 <field name="image"/>
                 <field name="record_status"/>
                 <field name="teacher_id"/>

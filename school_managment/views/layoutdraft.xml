@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Displays records in a table format (like an Excel sheet) -->
+    <record id="layout_model_list" model="ir.ui.view">
+        <field name="name">layout.draft.list.view</field>
+        <field name="model">layout.draft</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="address"/>
+                <field name="qualification"/>
+                <field name="project_list"/>
+                <field name="year_of_passing"/>
+                <field name="experience"/>
+                <field name="email"/>
+                <field name="hobbies"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="layout_model_form" model="ir.ui.view">
+        <field name="name">layout.draft.form.view</field>
+        <field name="model">layout.draft</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="address"/>
+                        <field name="qualification"/>
+                        <field name="project_list"/>
+                        <field name="year_of_passing"/>
+                        <field name="experience"/>
+                        <field name="email"/>
+                        <field name="hobbies"/>hobbies
+                        <button name="action_open_layout_wizard" string="Generate Resume" class="btn-primary" type="object"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_layout_draft" model="ir.actions.act_window">
+        <field name="name">layoutdraft</field>
+        <field name="res_model">layout.draft</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="Layout_menu" name="Resume" parent="education_management_root" action="action_layout_draft" sequence="12"/>
+</odoo>

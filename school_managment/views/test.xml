@@ -32,8 +32,8 @@ part of inherits
     </record>
 
 
-   <menuitem id="inherit_menu_action_2" name="custom_example" parent="education_management_root"
-              action="action_inherits_test_2"/>
+<!--   <menuitem id="inherit_menu_action_2" name="custom_example" parent="education_management_root"-->
+<!--              action="action_inherits_test_2"/>-->
 
 
 

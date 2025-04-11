@@ -1,0 +1,64 @@
+<odoo>
+<record id="student_hostel_receipt" model="ir.actions.report">
+        <field name="name">Print receipt</field>
+        <field name="model">hostel.admission</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">school_managment.print_receipt</field>
+        <field name="report_file">school_managment.print_receipt</field>
+        <field name="binding_model_id" ref="model_hostel_admission"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+<record id="student_result" model="ir.actions.report">
+        <field name="name">Result model </field>
+        <field name="model">result.model</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">school_managment.result</field>
+        <field name="report_file">school_managment.result</field>
+        <field name="binding_model_id" ref="model_result_model"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+  <record id="layout_receipt_style_1" model="ir.actions.report">
+    <field name="name">Receipt Style 1</field>
+    <field name="model">layout.draft</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">school_managment.print_style_1</field>
+    <field name="report_file">school_managment.print_style_1</field>
+</record>
+
+<record id="layout_receipt_style_2" model="ir.actions.report">
+    <field name="name">Receipt Style 2</field>
+    <field name="model">layout.draft</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">school_managment.print_style_2</field>
+    <field name="report_file">school_managment.print_style_2</field>
+</record>
+
+<record id="layout_receipt_style_3" model="ir.actions.report">
+    <field name="name">Receipt Style 3</field>
+    <field name="model">layout.draft</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">school_managment.print_style_3</field>
+    <field name="report_file">school_managment.print_style_3</field>
+</record>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

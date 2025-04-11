@@ -16,6 +16,7 @@
         "security/ir.model.access.csv",
         #"data/teacher_data.xml",
         "data/mail_template.xml",
+        "data/hostel_receipt_email_tem.xml",
         "data/sequence_data.xml",
         "data/cron_test.xml",
         'views/sale_order.xml',
@@ -37,9 +38,13 @@
         "views/test.xml",
         "views/school_task.xml",
         "wizard/student_admi.xml",
+        "report/report_views.xml",
+        "report/report_template.xml",
+        "views/layoutdraft.xml",
+        "wizard/layout_wizard.xml",
 
-         "report/school_managment_views.xml",
-         "report/school_managment_template.xml",
+
+
 
 
 

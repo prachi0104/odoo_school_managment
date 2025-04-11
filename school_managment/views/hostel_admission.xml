@@ -37,6 +37,7 @@
                 <field name="charges_to_pay"/>
                 <field name="state" decoration-success="state=='allocated'" decoration-danger="state=='deallocated'"
                        widget="badge"/>
+                <field name="email"/>
 
             </list>
         </field>
@@ -49,7 +50,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_print_pdf" type="object" class="oe_highlight" string="Preview"/>
+<!--                    <button name="test_recordset" type="object" class="oe_highlight" string="test record set" display="always"/>-->
+                     <button name="action_sent_email" type="object" class="oe_highlight"  string="Sent Email"  />
+                    <button name="action_print_student_pdf" type="object" class="oe_highlight" string="Preview"/>
                     <button name="action_allocate_room" string="Allocate" type="object" class="btn-primary"
                             invisible="state == 'allocated'"/><!--     -->
                     <button name="action_deallocate_room" string="Deallocate" type="object" class="btn-primary"
@@ -64,6 +67,7 @@
                         <field name="room_type"/>
                         <field name="per_sem_charge"/>
                         <field name="charges_to_pay"/>
+                        <field name="email"/>
                     </group>
                 </sheet>
                 <chatter/>

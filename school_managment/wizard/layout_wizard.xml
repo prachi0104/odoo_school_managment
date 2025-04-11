@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_layout_draft_wizard_form" model="ir.ui.view">
+        <field name="name">layout.draft.wizard.form</field>
+        <field name="model">layout.draft.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Layout Wizard" class="oe_form" style="min-width: 1000px; min-height: 600px;">
+
+                <group>
+                    <div class="oe_title">
+                        <h5>Layout Style</h5>
+                    </div>
+
+                    <div class="oe_structure">
+                        <div class="row" style="min-height: 500px;">
+                            <!-- Left Column: Buttons -->
+                            <div class="col-4" style="border-right: 1px solid #ccc; padding-right: 20px;">
+                                <div class="mt-2 mb-4 d-flex gap-2">
+                                    <button string="Simple" type="object" name="action_set_style" class="btn btn-primary">Simple</button>
+                                    <button string="Classic" type="object" name="action_button_2" class="btn btn-secondary">Classic</button>
+                                    <button string="Color Pop" type="object" name="action_button_3" class="btn btn-success">Color Pop</button>
+                                </div>
+                                <footer>
+                                    <button string="Cancel" special="cancel" class="btn btn-link" style="width: 100%;"/>
+                                </footer>
+                            </div>
+
+                            <!-- Right Column: Image Preview -->
+                            <div class="col-8">
+                                <field name="image_preview" widget="image"/>
+                            </div>
+                        </div>
+                    </div>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_layout_draft_wizard" model="ir.actions.act_window">
+        <field name="name">Layout Wizard</field>
+        <field name="res_model">layout.draft.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

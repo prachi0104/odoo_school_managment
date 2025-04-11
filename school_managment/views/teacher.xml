@@ -12,12 +12,12 @@
             <list>
                 <field name="sequence" widget="handle"/>
                 <field name="name" />
-                <field name="dob"/>
-                <field name="age"/>
+                <field name="dob" optional="show"/>
+                <field name="age" optional="show"/>
                 <field name="department_id"/>
-                <field name="salary"/>
+                <field name="salary" optional="show"/>
                 <field name="qualification"/>
-                <field name="address"/>
+                <field name="address" optional="show"/>
                 <field name="phone" widget="phone"/>
                 <field name="email" widget="email"/>
             </list>

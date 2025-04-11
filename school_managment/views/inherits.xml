@@ -58,7 +58,7 @@
     </record>
 
 
-   <menuitem id="inherit_menu_action_1" name="inherites" parent="education_management_root"
-              action="action_inherits_test"/>
+<!--   <menuitem id="inherit_menu_action_1" name="inherites" parent="education_management_root"-->
+<!--              action="action_inherits_test"/>-->
 
 </odoo>

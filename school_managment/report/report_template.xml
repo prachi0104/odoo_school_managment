@@ -70,10 +70,10 @@
                                     <span t-field="group.roll_no"/>
                                 </h4>
                             </div>
-<!--                            <div style="width:30%;margin-left:1187px;margin-top:-79px;">-->
-<!--&lt;!&ndash;                                <span t-field="group.image" t-options='{"widget": "image"}'/>&ndash;&gt;-->
-<!--                                <img t-att-src="'/school_managment/static/src/img/image.png'" />-->
-<!--                            </div>-->
+                            <!--                            <div style="width:30%;margin-left:1187px;margin-top:-79px;">-->
+                            <!--&lt;!&ndash;                                <span t-field="group.image" t-options='{"widget": "image"}'/>&ndash;&gt;-->
+                            <!--                                <img t-att-src="'/school_managment/static/src/img/image.png'" />-->
+                            <!--                            </div>-->
                             <div style="width:30%;margin-left:1187px;margin-top:-79px;">
                                 <h4 style="color:white;">
                                     <b>Acadmic Year:</b>
@@ -184,6 +184,180 @@
             </t>
         </t>
     </template>
+
+
+    <template id="print_style_1">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="resume-container" style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+                    <center>
+                        <h2 style="font-size: 24px; font-weight: bold;"><span t-field="doc.name"/></h2>
+                    </center>
+
+                    <hr style="border: 1px solid #000; margin-bottom: 20px;" />
+
+                    <div class="personal-info">
+                        <h3 style="font-size: 18px; font-weight: bold;">Personal Information</h3>
+                        <p><strong>Name:</strong> <span t-field="doc.name"/></p>
+                        <p><strong>Address:</strong> <span t-field="doc.address"/></p>
+                        <p><strong>Email:</strong> <span t-field="doc.email"/> </p> <!-- Optional -->
+                        <!-- Optional -->
+                    </div>
+
+                    <hr style="border: 1px solid #ddd;" />
+
+                    <div class="qualification">
+                        <h3 style="font-size: 18px; font-weight: bold;">Qualifications</h3>
+                         <span t-field="doc.qualification"/>
+
+                    </div>
+
+                    <hr style="border: 1px solid #ddd;" />
+
+                    <div class="experience">
+                        <h3 style="font-size: 18px; font-weight: bold;">Experience</h3>
+                       <span t-field="doc.experience"/>
+                    </div>
+
+                    <hr style="border: 1px solid #ddd;" />
+
+                    <div class="projects">
+                        <h3 style="font-size: 18px; font-weight: bold;">Projects</h3>
+                        <span t-field="doc.project_list"/>
+                    </div>
+
+                    <hr style="border: 1px solid #ddd;" />
+                    <div>
+                    <p><strong>Year of Passing:</strong> <span t-field="doc.year_of_passing"/></p>
+                    </div>
+
+                     <hr style="border: 1px solid #ddd;" />
+                    <div class="hobbies">
+                        <h3 style="font-size: 18px; font-weight: bold;">Hobbies</h3>
+                        <span t-field="doc.hobbies"/>
+                    </div>
+
+                    <hr style="border: 1px solid #000; margin-top: 20px;" />
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+    <template id="print_style_2">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page" style="background-color: #ecf0f1; padding: 30px; border-radius: 8px;">
+                <t t-foreach="docs" t-as="doc">
+                    <h2 style="color: #2980b9; text-align: center; font-weight: bold;"><span t-field="doc.name"/></h2>
+                    <div style="padding: 20px; background-color: #ffffff; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 20px;">
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Name:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.name"/>
+                        </p>
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Address:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.address"/>
+                        </p>
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Email:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.email"/>
+                        </p>
+
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Qualification:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.qualification"/>
+                        </p>
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Project List:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.project_list"/>
+                        </p>
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Experience:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.experience"/>
+                        </p>
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Year of Passing:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.year_of_passing"/>
+                        </p>
+
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #34495e;">Hobbies:</strong>
+                            <span style="color: #2c3e50;" t-field="doc.hobbies"/>
+                        </p>
+
+                    </div>
+                </t>
+            </div>
+        </t>
+    </t>
+</template>
+
+
+
+   <template id="print_style_3">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page" style="font-family: 'Courier New', monospace; background-color: #fdf6f0; padding: 30px; border-radius: 10px;">
+                <t t-foreach="docs" t-as="doc">
+                    <div style="padding: 20px; background-color: #ffffff; border: 2px solid #dfe6e9; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #00b894;">Name:</strong>
+                            <span style="color: #2d3436;" t-field="doc.name"/>
+                        </p>
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #00cec9;">Address:</strong>
+                            <span style="color: #2d3436;" t-field="doc.address"/>
+                        </p>
+                        <p style="margin: 10px 0;">
+                            <strong style="color: #00cec9;">Email:</strong>
+                            <span style="color: #2d3436;" t-field="doc.email"/>
+                        </p>
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #6c5ce7;">Qualification:</strong>
+                            <span style="color: #2d3436;" t-field="doc.qualification"/>
+                        </p>
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #fd79a8;">Project List:</strong>
+                            <span style="color: #2d3436;" t-field="doc.project_list"/>
+                        </p>
+
+
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #0984e3;">Experience:</strong>
+                            <span style="color: #2d3436;" t-field="doc.experience"/>
+                        </p>
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #e17055;">Year of Passing:</strong>
+                            <span style="color: #2d3436;" t-field="doc.year_of_passing"/>
+                        </p>
+
+                        <p style="margin: 12px 0;">
+                            <strong style="color: #fab1a0;">Hobbies:</strong>
+                            <span style="color: #2d3436;" t-field="doc.hobbies"/>
+                        </p>
+
+                    </div>
+                </t>
+            </div>
+        </t>
+    </t>
+</template>
 
 
 </odoo>

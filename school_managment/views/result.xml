@@ -8,16 +8,16 @@
                 <field name="name" decoration-warning="name"/>
                 <field name="roll_no" decoration-warning="roll_no"/>
                 <field name="std" decoration-warning="std"/>
-                <field name="acadmic_year" widget="char" decoration-warning="std"/>
+                <field name="acadmic_year" widget="char" decoration-warning="std" optional="show"/>
                 <field name="physics" decoration-success="physics &gt;= 33" decoration-danger="physics  &lt;= 33"/>
                 <field name="chemistry" decoration-success="chemistry &gt;= 33" decoration-danger="chemistry  &lt;= 33"/>
                 <field name="biology" decoration-success="biology &gt;= 33" decoration-danger="biology  &lt;= 33"/>
                 <field name="mathematics" decoration-success="mathematics &gt;= 33" decoration-danger="mathematics  &lt;= 33"/>
                 <field name="computer" decoration-success="computer &gt;= 33" decoration-danger="computer  &lt;=  33"/>
-                <field name="total_marks" decoration-info="total_marks"/>
+                <field name="total_marks" decoration-info="total_marks" optional="show"/>
                 <field name="total_obtain" decoration-info="total_obtain"/>
                 <field name="percentage" decoration-info="percentage"/>
-                <field name="parents_phone" decoration-info="percentage" widget="phone"/>
+                <field name="parents_phone" decoration-info="percentage" widget="phone" optional="show"/>
                 <field name="result" decoration-success="result == 'Qualified'" decoration-danger="result == 'Not Qualified'"/>
                 <field name="progress" widget="progressbar"/>
 

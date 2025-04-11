@@ -14,6 +14,17 @@
                                     <span> days</span>
                                 </div>
                             </setting>
+
+                            <setting string="End Date Contract Alert">
+                                  <block title="Report Layout Configuration" id="school_settings">
+                                <div class="text-muted content-group mt16">
+                                    <span>Cancellation Before</span>
+                                              <button name="school_managment.action_layout_draft_wizard" string="wizard open" class="btn-primary" type="action" />
+                                    <span> days</span>
+                                </div>
+                                   </block>
+                            </setting>
+
                         </block>
                     </app>
                 </xpath>

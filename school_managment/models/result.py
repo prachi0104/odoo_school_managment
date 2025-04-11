@@ -1,7 +1,9 @@
 from odoo import fields,models,api
 from datetime import datetime, timedelta
 from odoo.exceptions import UserError,ValidationError
-
+import base64
+import tempfile
+from pdf2image import convert_from_bytes
 
 class Result(models.Model):
     _name = "result.model"
@@ -24,6 +26,8 @@ class Result(models.Model):
     image=fields.Image("image")
     parents_phone = fields.Char(string="Pnone")
     progress= fields.Integer(string="Growth",compute='_compute_progress')
+
+
 
 
     @api.onchange('name')
@@ -89,6 +93,13 @@ class Result(models.Model):
             'target': 'new',
             'url': whatsapp_api_url
         }
+
+
+
+
+
+
+
 
 
 

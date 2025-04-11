@@ -11,7 +11,6 @@ class Stulist(models.Model):
 
 
     name=fields.Char("Name",required=True)
-
     enrollment=fields.Char("Enrol")
     std=fields.Integer(string="Standerd")
     age=fields.Integer(string="Age",compute='_compute_age',inverse='_inverse_compute_age', store="True")
@@ -112,6 +111,27 @@ class Stulist(models.Model):
                 rec.is_paid = False
             else:
                 rec.is_paid = True
+
+
+
+    # def get_display_name(self):
+    #     result = []
+    #     for rec in self:
+    #         display_name = '%s - %s' % (rec.enrollment, rec.name)
+    #     result.append((rec.id, display_name))
+    #     print(result)
+    #     return result
+
+
+    # @api.model
+    # def name_search(self,name='',args=None):
+    #     if args is None:
+    #         args = []
+    #     domain = args + [ '|',('enrollment',name),('name',name)]
+    #     return super(Stulist,self).search(domain).name_get()
+
+
+
 
 
 

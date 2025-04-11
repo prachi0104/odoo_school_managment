@@ -1,0 +1,40 @@
+<odoo>
+
+        <record id="hostel_receipt" model="mail.template">
+        <field name="name">Hostel receipt</field>
+        <field name="model_id" ref="school_managment.model_hostel_admission"/>
+        <field name="subject">Hostel_receipt</field>
+        <field name="email_from">odooschool01@gmail.com</field>
+        <field name="email_to">{{ object.email }}</field>
+
+            <field name="body_html" type="html">
+
+            <h3>Dear sir,</h3>
+            <h3>Good day!!</h3>
+            <h3>Please find attached below hostel receipt for your reference with student detail</h3>
+            <div>
+                <div style="
+    background-color: #4a3486;color: #fff;padding: 15px;border-radius: 8px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);text-align: center;font-family: Arial, sans-serif;
+    font-size: 16px;font-weight: bold;margin: 10px 0;">
+                    <p style="margin: 5px 0;">
+                        Student Name:<t t-out="object.name.name"/>
+                    </p>
+                    <p style="margin: 5px 0;">
+                        Hostel Per Sem Charges:<t t-out="object.per_sem_charge or 'N/A'"/>
+                    </p>
+                    <p style="margin: 5px 0;">
+                        Admission Date<t t-out="object.admission_date or 'N/A'"/>
+                    </p>
+                    <p style="margin: 5px 0;">
+                        Charges To Pay::<t t-out="object.charges_to_pay or 'N/A'"/>
+                    </p>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </field>
+
+             <field name="report_template_ids" eval="[(4, ref('school_managment.student_hostel_receipt'))]"/>
+    </record>
+</odoo>
