@@ -16,6 +16,9 @@ from . import inherits
 from . import cron
 from . import school_task
 from . import layout_draft
+from . import report_layout
+from . import dashboard
+from . import courses
 
 
 

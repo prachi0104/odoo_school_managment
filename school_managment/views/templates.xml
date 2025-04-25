@@ -1,24 +1,730 @@
 <odoo>
-    <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+
+
+<template id="home_page_template_new" name="Homepage">
+    <t t-call="website.layout">
+        <t t-set="head">
+            <style>
+                body {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .homepage-container {
+                    padding: 100px 20px;
+                    backdrop-filter: blur(4px);
+                    background-color: rgba(255, 255, 255, 0.6);
+                    border-radius: 20px;
+                }
+
+                .homepage-title {
+                    text-align: center;
+                    margin-bottom: 40px;
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    color: #333;
+                }
+
+                .custom-card {
+                    background: white;
+                    border-radius: 16px;
+                    padding: 30px;
+                    height: 100%;
+                    transition: transform 0.2s ease-in-out;
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                }
+
+                .custom-card:hover {
+                    transform: translateY(-5px);
+                }
+
+                .custom-card img {
+                    width: 60px;
+                    margin-bottom: 15px;
+                }
+
+                .card-title {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                    color: #444;
+                }
+
+                @media (max-width: 767px) {
+                    .custom-card {
+                        margin-bottom: 20px;
+                    }
+                }
+            </style>
+        </t>
+
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="container text-center py-5">
+
+                    <!-- Logo -->
+                    <img src="/web/image/res.company/1/logo" alt="School Logo" class="mb-4" style="max-height: 120px;" />
+<!--                    <img src="/school_managment/static/src/img/icon2.png" alt="School Logo" class="mb-4" style="max-height: 120px;" />-->
+
+                    <!-- Title -->
+                    <div class="homepage-container mt-4">
+                        <div class="text-center mb-5">
+                            <h1 class="display-4">Welcome to School Management Portal</h1>
+                            <p class="lead">Your central hub for academic and hostel management</p>
+                        </div>
+
+                        <!-- Row 1 -->
+                        <div class="row mb-4">
+                            <div class="col-md-4 mb-4">
+                                <a href="/student" class="text-decoration-none text-dark">
+                                    <div class="custom-card border-primary">
+                                        <img src="/school_managment/static/src/img/teacher6.png" />
+                                        <h4>Student Corner</h4>
+                                        <p class="text-muted">Register and view your academic journey</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <a href="/student_profile" class="text-decoration-none text-dark">
+                                    <div class="custom-card border-success">
+                                        <img src="/school_managment/static/src/img/profile.png" />
+                                        <h4>Student Profiles</h4>
+                                        <p class="text-muted">Explore student information</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <a href="/teacher" class="text-decoration-none text-dark">
+                                    <div class="custom-card border-info">
+                                        <img src="/school_managment/static/src/img/teacher.png" />
+                                        <h4>Teacher Corner</h4>
+                                        <p class="text-muted">Access resources and class info</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <a href="/hostel" class="text-decoration-none text-dark">
+                                    <div class="custom-card border-warning">
+                                        <img src="/school_managment/static/src/img/hostel.png" />
+                                        <h4>Hostel Information</h4>
+                                        <p class="text-muted">View available rooms and apply</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <a href="/cantin" class="text-decoration-none text-dark">
+                                    <div class="custom-card border-dark">
+                                        <img src="/school_managment/static/src/img/food.png" />
+                                        <h4>Canteen Facility</h4>
+                                        <p class="text-muted">Enjoy food that’s made with heart</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <a href="/courses" class="text-decoration-none text-dark">
+                                    <div class="custom-card border-primary">
+                                        <img src="/school_managment/static/src/img/courses.png" />
+                                        <h4>Courses</h4>
+                                        <p class="text-muted">Join exciting extracurricular classes</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Note -->
+                        <p class="mt-5 text-muted small">Made with ❤️ in Odoo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+
+
+    <template id="student_corner" name="Student Corner">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+
+                        <h1>Student Registration</h1>
+                        <form action="/submit" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" required="required" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="date" name="date_of_birth" required="required" class="form-control"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="Teacher_corner" name="Teacher Corner">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Teacher Corner in making</h1>
+            </div>
+        </t>
+    </template>
+
+    <template id="student_success" name="Student Form Success">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <h2>Thank you,<t t-esc="name"/>!
+                </h2>
+                <p>Your Enrollemtn number is<t t-esc="enr"/>Enjoy learning
+                </p>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="student_profile_tem" name="Student profile">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Our Students</h2>
+                <div class="row">
+                    <t t-foreach="students" t-as="student">
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <a t-att-href="'/student/profile/%s' % student.id"
+                               style="text-decoration: none; color: inherit;">
+                                <div class="card shadow-sm h-100 text-center p-3" style="background-color:#c0e0ff">
+                                    <img t-att-src="'/school_managment/static/src/img/student.png'"
+                                         class="rounded-circle mb-3"
+                                         style="height:60px; width:60px; object-fit:cover;margin-left: 150px;"/>
+
+                                    <h5 class="card-title">
+                                        <t t-esc="student.name"/>
+                                    </h5>
+                                    <p class="card-text">
+                                        <strong>Enrollment No:</strong>
+                                        <t t-esc="student.enrollment"/>
+                                        <br/>
+                                        <strong>Department:</strong>
+                                        <t t-esc="student.department_id.name"/>
+                                        <br/>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="student_detail_tem" name="Student Detail">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card shadow-lg p-4 rounded-lg text-center" style="border: 1px solid #ddd;">
+                            <!-- Profile Image -->
+                            <img t-att-src="'/school_managment/static/src/img/student.png'"
+                                 class="rounded-circle mb-4"
+                                 style="width: 120px; height: 120px; object-fit: cover; margin: 0 auto; border: 3px solid #4CAF50;"/>
+
+                            <!-- Name -->
+                            <h2 class="card-title mb-3" style="color: #2c3e50;">
+                                <t t-esc="student.name"/>
+                            </h2>
+
+                            <!-- Info -->
+                            <div class="text-start mt-3 px-3">
+                                <p>
+                                    <strong>🎓 Enrollment No:</strong>
+                                    <t t-esc="student.enrollment"/>
+                                </p>
+                                <p>
+                                    <strong>📅 Date of Birth:</strong>
+                                    <t t-esc="student.date_of_birth"/>
+                                </p>
+                                <p>
+                                    <strong>🏛 Department:</strong>
+                                    <t t-esc="student.department_id.name"/>
+                                </p>
+                                <p>
+                                    <strong>📊 Total Marks:</strong>
+                                    <t t-esc="student.total_marks"/>
+                                </p>
+                            </div>
+
+                            <!-- Optional: Back to list -->
+                            <a href="/student_profile" class="btn btn-outline-primary mt-4">
+                                ← Back to Student List
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="hostel_tem" name="Student Hostel Info">
+        <t t-call="website.layout">
+            <t t-set="head">
+                <style>
+                    footer.o_footer {
+                    display: none !important;
+                    }
+                </style>
             </t>
-          </dl>
-        </template>
--->
-    </data>
+
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Hostel Information</h2>
+
+                <!-- Displaying Hostel Rooms -->
+                <div class="row justify-content-center mb-5">
+                    <t t-foreach="hostel" t-as="t">
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title text-primary mb-3">
+                                        <t t-raw="t.room_type"/>
+                                    </h4>
+                                    <p class="card-text">
+                                        <strong>Total Rooms:</strong>
+                                        <t t-esc="t.total_room"/>
+                                        <br/>
+                                        <strong>Occupied:</strong>
+                                        <t t-esc="t.occupied"/>
+                                        <br/>
+                                        <strong>Available:</strong>
+                                        <t t-esc="t.available"/>
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <!-- Hostel Admission Form -->
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card shadow">
+                            <div class="card-header bg-primary text-white text-center">
+                                <h4>Hostel Admission Form</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/hostel-submit" method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Name</label>
+
+                                        <select name="student_name" class="form-control">
+                                            <option value="">Student Name</option>
+                                            <t t-foreach="student_data" t-as="student">
+                                                <option t-att-value="student.id">
+                                                    <t t-esc="student.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Admission Date</label>
+                                        <input type="date" name="admission_date" class="form-control"
+                                               t-att-value="today"/>
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Room Type</label>
+
+                                        <select name="room_type" class="form-control">
+                                            <option value="">Select Room Type</option>
+                                            <t t-foreach="rooms" t-as="room">
+                                                <option t-att-value="room.id">
+                                                    <t t-esc="room.room_type"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Per Sem Charge</label>
+                                        <input type="text" name="per_sem_charge" class="form-control"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Charges to Pay</label>
+                                        <input type="text" name="charges_to_pay" class="form-control"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" name="email" class="form-control"/>
+                                    </div>
+
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <!--    Teachers -->
+
+    <template id="teacher_temp" name="Teacher profile">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Our Teachers</h2>
+                <div class="row">
+                    <t t-foreach="teacher" t-as="tea">
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <a t-att-href="'/teacher/%s' % tea.id"
+                               style="text-decoration: none; color: inherit;">
+                                <div class="card shadow-sm h-100 text-center p-3" style="background-color:#c0e0ff">
+                                    <img t-att-src="'/school_managment/static/src/img/teacher6.png'"
+                                         class="rounded-circle mb-3"
+                                         style="height:60px; width:60px; object-fit:cover;margin-left: 150px;"/>
+
+                                    <h5 class="card-title">
+                                        <t t-esc="tea.name"/>
+                                    </h5>
+                                    <p class="card-text">
+                                        <strong>Department:</strong>
+                                        <t t-esc="tea.department_id.name"/>
+                                        <br/>
+                                        <strong>Salary:</strong>
+                                        <t t-esc="tea.salary"/>
+                                        <br/>
+                                        <strong>Qualification:</strong>
+                                        <t t-esc="tea.qualification"/>
+                                        <br/>
+                                        <strong>Adress:</strong>
+                                        <t t-esc="tea.address"/>
+                                        <br/>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="portal_my_home_custom" inherit_id="portal.portal_my_home" name="Add Custom Portal Section">
+        <xpath expr="//div[contains(@class, 'o_portal_my_home')]" position="inside">
+            <div class="col-12 col-md-6 col-lg-4 mb-3" style="margin-left: 428px;margin-top: -94px;">
+                <a href="/my/custom"
+                   class="d-block p-3 border rounded h-100 bg-light text-reset text-decoration-none o_portal_tile">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="/school_managment/static/src/img/custom_icon.png" class="me-3"
+                             style="width: 40px; height: 40px;"/>
+                        <h4 class="mb-0">Your Data</h4>
+                    </div>
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_custom_template" name="My Custom Portal Page">
+        <t t-call="portal.portal_layout">
+            <t t-set="title">My Profile</t>
+
+            <div class="container mt-5">
+                <!-- Header with Icon and Title -->
+                <div class="text-center mb-5">
+                    <img src="/school_managment/static/src/img/custom_icon.png" alt="Student Icon"
+                         style="width: 80px; height: 80px;" class="mb-3"/>
+                    <h2 class="fw-bold">
+                        <p>
+                            <t t-esc="student.name"/>
+                        </p>
+                    </h2>
+                    <p class="text-muted">Welcome to your portal – view your profile and results below.</p>
+                </div>
+
+                <!-- Card Layout: Two per row -->
+                <div class="row gy-4">
+                    <!-- Student Profile -->
+                    <div class="col-md-6">
+                        <div class="bg-light p-4 rounded shadow-sm h-100">
+                            <h4 class="mb-3 text-primary border-bottom pb-2">📘 Student Profile</h4>
+                            <p>
+                                <strong>Enrollment No:</strong>
+                                <t t-esc="student.enrollment"/>
+                            </p>
+                            <p>
+                                <strong>Birth Date:</strong>
+                                <t t-esc="student.date_of_birth"/>
+                            </p>
+                            <p>
+                                <strong>Age:</strong>
+                                <t t-esc="student.age"/>
+                            </p>
+                            <p>
+                                <strong>Gender:</strong>
+                                <t t-esc="student.gender"/>
+                            </p>
+                            <p>
+                                <strong>Standard:</strong>
+                                <t t-esc="student.std"/>
+                            </p>
+                            <p>
+                                <strong>Department:</strong>
+                                <t t-esc="student.department_id.name"/>
+                            </p>
+                            <p>
+                                <strong>Total Marks:</strong>
+                                <t t-esc="student.total_marks"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Student Result -->
+                    <div class="col-md-6">
+                        <div class="bg-light p-4 rounded shadow-sm h-100">
+                            <h4 class="mb-3 text-success border-bottom pb-2">📊 Student Result</h4>
+                            <p>
+                                <strong>Physics:</strong>
+                                <t t-esc="result.physics"/>
+                            </p>
+                            <p>
+                                <strong>Chemistry:</strong>
+                                <t t-esc="result.chemistry"/>
+                            </p>
+                            <p>
+                                <strong>Biology:</strong>
+                                <t t-esc="result.biology"/>
+                            </p>
+                            <p>
+                                <strong>Mathematics:</strong>
+                                <t t-esc="result.mathematics"/>
+                            </p>
+                            <p>
+                                <strong>Total Obtained:</strong>
+                                <t t-esc="result.total_obtain"/>
+                            </p>
+                            <p>
+                                <strong>Percentage:</strong>
+                                <t t-esc="result.percentage"/>%
+                            </p>
+                            <p>
+                                <strong>Result:</strong>
+                                <t t-esc="result.result"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hostel Details -->
+                    <div class="col-md-6">
+                        <div class="bg-light p-4 rounded shadow-sm h-100">
+                            <h4 class="mb-3 text-info border-bottom pb-2">🏨 Hostel Details</h4>
+                            <p>
+                                <strong>Room Type:</strong>
+                                <t t-esc="hostel.room_type.room_type"/>
+                            </p>
+                            <p>
+                                <strong>Per Sem Charge:</strong>
+                                <t t-esc="hostel.per_sem_charge"/>
+                            </p>
+                            <p>
+                                <strong>Charges to Pay:</strong>
+                                <t t-esc="hostel.charges_to_pay"/>
+                            </p>
+                            <p>
+                                <strong>State:</strong>
+                                <t t-esc="hostel.state"/>
+                            </p>
+                            <p>
+                                <strong>Email:</strong>
+                                <t t-esc="hostel.email"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Parent Teacher Meeting -->
+                    <div class="col-md-6">
+                        <div class="bg-light p-4 rounded shadow-sm h-100">
+                            <h4 class="mb-3 text-warning border-bottom pb-2">👨‍🏫 Parent Teacher Meeting</h4>
+                            <p>
+                                <strong>Date:</strong>
+                                <t t-esc="ptm.date_of_ptm"/>
+                            </p>
+                            <p>
+                                <strong>Parents Email:</strong>
+                                <t t-esc="ptm.parents_email"/>
+                            </p>
+                            <p>
+                                <strong>Point of Discussion:</strong>
+                                <t t-esc="ptm.point_of_discussion"/>
+                            </p>
+                            <p>
+                                <strong>Parents Phone:</strong>
+                                <t t-esc="ptm.parents_phone"/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="canteen_menu_template_new" name="Canteen Menu">
+        <section class="oe_structure bg-white p-5 rounded shadow" style="max-width: 800px; margin: auto;">
+            <div class="text-center mb-5">
+                <h1 style="color: #003366; font-weight: bold;">CANTEEN MENU</h1>
+                <h4 style="color: #3399cc;">Today's Delicious Bites</h4>
+            </div>
+
+            <!-- Section: Breakfast -->
+            <div class="mb-4">
+                <h3 class="mb-3" style="color: #005580;">🍳 Breakfast</h3>
+                <div class="menu-row">
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Idli Sambhar</div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Paratha</div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Poha</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Lunch -->
+            <div class="mb-4">
+                <h3 class="mb-3" style="color: #005580;">🍱 Lunch</h3>
+                <div class="menu-row">
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Rice Bowl</div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Chapati</div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Paneer Curry</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Dinner -->
+            <div class="mb-4">
+                <h3 class="mb-3" style="color: #005580;">🍽️ Dinner</h3>
+                <div class="menu-row">
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Noodles</div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Soup</div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="/school_managment/static/src/img/food.png" class="menu-img"/>
+                        <div class="menu-label">Salad</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .menu-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            }
+
+            .menu-card {
+            width: 140px;
+            background-color: #e6f2ff;
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            }
+
+            .menu-card:hover {
+            transform: scale(1.05);
+            }
+
+            .menu-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            border: 3px solid #cce6ff;
+            }
+
+            .menu-label {
+            background-color: #3399cc;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            }
+        </style>
+    </template>
+
+    <template id="student_courses_website_template" name="Student Courses Page">
+        <t t-call="website.layout">
+            <div class="container py-5">
+                <h2 class="text-center mb-5" style="color:#007BFF;">Our Extracurricular Courses</h2>
+                <div class="row justify-content-center">
+                    <t t-foreach="courses" t-as="course">
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow rounded-3 border-0 h-100"
+                                 style="background: linear-gradient(145deg, #e0f7ff, #ffffff);">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="card-title text-primary fw-bold" t-esc="course.name"/>
+                                        <p class="card-text mt-2" t-esc="course.description"/>
+                                        <span class="badge bg-primary text-white mt-3">
+                                            Duration:
+                                            <t t-esc="course.duration"/>
+                                            hrs
+                                        </span>
+                                    </div>
+                                    <div class="mt-4 text-end">
+                                        <a href="#" class="btn btn-outline-primary rounded-pill px-4">
+                                            Start Now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
 </odoo>

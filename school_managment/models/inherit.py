@@ -26,6 +26,20 @@ class ResultEdit(models.Model):
     checking_faculty = fields.Char(string="Checking faculty")
 
 
+class Practice(models.Model):
+    _inherit ='sale.order'
+
+    papigudiya = fields.Char(string="papigudiya")
+
+
+
+
+
+
+
+
+
+
 
 
 

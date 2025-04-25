@@ -16,7 +16,7 @@ part of inherits
      <record id="edit_result_form_view" model="ir.ui.view">
         <field name="name">result.model.form.inherit</field>
         <field name="model">result.model</field>
-        <field name="inherit_id" ref="school_managment.result_model_form_view"/>
+        <field name="inherit_id" ref="school_managment.result_model_form_view_test"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='roll_no']" position="after">
                 <field name="checking_faculty"/>

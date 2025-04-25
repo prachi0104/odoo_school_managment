@@ -16,13 +16,13 @@
     'version': '0.1',
 
 
-    'depends': ['base','invoicing'],
+    'depends': ['base'],
 
 
     'data': [
-        'security/ir.model.access.csv',
-        'views/student.xml',
-        'views/templates.xml',
+        # 'security/ir.model.access.csv',
+        # 'views/student.xml',
+        # 'views/templates.xml',
     ],
     "installable": True,
     "application": True,

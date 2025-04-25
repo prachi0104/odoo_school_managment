@@ -8,8 +8,6 @@ class Stulist(models.Model):
     _name="stulist.model"
     _description="student list"
 
-
-
     name=fields.Char("Name",required=True)
     enrollment=fields.Char("Enrol")
     std=fields.Integer(string="Standerd")
@@ -30,6 +28,7 @@ class Stulist(models.Model):
     fees_due_date = fields.Date(string="fees_due_date", default=lambda self: self._get_default_date())
     result_ids = fields.One2many('result.model', 'name', string="Results")
     is_paid = fields.Boolean(string="Paid or Not",compute="_compute_fees_Paid_or_not")
+    user_id = fields.Many2one('res.users', string="User", ondelete="cascade")
 
     @api.depends('result_ids.total_obtain')
     def _compute_total_marks(self):
@@ -57,25 +56,10 @@ class Stulist(models.Model):
             raise UserError('Students total marks  should be greate than 300 and name starts with h')
         return super().create(vals)
 
-    # @api.model_create_multi #at this point of time their is no diffrence between  @api.model_create_multi and normal @api.model just see for passing variable vals or vals_list
-    # def create(self,vals_list):
-    #     print(vals_list)
-    #     for vals in vals_list:
-    #         print(vals)
-    #         vals['enrollment'] = self.env['ir.sequence'].next_by_code('stulist.model')
-    #         if 'total_marks' in vals and not vals['total_marks'] >= 150:
-    #             raise UserError('Students total marks should be greater than 150 and name starts with h')
-    #     return super().create(vals_list)
 
     def write(self, vals):
         print(vals)
-        print(self.name)
-        name=self.browse(76).name
-        print(name)
         vals['record_status'] = "Edited Record"
-            # for record in self:
-            #     if not record.name.startswith('#'):
-            #         vals['name'] = '#' + record.  name
         return super(Stulist, self).write(vals)
 
 

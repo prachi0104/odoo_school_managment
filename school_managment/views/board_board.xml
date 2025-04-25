@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    teacher graph view-->
+      <record id="teacher_model_graph" model="ir.ui.view">
+        <field name="name">teacher.model.graph</field>
+        <field name="model">teacher.model</field>
+        <field name="arch" type="xml">
+            <graph string="Teacher model Graph" type="bar">
+                <field name="salary" type="measure"/>
+                <field name="name" type="row"/>
+
+            </graph>
+        </field>
+    </record>
+
+<!--    teacher graph view action-->
+      <record id="action_teacher_bord" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">teacher.model</field>  <!-- res_model=model to present views for -->
+        <field name="view_mode">graph</field>
+    </record>
+
+     <record id="teacher_model_graph_2" model="ir.ui.view">
+        <field name="name">teacher.model.graph</field>
+        <field name="model">teacher.model</field>
+        <field name="arch" type="xml">
+            <graph string="Teacher model Graph" type="bar">
+                <field name="salary" type="measure"/>
+                <field name="name" type="row"/>
+
+            </graph>
+        </field>
+    </record>
+
+<!--    teacher graph view action-->
+      <record id="action_teacher_bord_2" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">teacher.model</field>  <!-- res_model=model to present views for -->
+        <field name="view_mode">list</field>
+    </record>
+
+<!--    student form view-->
+     <record id="stulist_model_form" model="ir.ui.view">
+        <field name="name">stulist.model.form.view</field>
+        <field name="model">stulist.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+<!--Smart button code-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_student_list" class="oe_state_button" icon="fa-star" type="object" >
+                            <field name="name"/>
+                        </button>
+                    </div>
+
+<!-- notofication bar code-->
+                    <div class="alert alert-info text-center o_form_header" style="--alert-bg: #ea5151a3; --alert-border-color: #c15c5c;" role="alert" invisible="is_paid == True">
+                        <a class="close" data-dismiss="alert" href="#"></a>
+                        <div>
+                            <strong>Your Fees Is Pending Pay Till</strong>
+                        </div>
+
+                        <div>
+                            <strong><field name="fees_due_date"/></strong>
+                        </div>
+                    </div>
+
+
+                    <div class="oe_title">
+                        <h1>
+                            <group>
+                                <field name="name"/>
+                            </group>
+
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="enrollment"/>
+                            <field name="std"/>
+                            <field name="date_of_birth"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="department_id" required="std != ''"/>
+                            <field name="total_marks"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="gender" widget="radio"/> <!-- selection  -->
+                            <field name="fees_status"/>
+                            <field name="fees_due_date" invisible="fees_status == 'Paid'"/>
+
+                        </group>
+                        <group>
+                            <field name="teacher_id"/>
+                            <field name="record_status"/>
+                            <field name="guide_ids" widget="many2many_tags"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+                        <page string="Track Attendance" name="attendance">
+                            <field name="track_attan" readonly="1">
+                                <list></list>
+                            </field>
+                        </page>
+
+                        <page string="Syllabus" name="syllabus">
+                            <field name="stu_syllabus" readonly="1"></field>
+                        </page>
+
+                        <page string="Parents Teacher Meeting" name="syllabus">
+                            <field name="ptm_ids" widget="one2many_list" readonly="1"></field>
+                        </page>
+
+                        <page string="Student Result" name="Hostel">
+                            <field name="result_ids" widget="one2many_list" readonly="1"></field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="action_student_test" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">stulist.model</field>  <!-- res_model=model to present views for -->
+        <field name="view_mode">list,form,kanban</field>
+
+    </record>
+
+<!--result tree view-->
+
+    <record id="result_model_list" model="ir.ui.view">
+        <field name="name">result.model.list.view</field>
+        <field name="model">result.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" decoration-warning="name" optional="show"/>
+                <field name="roll_no" decoration-warning="roll_no" optional="show"/>
+                <field name="std" decoration-warning="std" optional="show"/>
+                <field name="acadmic_year" widget="char" decoration-warning="std" optional="show"/>
+                <field name="physics" decoration-success="physics &gt;= 33" decoration-danger="physics  &lt;= 33" optional="show"/>
+                <field name="chemistry" decoration-success="chemistry &gt;= 33" decoration-danger="chemistry  &lt;= 33" optional="show"/>
+                <field name="biology" decoration-success="biology &gt;= 33" decoration-danger="biology  &lt;= 33" optional="show"/>
+                <field name="mathematics" decoration-success="mathematics &gt;= 33" decoration-danger="mathematics  &lt;= 33" optional="show"/>
+                <field name="computer" decoration-success="computer &gt;= 33" decoration-danger="computer  &lt;=  33" optional="show"/>
+                <field name="total_marks" decoration-info="total_marks" optional="show"/>
+                <field name="total_obtain" decoration-info="total_obtain" optional="show"/>
+                <field name="percentage" decoration-info="percentage" optional="show"/>
+                <field name="parents_phone" decoration-info="percentage" widget="phone" optional="show"/>
+                <field name="result" decoration-success="result == 'Qualified'" decoration-danger="result == 'Not Qualified'" optional="show"/>
+                <field name="progress" widget="progressbar" optional="show"/>
+
+            </list>
+        </field>
+    </record>
+
+     <record id="action_result" model="ir.actions.act_window">
+            <field name="name">result model</field>
+            <field name="res_model">result.model</field>
+            <field name="view_mode">list</field>
+        </record>
+
+<!--  result graph view-->
+
+    <record id="result_model_graph_test" model="ir.ui.view">
+        <field name="name">result.model.graph</field>
+        <field name="model">result.model</field>
+        <field name="arch" type="xml">
+            <graph string="student result graph" type="bar">
+                 <field name="name" type="row"/>
+               <field name="physics" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+
+
+     <record id="action_result_board" model="ir.actions.act_window">
+            <field name="name">result model</field>
+            <field name="res_model">result.model</field>
+            <field name="view_mode">graph</field>
+        </record>
+
+
+    <!-- Dashboard Form View -->
+    <record id="view_my_custom_dashboard" model="ir.ui.view">
+        <field name="name">my.custom.dashboard</field>
+        <field name="model">board.board</field>
+        <field name="arch" type="xml">
+            <form string="My Custom Dashboard">
+                <board style="1-1">
+                    <column>
+
+
+                          <action name="%(action_teacher_bord)d"/>
+                             <action name="%(action_student_test)d"/>
+                    </column>
+                    <column>
+ <action name="%(action_teacher_bord_2)d"/>
+
+                         <action name="%(action_result_board)d"/>
+
+
+                    </column>
+
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_my_custom_dashboard" model="ir.actions.act_window">
+        <field name="name">My Dashboard</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_my_custom_dashboard"/>
+        <field name="target">current</field>
+    </record>
+
+    <data>
+     <menuitem id="menu_my_custom_dashboard"
+              name="My Dashboard"
+              parent="education_management_root"
+              sequence="-8"
+              action="action_my_custom_dashboard"/>
+    </data>
+</odoo>

@@ -56,5 +56,5 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <!--    <menuitem id="menu_school_task" name="Tasks" parent="education_management_root" action="action_school_task"/>-->
+<!--        <menuitem id="menu_school_task" name="Tasks" parent="education_management_root" action="action_school_task"/>-->
 </odoo>

@@ -57,6 +57,7 @@
                     </div>
                     <group>
                         <field name="name"/>
+                        <field name="user_id"/>
                         <field name="enrollment"/>
                         <field name="depratment_name"/>
                         <field name="date_of_ptm"/>

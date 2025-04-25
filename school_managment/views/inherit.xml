@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="sale_order_inherit_list" model="ir.ui.view">
-            <field name="name">sale.order.list.view</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.sale_order_list_upload"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="after">
-                          <field name="teacher_id" />
-                          <field name="is_teacher" />
-                </xpath>
-            </field>
-        </record>
+<!--    <record id="sale_order_inherit_list" model="ir.ui.view">-->
+<!--            <field name="name">sale.order.list.view</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.sale_order_list_upload"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--&lt;!&ndash;                <xpath expr="//field[@name='partner_id']" position="after">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <field name="teacher_id" />&ndash;&gt;-->
+<!--&lt;!&ndash;                          <field name="is_teacher" />&ndash;&gt;-->
 
-    <record id="sale_order_inherit_form" model="ir.ui.view">
-            <field name="name">sale.order.form.view</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="after">
-                    <group>
-                          <field name="teacher_id" />
-                          <field name="is_teacher" />
-                    </group>
-                </xpath>
-                <xpath expr="//group[@name='sale_info']//field[@name='fiscal_position_id']" position="attributes">
-                    <group>
-                        <attribute name="invisible" >1</attribute>
-                    </group>
-                </xpath>
-            </field>
-        </record>
+<!--&lt;!&ndash;                </xpath>&ndash;&gt;-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--    <record id="sale_order_inherit_form" model="ir.ui.view">-->
+<!--            <field name="name">sale.order.form.view</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--&lt;!&ndash;                <xpath expr="//field[@name='partner_id']" position="after">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <field name="teacher_id" />&ndash;&gt;-->
+<!--&lt;!&ndash;                          <field name="is_teacher" />&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="papigudiya" />&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                         <button string="papigudiya" display="always"/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    </group>&ndash;&gt;-->
+<!--&lt;!&ndash;                </xpath>&ndash;&gt;-->
+<!--                <xpath expr="//group[@name='sale_info']//field[@name='fiscal_position_id']" position="attributes">-->
+<!--                    <group>-->
+<!--                        <attribute name="invisible" >1</attribute>-->
+<!--                    </group>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
 
 
-    <record id="sale_order_inherit_search" model="ir.ui.view">
-            <field name="name">sale.order.search.view</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-            <field name="arch" type="xml">
-            <xpath expr="//search" position="inside">
-               <field name="teacher_id" string="teacher"/>
-                <filter string="Teacher Record" name="teacher_record_filter" domain="[('is_teacher','=',True)]"/>
-                <filter name="Teacher_groupby" string="teacher" context="{'group_by':'is_teacher'}"/>
-            </xpath>
-            </field>
-        </record>
-
+<!--    <record id="sale_order_inherit_search" model="ir.ui.view">-->
+<!--            <field name="name">sale.order.search.view</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.view_sales_order_filter"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--&lt;!&ndash;            <xpath expr="//search" position="inside">&ndash;&gt;-->
+<!--&lt;!&ndash;               <field name="teacher_id" string="teacher"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter string="Teacher Record" name="teacher_record_filter" domain="[('is_teacher','=',True)]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="Teacher_groupby" string="teacher" context="{'group_by':'is_teacher'}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            </xpath>&ndash;&gt;-->
+<!--            </field>-->
+<!--        </record>-->
 
 
 <!--    i have added my modules result view in sale order under menu orders - result -->
-     <menuitem id="menu_show_result" name="result" parent="sale.sale_order_menu" action="action_result" />
+<!--     <menuitem id="menu_show_result" name="result" parent="sale.sale_order_menu" action="action_result" />-->
 
 
-<!--    now i have inherited sale modiles sale.order view in my own module-->
-    <record id="sale_menu" model="ir.actions.act_window">
-        <field name="name">Student Record</field>
-        <field name="res_model">res.partner</field>  <!-- res_model=model to present views for -->
-        <field name="view_mode">list,form</field>
-    </record>
+<!--&lt;!&ndash;    now i have inherited sale modiles sale.order view in my own module&ndash;&gt;-->
+<!--    <record id="sale_menu" model="ir.actions.act_window">-->
+<!--        <field name="name">Student Record</field>-->
+<!--        <field name="res_model">res.partner</field>  &lt;!&ndash; res_model=model to present views for &ndash;&gt;-->
+<!--        <field name="view_mode">list,form</field>-->
+<!--    </record>-->
 
 
 <!--    <menuitem id="sale_order" name="inherit" parent="education_management_root"-->

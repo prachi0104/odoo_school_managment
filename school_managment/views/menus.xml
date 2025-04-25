@@ -1,0 +1,34 @@
+<odoo>
+      <!-- Parent Menu for the Module -->
+    <menuitem id="education_management_root" name="Education Management" sequence="1"/>
+    <menuitem id="teacher_model_root" name="Teacher Data" parent="education_management_root" sequence="2" groups="group_school_teacher"/>
+    <menuitem id="teacher_model_root_sub" name="Teacher" parent="teacher_model_root"
+              action="action_teacher" sequence="3"/>
+    <menuitem id="stulist_model_root_main" name="Student" parent="education_management_root" sequence="9"/>
+    <menuitem id="stulist_model_sub" name="Student Detail" action="action_student_test" parent="stulist_model_root_main"
+              sequence="6"/>
+
+    <menuitem id="Parentsteachermeeting_model_root" name="Ptm" parent="education_management_root"
+              action="action_pta"/>
+    <menuitem id="attandence_model_root" name="Attandence" parent="teacher_model_root"
+              action="action_attandence" sequence="4" groups="group_school_teacher"/>
+    <menuitem id="syllabus_model_root" name="Syllabus" parent="stulist_model_root_main"
+              action="action_syllabus" sequence="7"/>
+    <menuitem id="menu_timetable" name="Time Table" action="action_timetable" parent="stulist_model_root_main"
+              sequence="8"/>
+    <menuitem id="scedule_exam_root" name="Sceduled Exam" action="action_sceduleexam" parent="teacher_model_root"
+              sequence="5"/>
+
+
+    <menuitem id="hostel_menu" name="Hostel" parent="education_management_root" sequence="10"/>
+    <menuitem id="room_menu" name="Rooms" parent="hostel_menu" action="action_hostel_room"/>
+    <menuitem id="admission_menu" name="Hostel Admission Form" parent="hostel_menu"
+              action="action_hostel_admission_test"/>
+    <menuitem id="menu_department_1" name="Departments" parent="education_management_root" sequence="10"/>
+    <menuitem id="menu_department" name="Manage Departments" parent="menu_department_1" action="action_department"/>
+      <menuitem id="result_menu"
+        name="Result"
+        parent="education_management_root"
+        sequence="10"
+        action="action_result_test"/>
+</odoo>

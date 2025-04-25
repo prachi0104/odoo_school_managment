@@ -1,0 +1,92 @@
+<odoo>
+  <template id="custom_school_block" name="School Info Block">
+    <section class="oe_structure" data-name="School Info Block">
+      <div class="container py-5 bg-light">
+        <div class="row text-center">
+          <div class="col">
+            <h2>Welcome to Our School</h2>
+            <p>Providing quality education since 1990.</p>
+            <a href="/student-corner" class="btn btn-success mt-3">Visit Student Corner</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+
+<!--  teacher profile block-->
+
+  <template id="school_teacher_profile" name="Teacher Profile Block">
+  <section class="oe_snippet_body" style="padding: 40px; background-color: #f5f7fa;">
+    <div class="container text-center">
+      <h2>Our Teachers</h2>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <img src="/school_managment/static/src/img/teacher1.png" class="img-fluid rounded-circle mb-3" width="157"/>
+          <h4>Mr. ghela Sharma</h4>
+          <p>Mathematics</p>
+        </div>
+        <div class="col-md-4">
+          <img src="/school_managment/static/src/img/teacher5.png" class="img-fluid rounded-circle mb-3" width="157"/>
+          <h4>Mr. Rajeev Menon</h4>
+          <p>Science</p>
+        </div>
+        <div class="col-md-4">
+          <img src="/school_managment/static/src/img/teacher3.png" class="img-fluid rounded-circle mb-3" width="157"/>
+          <h4>Mrs. Leena D'Souza</h4>
+          <p>English</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+
+
+
+  <template id="school_testimonial_block" name="Student Testimonial Block">
+  <section class="oe_snippet_body" style="background-color: #ffffff; padding: 60px 0;">
+    <div class="container">
+      <h2 class="text-center mb-5">What Our Students Say</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <blockquote>
+            <p>"The school has great facilities and the teachers are super friendly. I love learning here!"</p>
+            <footer class="blockquote-footer">Riya Mehta, Class 8</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-6">
+          <blockquote>
+            <p>"I really enjoy the extracurricular activities and all the competitions."</p>
+            <footer class="blockquote-footer">Aman Khurana, Class 9</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<!--  notice board snippet-->
+
+  <template id="school_notice_block" name="School Notice Board">
+  <section class="oe_snippet_body" style="padding: 50px; background: #e6f2ff;">
+    <div class="container">
+      <h2 class="mb-4">Latest Notices</h2>
+      <ul class="list-group">
+        <li class="list-group-item">📢 Parent-Teacher Meeting on April 28th</li>
+        <li class="list-group-item">🎒 Summer Vacation starts from May 15</li>
+        <li class="list-group-item">📘 New Syllabus for 2025 is now available</li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<template id="school_inner_snippet" name="danger button">
+  <section>
+    <button class="btn btn-danger">Click me</button>
+  </section>
+
+</template>
+
+
+</odoo>

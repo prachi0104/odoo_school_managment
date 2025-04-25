@@ -26,9 +26,8 @@ class Result(models.Model):
     image=fields.Image("image")
     parents_phone = fields.Char(string="Pnone")
     progress= fields.Integer(string="Growth",compute='_compute_progress')
-
-
-
+    dashboard_id = fields.Many2one('school.dashboard', string='Dashboard')
+    user_id = fields.Many2one('res.users', string="User", ondelete="cascade")
 
     @api.onchange('name')
     def onchange_name(self):

@@ -43,7 +43,6 @@
         </record>
 
         <!-- Menu Item for Departments -->
-        <menuitem id="menu_department_1" name="Departments" parent="education_management_root" sequence="10"/>
-        <menuitem id="menu_department" name="Manage Departments" parent="menu_department_1" action="action_department"/>
+
 
 </odoo>

@@ -1,0 +1,128 @@
+<odoo>
+    <record id="view_school_dashboard_form" model="ir.ui.view">
+        <field name="name">school.dashboard.form</field>
+        <field name="model">school.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="School Dashboard">
+                <sheet>
+                    <div class="oe_title"
+                         style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+
+                        <img src="/school_managment/static/src/img/icon.png" style="height:93px;margin-left:-8px;"
+                             alt="School Logo"/>
+                        <h1 style="min-height: 34px">School Dashboard</h1>
+                    </div>
+
+                    <div class="o_row"
+                         style="display: flex; justify-content: space-between; margin: 20px 0; gap: 20px;">
+
+
+
+                        <div class="o_row"
+                             style="display: flex; justify-content: space-between; margin-bottom: 20px; gap: 20px;">
+
+                            <!-- Create Resume Box (Blue, like Students Box) -->
+                            <a type="action" name="%(school_managment.action_layout_draft)d"
+                               style="flex: 1; background-color: #f4f1e6; border-radius: 8px; padding: 20px; text-align: center;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-decoration: none; cursor: pointer;">
+                                <i class="fa fa-file-text-o" style="font-size: 28px; color: #188038; margin-bottom: 8px;"></i>
+                                <h4 style="color: #1a73e8; margin: 10px 0 5px 0;">Create Resume</h4>
+                                <p style="font-size: 13px; color: #1a73e8;">Generate student CVs with ease</p>
+                            </a>
+
+                            <!-- Refresh Box (Green, like Teachers Box) -->
+                            <a type="object" name="action_refresh_dashboard"
+                               style="flex: 1; background-color: #c0f2f2; border-radius: 8px; padding: 20px; text-align: center;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-decoration: none; cursor: pointer;">
+                                <i class="fa fa-refresh" style="font-size: 28px; color: #1a73e8; margin-bottom: 8px;"></i>
+                                <h4 style="color: #188038; margin: 10px 0 5px 0;">Refresh</h4>
+                                <p style="font-size: 13px; color: #188038;">Update latest student and staff data</p>
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- === Stats Boxes Row === -->
+                    <div class="o_row"
+                         style="display: flex; justify-content: space-between; margin-bottom: 20px; gap: 20px;">
+                        <!-- Students Box -->
+                        <div style="flex: 1; background-color: #e8f0fe; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <h4 style="color: #1a73e8;">Total Students</h4>
+                            <field name="total_students" readonly="1" class="oe_inline"/>
+                        </div>
+
+                        <!-- Teachers Box -->
+                        <div style="flex: 1; background-color: #e6f4ea; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <h4 style="color: #188038;">Total Teachers</h4>
+                            <field name="total_teachers" readonly="1" class="oe_inline"/>
+                        </div>
+
+                        <!-- Departments Box -->
+                        <div style="flex: 1; background-color: #fce8e6; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <h4 style="color: #d93025;">Total Departments</h4>
+                            <field name="total_department" readonly="1" class="oe_inline"/>
+                        </div>
+                    </div>
+
+                    <!-- === Results List Section === -->
+                    <div class="o_row" style="margin-top: 30px;background-color:#f2e8f7;">
+                        <h3 style="color: #3c4043; margin-bottom: 10px;color:db81e8;">🎓 Student Results</h3>
+                        <field name="results_ids" mode="list,form" context="{'default_dashboard_id': id}" nolabel="1"/>
+                    </div>
+
+                    <!-- === Hardcoded Student Photo Grid === -->
+<div class="o_row" style="margin-top: 30px;">
+    <h3 style="color: #3c4043; margin-bottom: 10px;">🌟 Star Students</h3>
+
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+
+        <!-- Student 1 -->
+        <div style="flex: 1; background-color: #fce8e6; border-radius: 8px; padding: 20px;
+                    text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <img src="/school_managment/static/src/img/student-Photoroom.png"
+                 alt="Student 1"
+                 style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;"/>
+            <h5 style="color: #d93025; margin: 0;">Priya Sharma</h5>
+        </div>
+
+        <!-- Student 2 -->
+        <div style="flex: 1; background-color: #fce8e6; border-radius: 8px; padding: 20px;
+                    text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <img src="/school_managment/static/src/img/photo1-Photoroom.png"
+                 alt="Student 2"
+                 style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;"/>
+            <h5 style="color: #d93025; margin: 0;">Aarav Mehta</h5>
+        </div>
+
+        <!-- Student 3 -->
+        <div style="flex: 1; background-color: #fce8e6; border-radius: 8px; padding: 20px;
+                    text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <img src="/school_managment/static/src/img/photo2-Photoroom.png"
+                 alt="Student 3"
+                 style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;"/>
+            <h5 style="color: #d93025; margin: 0;">Riyanshi Verma</h5>
+        </div>
+
+    </div>
+</div>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_school_dashboard" model="ir.actions.act_window">
+        <field name="name">School Dashboard</field>
+        <field name="res_model">school.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <menuitem id="menu_school_dashboard" name="Dashboard"
+              parent="education_management_root"
+              action="action_school_dashboard" sequence="-5"/>
+</odoo>

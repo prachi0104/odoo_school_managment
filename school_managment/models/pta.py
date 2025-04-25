@@ -19,6 +19,7 @@ class Parentsteachermeeting(models.Model):
     enrollment = fields.Char("Enrol")
     parents_phone = fields.Char(string="Pnone")
     fees_status = fields.Char(string="Status",related="name.fees_status")
+    user_id = fields.Many2one('res.users', string="User", ondelete="cascade")
 
     @api.onchange('name')
     def onchange_name(self):

@@ -1,0 +1,18 @@
+<odoo>
+   <template id="sale_report_inherit_test" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='row mb-4']" position="after">
+            <div class="row mb-4" id="test_inherit">
+                <div class="col">
+                    <strong>Test Report Customization::</strong>
+                </div>
+            </div>
+        </xpath>
+<!--       <xpath expr="//div[@class='row mb-4']" position="replace">-->
+<!--            <div class="row mb-4" id="test_inherit">-->
+<!--                <div class="col">-->
+<!--                    <strong>Test Report Customization::</strong>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </xpath>-->
+   </template>
+</odoo>

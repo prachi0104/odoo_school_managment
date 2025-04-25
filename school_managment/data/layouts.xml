@@ -1,0 +1,7 @@
+<odoo>
+    <record id="layout_light" model="report.layout">
+        <field name="name">prachi_special</field>
+        <field name="custom_layout_type">light</field>
+        <field name="view_id" ref="school_managment.report_layout_light_1"/>
+    </record>
+</odoo>

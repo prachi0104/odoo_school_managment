@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    Added this into intro group -->
+    <template id="school_block_snippet" inherit_id="website.snippets" name="School Block Snippet">
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.custom_school_block"
+               string="School Info Block"
+               group="intro"
+               t-thumbnail="/school_managment/static/src/img/snippet.png"/>
+        </xpath>
+    </template>
+
+
+    <!--    Added custom group-->
+
+    <template id="school_snippet_group" inherit_id="website.snippets" name="Add School Snippet Group">
+        <xpath expr="//snippets[@id='snippet_groups']" position="inside">
+            <t snippet-group="school" t-snippet="website.s_snippet_group" string="School"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/snippet.png"/>
+        </xpath>
+    </template>
+
+    <!--    Added custom snippet inside custom group-->
+<!--    normal block-->
+    <template id="school_custom_snippet" inherit_id="website.snippets" name="School Custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.custom_school_block"
+               string="Student Info Block"
+               group="school"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+    </template>
+
+<!-- teacher profile block-->
+    <template id="school_custom_snippet_teacher" inherit_id="website.snippets" name="School Custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.school_teacher_profile"
+               string="Student Info Block"
+               group="school"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+    </template>
+
+<!--  student testimonial block -->
+     <template id="school_custom_snippet_student" inherit_id="website.snippets" name="School Custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.school_testimonial_block"
+               string="Student Info Block"
+               group="school"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+    </template>
+
+    <!--  notice board snippet -->
+     <template id="school_custom_snippet_notice" inherit_id="website.snippets" name="School Custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.school_notice_block"
+               string="Student Info Block"
+               group="school"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+    </template>
+
+     <template id="school_custom_inner_snippet" inherit_id="website.snippets" name="School Custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_content']" position="inside">
+                <t t-snippet="school_managment.school_inner_snippet" string="Danger"
+                        t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+     </template>
+</odoo>
