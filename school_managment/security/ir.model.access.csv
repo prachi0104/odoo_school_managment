@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 teacher_model.access_teacher_model,access_teacher_model,model_teacher_model,base.group_user,1,1,1,1
+school_managment.access_test_teacher_model,access_test_teacher_model,model_teacher_model,school_managment.group_school_student,0,0,0,0
 
 school_managment.access_stulist_model,access_stulist_model,model_stulist_model,school_managment.group_school_teacher,1,1,1,1
 school_managment.access_test_stulist_model,access_test_stulist_model,model_stulist_model,school_managment.group_school_student,1,0,0,0
@@ -47,6 +48,7 @@ school_managment.access_layout_draft_wizard,access_layout_draft_wizard,school_ma
 student_wizard.access_student_wizard,access_student_wizard,school_managment.model_student_wizard,base.group_user,1,1,1,1
 
 school_managment.access_student_courses,access_student_courses,school_managment.model_student_courses,base.group_user,1,1,1,1
+school_managment.access_student_document,access_student_document,school_managment.model_student_document,base.group_user,1,1,1,1
 
 
 

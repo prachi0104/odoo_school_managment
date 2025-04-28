@@ -19,6 +19,7 @@ from . import layout_draft
 from . import report_layout
 from . import dashboard
 from . import courses
+from . import student_document
 
 
 

@@ -1,8 +1,7 @@
-from pickle import FALSE
 from odoo import http
 from odoo import models
 from odoo.http import request,route
-from xlwt.ExcelFormulaParser import TRUE_CONST
+
 
 
 class School(http.Controller):
@@ -15,9 +14,9 @@ class School(http.Controller):
     def studentcorner(self, **kw):
          return request.render("school_managment.student_corner",{})
 
-    @http.route('/teacher', website=True,auth='public')
+    @http.route('/teacher', website=True,auth='public',groups="school_managment.group_school_teacher")
     def teacher_list(self, **kw):
-            teacher_list = request.env['teacher.model'].sudo().search([])
+            teacher_list = request.env['teacher.model'].search([])
             return request.render("school_managment.teacher_temp", {'teacher': teacher_list})
 
     @http.route('/submit',website=True,auth='public',type='http',csrf=True, methods=["POST"])
@@ -111,6 +110,30 @@ class School(http.Controller):
             'user_id': user.id,
             'email': user.email,
         }
+
+    @http.route('/upload/document', type='http', auth='public', website=True)
+    def student_document_upload_form(self, **kw):
+        students = request.env['stulist.model'].sudo().search([])
+        return request.render('school_managment.student_document_upload_website_new', {'students': students})
+
+    @http.route('/submit_student_document', type='http', auth='public', methods=['POST'], csrf=True, website=True)
+    def submit_student_document(self, **post):
+        # Get the uploaded file
+        uploaded_file = post.get('file')
+        file_content = uploaded_file.read() if uploaded_file else False
+        file_name = uploaded_file.filename if uploaded_file else False
+
+        request.env['student.document'].sudo().create({
+            'name': post.get('name'),
+            'upload_date': post.get('upload_date'),
+            'student_id': int(post.get('student_id')) if post.get('student_id') else False,
+            'file': file_content,
+            'file_name': file_name,
+            'description': post.get('description'),
+        })
+
+        return request.render('school_managment.student_success', {})  # Show a success p
+
 
 
 

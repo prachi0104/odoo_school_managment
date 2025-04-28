@@ -53,6 +53,7 @@
         "views/snippet_template.xml",
         "views/snippet.xml",
         "views/courses.xml",
+        "views/student_document.xml",
         'report/inherit_report.xml'
 
 

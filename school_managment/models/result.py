@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from odoo.exceptions import UserError,ValidationError
 import base64
 import tempfile
-from pdf2image import convert_from_bytes
 
 class Result(models.Model):
     _name = "result.model"

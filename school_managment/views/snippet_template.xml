@@ -16,7 +16,7 @@
 
 <!--  teacher profile block-->
 
-  <template id="school_teacher_profile" name="Teacher Profile Block">
+  <template id="school_teacher_profile_test" name="Teacher Profile Block">
   <section class="oe_snippet_body" style="padding: 40px; background-color: #f5f7fa;">
     <div class="container text-center">
       <h2>Our Teachers</h2>
@@ -27,13 +27,13 @@
           <p>Mathematics</p>
         </div>
         <div class="col-md-4">
-          <img src="/school_managment/static/src/img/teacher5.png" class="img-fluid rounded-circle mb-3" width="157"/>
+          <img src="/school_managment/static/src/img/teacher6.png" class="img-fluid rounded-circle mb-3" width="157"/>
           <h4>Mr. Rajeev Menon</h4>
           <p>Science</p>
         </div>
         <div class="col-md-4">
           <img src="/school_managment/static/src/img/teacher3.png" class="img-fluid rounded-circle mb-3" width="157"/>
-          <h4>Mrs. Leena D'Souza</h4>
+          <h4>Mr. Leen D'Souza</h4>
           <p>English</p>
         </div>
       </div>

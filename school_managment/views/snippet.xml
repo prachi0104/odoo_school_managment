@@ -35,7 +35,7 @@
 <!-- teacher profile block-->
     <template id="school_custom_snippet_teacher" inherit_id="website.snippets" name="School Custom Snippet">
         <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
-            <t t-snippet="school_managment.school_teacher_profile"
+            <t t-snippet="school_managment.school_teacher_profile_test"
                string="Student Info Block"
                group="school"
                t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
