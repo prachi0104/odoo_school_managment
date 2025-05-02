@@ -54,6 +54,8 @@
 <!--     <menuitem id="menu_show_result" name="result" parent="sale.sale_order_menu" action="action_result" />-->
 
 
+
+
 <!--&lt;!&ndash;    now i have inherited sale modiles sale.order view in my own module&ndash;&gt;-->
 <!--    <record id="sale_menu" model="ir.actions.act_window">-->
 <!--        <field name="name">Student Record</field>-->
@@ -67,11 +69,73 @@
 
 
 
+<!--  example  inherits-->
+
+
+<!-- <record id="sale_order_inherit_form_test" model="ir.ui.view">-->
+<!--            <field name="name">sale.order.inherit</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='partner_invoice_id']" position="before">-->
+<!--                    <field name="test"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!-- </record>-->
+
+<!--    <record id="sale_order_inherit_list" model="ir.ui.view">-->
+<!--            <field name="name">sale.order.inherit</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.sale_order_list_upload"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='date_order']" position="after">-->
+<!--                    <field name="test"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!-- </record>-->
 
 
 
+<!--<menuitem id="sale_order_inherit" name="inherit" parent="sale.sale_order_menu" sequence="5" action="action_syllabus"/>-->
 
 
+     <record id="employee_code_gen_form" model="ir.ui.view">
+            <field name="name">hr.employee.code</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_email']" position="before">
+                    <field name="employee_code"/>
+                </xpath>
+            </field>
+ </record>
 
+      <record id="view_hr_employee_filter" model="ir.ui.view">
+            <field name="name">hr.employee.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/filter[@name='my_team']" position="after">
+                    <filter name="custom_filter" string="custom filter for hr" domain="[('job_id', '=', 'Consultant')]"/>
+                </xpath>
+            </field>
+        </record>
+
+
+     <record id="view_crm_priority_filter" model="ir.ui.view">
+            <field name="name">crm.lead.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/filter[@name='assigned_to_me']" position="after">
+                    <filter name="custom_filter_1" string="veryhight_priority" domain="[('priority', '=', '3')]"/>
+                     <filter name="custom_filter_2" string="high_priority" domain="[('priority', '=', '2')]"/>
+                     <filter name="custom_filter_3" string="medium_priority" domain="[('priority', '=', '1')]"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    <menuitem id="inventory_add_menu" name="low stock report" parent="stock.menu_warehouse_report" sequence="5" action="action_saleorderwizard_new"/>
 
 </odoo>

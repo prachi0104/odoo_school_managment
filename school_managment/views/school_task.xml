@@ -28,7 +28,6 @@
                         <field name="assign_to"/>
                         <field name="due_date"/>
                         <field name="priority"/>
-
                     </group>
                 </sheet>
             </form>
@@ -46,9 +45,6 @@
             </list>
         </field>
     </record>
-
-
-
 
     <record id="action_school_task" model="ir.actions.act_window">
         <field name="name">Tasks</field>

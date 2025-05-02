@@ -12,7 +12,7 @@
         
     ],
     "data": [
-        # This file defines user access rules, like who can read, write, create, or delete records in this module.
+
 
         "security/security.xml",
         "security/ir.model.access.csv",
@@ -33,13 +33,13 @@
          "views/res_config_settings_view.xml",
         "views/hostel_room.xml",
         "views/hostel_admission.xml",
-
         "views/result.xml",
         "views/inherit.xml",
         "views/inherits.xml",
         "views/test.xml",
         "views/school_task.xml",
         "wizard/student_admi.xml",
+        "wizard/saleorderinheritswizard.xml",
         "report/report_template.xml",
         "report/report_views.xml",
         'data/custom_layout.xml',
@@ -54,6 +54,8 @@
         "views/snippet.xml",
         "views/courses.xml",
         "views/student_document.xml",
+        "views/busroute.xml",
+        "views/product_review.xml",
         'report/inherit_report.xml'
 
 

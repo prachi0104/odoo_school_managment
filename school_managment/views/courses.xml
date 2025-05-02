@@ -34,6 +34,6 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <menuitem id="menu_course_root_test" name="Courses" parent="education_management_root" sequence="15"/>
+    <menuitem id="menu_course_root_test" name="Courses" parent="education_management_root" sequence="13"/>
     <menuitem id="menu_course_model_test" name="Manage Courses" parent="menu_course_root_test" action="action_course_model_new"/>
 </odoo>

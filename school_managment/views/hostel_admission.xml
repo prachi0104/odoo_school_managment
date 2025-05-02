@@ -51,8 +51,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-<!--                    <button name="test_recordset" type="object" class="oe_highlight" string="test record set" display="always"/>-->
-<!--                     <button name="action_sent_email" type="object" class="oe_highlight"  string="Sent Email"  />-->
+
+
                     <button name="action_print_student_pdf" type="object" class="oe_highlight" string="Preview"/>
                     <button name="action_allocate_room" string="Allocate" type="object" class="btn-primary"
                             invisible="state == 'allocated'"/><!--     -->
@@ -62,6 +62,7 @@
                     <field name="state" widget="statusbar" nolabel="1" statusbar_visible="allocated,deallocated"/>
                 </header>
                 <sheet>
+                       <widget name="web_ribbon" title="Allocated" bg_color="text-bg-success" invisible="state == 'deallocated'"/>
                     <group>
                         <field name="name"/>
                         <field name="admission_date"/>

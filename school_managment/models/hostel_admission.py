@@ -69,16 +69,15 @@ class HostelAdmission(models.Model):
 
 # when we create new record it will change parametr value in hotel_room model
     @api.model_create_multi
-    def create(self, vals):
-        admission = super(HostelAdmission, self).create(vals)
-
-        if vals.get('state') == 'allocated' and vals.get('room_type'):
-            room = self.env['hostel.room'].browse(vals['room_type'])
-            if room:
-                room.occupied += 1
-                room.available = room.total_room - room.occupied
-
-        return admission
+    def create(self, vals_list):
+        admissions = super(HostelAdmission, self).create(vals_list)
+        for vals, admission in zip(vals_list, admissions):
+            if vals.get('state') == 'allocated' and vals.get('room_type'):
+                room = self.env['hostel.room'].browse(vals['room_type'])
+                if room:
+                    room.occupied += 1
+                    room.available = room.total_room - room.occupied
+        return admissions
 
 
 #what functionality should happen during update or write which reflactes in hostel.room model
@@ -132,27 +131,27 @@ class HostelAdmission(models.Model):
 
 
 
-#sent mail show in chatter box
-    # def action_sent_email(self):
-    #     self.ensure_one()
-    #     template = self.env.ref(
-    #         "school_managment.hostel_receipt", raise_if_not_found=False
-    #     )
-    #     ctx = {
-    #         "default_model": "hostel.admission",
-    #         "default_res_ids": [self.id],
-    #         "default_use_template": bool(template),
-    #         "default_template_id": template.id if template else False,
-    #         "default_composition_mode": "comment",
-    #         "force_email": True,
-    #     }
-    #     return {
-    #         "type": "ir.actions.act_window",
-    #         "view_mode": "form",
-    #         "res_model": "mail.compose.message",
-    #         "target": "new",
-    #         "context": ctx,
-    #     }
+# sent mail show in chatter box
+    def action_sent_email(self):
+        self.ensure_one()
+        template = self.env.ref(
+            "school_managment.hostel_receipt", raise_if_not_found=False
+        )
+        ctx = {
+            "default_model": "hostel.admission",
+            "default_res_ids": [self.id],
+            "default_use_template": bool(template),
+            "default_template_id": template.id if template else False,
+            "default_composition_mode": "comment",
+            "force_email": True,
+        }
+        return {
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "mail.compose.message",
+            "target": "new",
+            "context": ctx,
+        }
 
 
 

@@ -1,6 +1,8 @@
 from odoo import http
 from odoo import models
 from odoo.http import request,route
+import logging
+_logger = logging.getLogger(__name__)
 
 
 
@@ -10,11 +12,11 @@ class School(http.Controller):
     def homepage(self):
         return request.render("school_managment.home_page_template_new")
 
-    @http.route('/student', website=True, auth='user')
+    @http.route('/student', website=True, auth='user',groups="school_managment.group_school_teacher")
     def studentcorner(self, **kw):
          return request.render("school_managment.student_corner",{})
 
-    @http.route('/teacher', website=True,auth='public',groups="school_managment.group_school_teacher")
+    @http.route('/teacher', website=True,auth='user',groups="school_managment.group_school_teacher")
     def teacher_list(self, **kw):
             teacher_list = request.env['teacher.model'].search([])
             return request.render("school_managment.teacher_temp", {'teacher': teacher_list})
@@ -37,7 +39,7 @@ class School(http.Controller):
         })
 
 
-    @http.route('/student_profile',website=True,auth='public')
+    @http.route('/student_profile',website=True,auth='user',groups="school_managment.group_school_teacher")
     def student_profile(self):
         students=request.env['stulist.model'].sudo().search([])
         return request.render("school_managment.student_profile_tem",{'students':students})
@@ -52,7 +54,7 @@ class School(http.Controller):
             'student': student,
         })
 
-    @http.route('/hostel' , website=True,auth="public")
+    @http.route('/hostel' , website=True,auth="user",groups="school_managment.group_school_teacher")
     def hostel_inquirey(self):
         hostel=request.env['hostel.room'].sudo().search([])
         student= request.env['stulist.model'].sudo().search([])
@@ -133,6 +135,36 @@ class School(http.Controller):
         })
 
         return request.render('school_managment.student_success', {})  # Show a success p
+
+    @http.route('/student_syllabus', type='http', auth='user', website=True)
+    def student_syllabus(self, **post):
+        student_syllabus = request.env['syllabus.model'].sudo().search([])
+        return request.render("school_managment.student_syllabus", {'student_syllabus': student_syllabus})
+
+
+    @http.route('/student_busroute', type='http', auth='user', website=True)
+    def student_busroute(self, **post):
+        route = request.env['busroute.model'].sudo().search([])
+        return request.render("school_managment.student_busroute_template_new", {'route': route})
+
+
+    @http.route('/product_review', website=True, auth='public')
+    def product_review(self, **kw):
+        current_partner = request.env.user.partner_id
+
+        products = request.env['product.review'].sudo().search([('partner_id','=',current_partner.id)])
+        stock= request.env['product.product'].sudo().search([])
+        partners = request.env['res.partner'].sudo().search([])
+
+        return request.render("school_managment.product_review_template", {'products':products,'stock':stock,'partners':partners})
+
+
+
+
+
+
+
+
 
 
 

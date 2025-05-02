@@ -69,17 +69,57 @@
 <!--  notice board snippet-->
 
   <template id="school_notice_block" name="School Notice Board">
-  <section class="oe_snippet_body" style="padding: 50px; background: #e6f2ff;">
+  <section class="oe_snippet_body py-5" style="background: linear-gradient(135deg, #e6f2ff, #f2f9ff);">
     <div class="container">
-      <h2 class="mb-4">Latest Notices</h2>
-      <ul class="list-group">
-        <li class="list-group-item">📢 Parent-Teacher Meeting on April 28th</li>
-        <li class="list-group-item">🎒 Summer Vacation starts from May 15</li>
-        <li class="list-group-item">📘 New Syllabus for 2025 is now available</li>
-      </ul>
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">📢 Latest School Notices</h2>
+        <p class="text-muted">Stay updated with important announcements and upcoming events</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <!-- Notice 1 -->
+        <div class="col-md-6 mb-4">
+          <div class="card notice-card shadow-lg border-0 rounded-4 p-4 h-100">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-users fa-2x text-primary me-3"></i>
+              <div>
+                <h5 class="mb-1 fw-bold">Time-Table Update</h5>
+                <p class="mb-0 text-muted">Please check and applicable from <strong>Tomorrow</strong> onwards </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice 2 -->
+        <div class="col-md-6 mb-4">
+          <div class="card notice-card shadow-lg border-0 rounded-4 p-4 h-100">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-umbrella-beach fa-2x text-warning me-3"></i>
+              <div>
+                <h5 class="mb-1 fw-bold">Summer Vacation</h5>
+                <p class="mb-0 text-muted">Begins from <strong>May 15</strong>. Enjoy and stay safe!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice 3 -->
+        <div class="col-md-6 mb-4">
+          <div class="card notice-card shadow-lg border-0 rounded-4 p-4 h-100">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-book fa-2x text-success me-3"></i>
+              <div>
+                <h5 class="mb-1 fw-bold">New Syllabus Released</h5>
+                <p class="mb-0 text-muted">Academic syllabus for <strong>2025</strong> is now available online.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
+
 
 <template id="school_inner_snippet" name="danger button">
   <section>
@@ -88,5 +128,91 @@
 
 </template>
 
+  <template id="school_fees_and_facilities" name="School Fees and Facilities">
+  <section class="oe_snippet_body py-5" style=" backdrop-filter: blur(4px); background-color: rgba(255, 255, 255, 0.6);;">
+    <div class="container">
 
+      <!-- Fee Structure Section -->
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold text-primary mb-3">💳 Flexible and Transparent Fee Structure</h2>
+        <p class="lead text-muted">Making education accessible with flexible plans and benefits for early payers.</p>
+      </div>
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+          <div class="card border-0 p-4 bg-white bg-opacity-75 shadow rounded-4">
+            <ul class="list-unstyled fs-5">
+              <li class="mb-3">✅ <strong>Installment Options:</strong> Choose monthly or term-wise payments to suit your needs.</li>
+              <li class="mb-3">🎁 <strong>Full Payment Benefits:</strong> Enjoy a discount when paying the full annual fee.</li>
+              <li class="mb-3">📩 <strong>Auto Reminders:</strong> Get notified in advance of fee deadlines to avoid late fees.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Our School Section -->
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold text-success mb-3">🏫 Our School at a Glance</h2>
+        <p class="lead text-muted">A modern, nurturing environment designed for student excellence and growth.</p>
+      </div>
+
+      <div class="row text-center mb-5">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 p-4 bg-white bg-opacity-75 shadow rounded-4">
+            <h5 class="text-primary fw-bold mb-2">📚 Smart Classrooms</h5>
+            <p>Equipped with interactive screens, projectors, and engaging digital content.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 p-4 bg-white bg-opacity-75 shadow rounded-4">
+            <h5 class="text-success fw-bold mb-2">🧪 Science And IT Labs</h5>
+            <p>Modern labs for hands-on experience in physics, chemistry, biology, and computer science.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 p-4 bg-white bg-opacity-75 shadow rounded-4">
+            <h5 class="text-warning fw-bold mb-2">⚽ Sports and Recreation</h5>
+            <p>Outdoor fields, indoor games, fitness sessions, and a focus on holistic development.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transportation Section -->
+      <div class="text-center">
+        <h2 class="display-5 fw-bold text-info mb-3">🚍 Reliable Transportation Services</h2>
+        <p class="lead text-muted">GPS-enabled school buses operated by trained staff covering major city routes.</p>
+      </div>
+
+    </div>
+  </section>
+</template>
+
+  <!--    test template -->
+<template id="tradintional_and_schooling_way_template" name="test">
+    <section class="comparison-section py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-2">Welcome to SchoolLog: Your Premier School ERP Software</h2>
+    <p class="text-muted mb-4">Where we bring you the most advanced School Management System under one roof.</p>
+
+    <div class="row align-items-center">
+      <!-- Traditional Column -->
+      <div class="col-md-5 position-relative">
+        <h5 class="btn btn-dark px-4 py-2 mb-3">TRADITIONAL APPROACH</h5>
+        <img src="/school_managment/static/src/img/t.png" alt="Traditional" class="main-figure mb-3"/>
+      </div>
+
+      <!-- Arrow -->
+      <div class="col-md-2 d-none d-md-block">
+        <i class="fa fa-arrow-right fa-3x text-primary"></i>
+      </div>
+
+      <!-- SchoolLog Way Column -->
+      <div class="col-md-5 position-relative">
+        <h5 class="btn btn-dark px-4 py-2 mb-3">SCHOOLLOG WAY</h5>
+        <img src="/school_managment/static/src/img/s.png" alt="Modern Way" class="main-figure mb-3"/>
+      </div>
+    </div>
+  </div>
+</section>
+</template>
 </odoo>

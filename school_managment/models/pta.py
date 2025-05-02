@@ -73,7 +73,7 @@ class Parentsteachermeeting(models.Model):
                     'next': {'type': 'ir.actions.act_window_close'},
                 }}
 
-        # whatsapp interation
+        # whatsapp integration
     def action_shar_whatsapp(self):
             if not self.parents_phone:
                 raise ValidationError("Missing phone number in form")

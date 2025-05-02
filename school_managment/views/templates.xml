@@ -54,6 +54,10 @@
                     .custom-card {
                         margin-bottom: 20px;
                     }
+
+
+}
+
                 }
             </style>
         </t>
@@ -152,6 +156,9 @@
 
 
 
+
+
+
     <template id="student_corner" name="Student Corner">
         <t t-call="website.layout">
             <div id="wrap">
@@ -208,7 +215,7 @@
                                style="text-decoration: none; color: inherit;">
                                 <div class="card shadow-sm h-100 text-center p-3" style="background-color:#c0e0ff">
                                     <img t-att-src="'/school_managment/static/src/img/student.png'"
-                                         class="rounded-circle mb-3"
+                                         class="rounded-circle mb-3 icon-bounce"
                                          style="height:60px; width:60px; object-fit:cover;margin-left: 150px;"/>
 
                                     <h5 class="card-title">
@@ -240,7 +247,7 @@
                         <div class="card shadow-lg p-4 rounded-lg text-center" style="border: 1px solid #ddd;">
                             <!-- Profile Image -->
                             <img t-att-src="'/school_managment/static/src/img/student.png'"
-                                 class="rounded-circle mb-4"
+                                 class="rounded-circle mb-4 icon-bounce"
                                  style="width: 120px; height: 120px; object-fit: cover; margin: 0 auto; border: 3px solid #4CAF50;"/>
 
                             <!-- Name -->
@@ -700,37 +707,65 @@
     </template>
 
     <template id="student_courses_website_template" name="Student Courses Page">
-        <t t-call="website.layout">
-            <div class="container py-5">
-                <h2 class="text-center mb-5" style="color:#007BFF;">Our Extracurricular Courses</h2>
-                <div class="row justify-content-center">
-                    <t t-foreach="courses" t-as="course">
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow rounded-3 border-0 h-100"
-                                 style="background: linear-gradient(145deg, #e0f7ff, #ffffff);">
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h5 class="card-title text-primary fw-bold" t-esc="course.name"/>
-                                        <p class="card-text mt-2" t-esc="course.description"/>
-                                        <span class="badge bg-primary text-white mt-3">
-                                            Duration:
-                                            <t t-esc="course.duration"/>
-                                            hrs
-                                        </span>
-                                    </div>
-                                    <div class="mt-4 text-end">
-                                        <a href="#" class="btn btn-outline-primary rounded-pill px-4">
-                                            Start Now
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </t>
+  <t t-call="website.layout">
+    <div class="container py-5">
+      <!-- Heading -->
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold text-gradient-warning">🌟 Our Extracurricular Courses</h2>
+        <p class="lead text-muted">Unlock your potential with our dynamic and skill-building programs.</p>
+      </div>
+
+      <!-- Course Cards -->
+      <div class="row justify-content-center">
+        <t t-foreach="courses" t-as="course">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-lg border-0 rounded-4 bg-white bg-opacity-75 course-card" style="transition: transform 0.3s ease;">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title text-primary fw-bold fs-4 mb-2">
+                    🎓 <t t-esc="course.name"/>
+                  </h5>
+                  <p class="card-text text-muted mb-3" t-esc="course.description"/>
+                  <span class="badge bg-primary-subtle text-primary-emphasis fs-6">
+                    ⏱️ Duration: <t t-esc="course.duration"/> hrs
+                  </span>
                 </div>
+                <div class="mt-4 text-end">
+                  <a href="#" class="btn btn-outline-primary rounded-pill px-4 fw-semibold">
+                    Start Now 🚀
+                  </a>
+
+                </div>
+              </div>
             </div>
+          </div>
         </t>
-    </template>
+      </div>
+    </div>
+
+    <style>
+      .text-gradient-primary {
+        background: linear-gradient(90deg, #007BFF, #00C6FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .course-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+      }
+
+      .bg-primary-subtle {
+        background-color: #e7f3ff;
+      }
+
+      .text-primary-emphasis {
+        color: #0056b3;
+      }
+    </style>
+  </t>
+</template>
+
 
     <template id="student_document_upload_website_new" name="Student Document Upload">
     <t t-call="website.layout">
@@ -777,5 +812,131 @@
         </div>
     </t>
 </template>
+
+    <template id="student_syllabus" name="Student Syllabus">
+  <t t-call="website.layout">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold text-primary">📚 Student Syllabus Downloads</h2>
+        <p class="text-muted">Select your class and department to download your syllabus in PDF format.</p>
+      </div>
+
+      <div class="row">
+        <t t-foreach="student_syllabus" t-as="syllabus">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card border-0 shadow-lg h-100">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title text-success mb-2">
+                    <i class="fa fa-graduation-cap me-2"></i>
+                    Class <t t-esc="syllabus.std"/> - <t t-esc="syllabus.department_id.name"/>
+                  </h5>
+                  <p class="card-text text-muted">
+                    Click below to download the syllabus as a PDF file.
+                  </p>
+                </div>
+                <div class="mt-3">
+                  <a class="btn btn-primary w-100"
+                     t-att-href="'/web/content/syllabus.model/' + str(syllabus.id) + '/syllabus_file?download=true'">
+                    📥 Download Syllabus
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </t>
+      </div>
+    </div>
+  </t>
+</template>
+
+   <template id="student_busroute_template_new" name="Student Bus Route Page">
+    <t t-call="website.layout">
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 text-primary fw-bold">🚍 Student Bus Routes</h2>
+                <div class="row">
+                    <t t-foreach="route" t-as="r">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-lg border-0 rounded-4 h-100">
+                                <div class="card-header text-white rounded-top-4" style="background: linear-gradient(90deg, #0062E6, #33AEFF);">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="mb-0 fw-bold">Route No: <t t-esc="r.bus_route_no" /></h5>
+                                        </div>
+                                        <div>
+                                            <span class="fs-6"><i class="fa fa-map-marker me-1"></i> <t t-esc="r.from_location" /> → <t t-esc="r.to" /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-light rounded-bottom-4">
+                                    <div class="text-center my-2">
+                                        <span class="badge rounded-pill bg-info text-dark mx-1">Mon</span>
+                                        <span class="badge rounded-pill bg-info text-dark mx-1">Tue</span>
+                                        <span class="badge rounded-pill bg-info text-dark mx-1">Wed</span>
+                                        <span class="badge rounded-pill bg-info text-dark mx-1">Thu</span>
+                                        <span class="badge rounded-pill bg-info text-dark mx-1">Fri</span>
+                                    </div>
+
+                                    <div class="text-center text-muted mb-3">
+                                        <small>From <strong><t t-esc="r.from_location" /></strong> → <strong><t t-esc="r.to" /></strong></small>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button class="btn btn-outline-primary rounded-pill px-4"
+                                                type="button"
+                                                data-bs-toggle="collapse"
+                                                t-att-data-bs-target="'#routeDetails' + str(r.id)">
+                                            View Details
+                                        </button>
+                                    </div>
+
+                                    <div class="collapse mt-3 text-start px-2" t-att-id="'routeDetails' + str(r.id)">
+                                        <hr/>
+                                        <p><i class="fa fa-road me-2 text-primary"></i><strong>Full Route:</strong> <t t-esc="r.route" /></p>
+                                        <p><i class="fa fa-clock-o me-2 text-primary"></i><strong>Arrival Time:</strong> <t t-esc="r.arrival_time" /></p>
+                                        <p><i class="fa fa-user me-2 text-primary"></i><strong>Driver:</strong> <t t-esc="r.driver_name" /></p>
+                                        <p><i class="fa fa-phone me-2 text-primary"></i><strong>Phone:</strong> <t t-esc="r.driver_phone" /></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </section>
+    </t>
+</template>
+
+    <template id="product_review_template" name="Product Review Page">
+    <t t-call="website.layout">
+        <div class="container mt-4">
+            <h2 class="text-center">Product Reviews</h2>
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Partner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="products" t-as="review">
+                        <tr>
+                            <td><t t-esc="review.product_id.name"/></td>
+                            <td><t t-esc="review.rating"/> star</td>
+                            <td><t t-esc="review.review_text"/></td>
+                            <td><t t-esc="review.partner_id.name"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </t>
+</template>
+
+
+
 
 </odoo>

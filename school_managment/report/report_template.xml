@@ -358,4 +358,19 @@
 </template>
 
 
+    <template id="report_saleinherits">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <span style="color: #2d3436;" t-field="o.papigudiya"/>
+                <span style="color: #2d3436;" t-field="o.partner_id"/>
+                <span style="color: #2d3436;" t-field="o.partner_invoice_id"/>
+                <span style="color: #2d3436;" t-field="o.partner_shipping_id"/>
+                <span style="color: #2d3436;" t-field="o.date_order"/>
+                <span style="color: #2d3436;" t-field="o.pricelist_id"/>
+                <span style="color: #2d3436;" t-field="o.payment_term_id"/>
+            </t>
+        </t>
+    </template>
+
+
 </odoo>

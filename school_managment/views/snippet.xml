@@ -62,10 +62,35 @@
         </xpath>
     </template>
 
+<!--    about us snippet-->
+    <template id="school_facilities_snippet" inherit_id="website.snippets" name="School custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.school_fees_and_facilities"
+               string="Student facilities"
+               group="school"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+    </template>
+
+<!--    test template -->
+
+    <template id="school_test_template_snippet" inherit_id="website.snippets" name="School custom Snippet">
+        <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="school_managment.tradintional_and_schooling_way_template"
+               string="Student facilities"
+               group="school"
+               t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
+        </xpath>
+    </template>
+
      <template id="school_custom_inner_snippet" inherit_id="website.snippets" name="School Custom Snippet">
         <xpath expr="//t[@id='default_snippets']/snippets[@id='snippet_content']" position="inside">
                 <t t-snippet="school_managment.school_inner_snippet" string="Danger"
                         t-thumbnail="/school_managment/static/src/img/snippets_thumbs/student_block.png"/>
         </xpath>
      </template>
+
+
+
+
 </odoo>

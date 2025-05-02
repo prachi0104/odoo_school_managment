@@ -1,64 +1,130 @@
 <odoo>
 
 
-    <record id="inherits_model_list" model="ir.ui.view">
-        <field name="name">inherits.list.view</field>
-        <field name="model">inherits</field>
+<!--    <record id="inherits_model_list" model="ir.ui.view">-->
+<!--        <field name="name">inherits.list.view</field>-->
+<!--        <field name="model">inherits</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <list>-->
+<!--                <field name="sequence" widget="handle"/>-->
+<!--                <field name="name" />-->
+<!--                <field name="dob"/>-->
+<!--                <field name="age"/>-->
+<!--                <field name="department_id"/>-->
+<!--                <field name="salary"/>-->
+<!--                <field name="qualification"/>-->
+<!--                <field name="address"/>-->
+<!--                <field name="phone" widget="phone"/>-->
+<!--                <field name="email" widget="email"/>-->
+<!--                <field name="gender" />-->
+
+<!--            </list>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Displays detailed information about a single record &ndash;&gt;-->
+
+<!--    <record id="inherits_model_form" model="ir.ui.view">-->
+<!--        <field name="name">inherits.form.view</field>-->
+<!--        <field name="model">inherits</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <sheet>-->
+<!--                <group>-->
+
+<!--                <field name="sequence" widget="handle"/>-->
+<!--                <field name="name" />-->
+<!--                <field name="dob"/>-->
+<!--                <field name="age"/>-->
+<!--                <field name="department_id"/>-->
+<!--                <field name="salary"/>-->
+<!--                <field name="qualification"/>-->
+<!--                <field name="address"/>-->
+<!--                <field name="phone" widget="phone"/>-->
+<!--                <field name="email" widget="email"/>-->
+<!--                <field name="gender" />-->
+
+
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="action_inherits_test" model="ir.actions.act_window">-->
+<!--        <field name="name">inherits</field>-->
+<!--        <field name="res_model">inherits</field>-->
+<!--        <field name="view_mode">list,form</field>-->
+<!--    </record>-->
+
+
+<!--   <menuitem id="inherit_menu_action_1" name="inherites" parent="education_management_root"-->
+<!--              action="action_inherits_test"/>-->
+
+
+
+
+    <record id="inherits_practice_list" model="ir.ui.view" >
+        <field name="name">saleinherits.list.view</field>
+        <field name="model">saleinherits</field>
         <field name="arch" type="xml">
             <list>
-                <field name="sequence" widget="handle"/>
-                <field name="name" />
-                <field name="dob"/>
-                <field name="age"/>
-                <field name="department_id"/>
-                <field name="salary"/>
-                <field name="qualification"/>
-                <field name="address"/>
-                <field name="phone" widget="phone"/>
-                <field name="email" widget="email"/>
-                <field name="gender" />
+                <field name="papigudiya" groups="school_managment.group_school_teacher"/>
+                <field name="partner_id"/>
+                <field name="partner_invoice_id"/>
+                <field name="partner_shipping_id"/>
+                <field name="date_order"/>
+                <field name="pricelist_id" />
+                <field name="payment_term_id"/>
+                 <field name="email_id"/>
 
             </list>
         </field>
     </record>
 
-    <!-- Displays detailed information about a single record -->
-
-    <record id="inherits_model_form" model="ir.ui.view">
-        <field name="name">inherits.form.view</field>
-        <field name="model">inherits</field>
+     <record id="inherits_practice_form" model="ir.ui.view">
+        <field name="name">saleinherits.form.view</field>
+        <field name="model">saleinherits</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                 <group>
+                <field name="papigudiya" groups="school_managment.group_school_teacher"/>
+                <field name="partner_id" />
+                <field name="partner_invoice_id"/>
+                <field name="partner_shipping_id"/>
+                <field name="date_order"/>
+                <field name="pricelist_id"/>
+                <field name="payment_term_id"/>
+                    <field name="email_id"/>
 
-                <field name="sequence" widget="handle"/>
-                <field name="name" />
-                <field name="dob"/>
-                <field name="age"/>
-                <field name="department_id"/>
-                <field name="salary"/>
-                <field name="qualification"/>
-                <field name="address"/>
-                <field name="phone" widget="phone"/>
-                <field name="email" widget="email"/>
-                <field name="gender" />
+                    <button name="%(school_managment.action_saleorderwizard_new)d"
+                                type="action"
+                                class="btn btn-primary" string="wizard button"/>
+                    <button name="%(school_managment.saleorderinheritsreport)d"
+                                type="action"
+                                class="btn btn-primary" string="print_report"/>
 
-
+                    <button name="action_sent_email_sale"
+                                type="object"
+                                class="btn btn-primary" string="send by mail"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id="action_inherits_test" model="ir.actions.act_window">
-        <field name="name">inherits</field>
-        <field name="res_model">inherits</field>
+     <record id="action_inherits_new" model="ir.actions.act_window">
+        <field name="name">saleinherits</field>
+        <field name="res_model">saleinherits</field>
         <field name="view_mode">list,form</field>
+
     </record>
 
 
-<!--   <menuitem id="inherit_menu_action_1" name="inherites" parent="education_management_root"-->
-<!--              action="action_inherits_test"/>-->
+
+     <menuitem id="inherits_root" name="inherits_root" sequence="1" parent="education_management_root" groups="school_managment.group_school_teacher"/>
+     <menuitem id="inherit_menu_action_test" name="saleorderinhrits" parent="inherits_root" action="action_inherits_new"/>
+
 
 </odoo>

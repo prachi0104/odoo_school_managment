@@ -1,0 +1,41 @@
+<odoo>
+    <record id="product_review_list" model="ir.ui.view">
+        <field name="name">product.review.list</field>
+        <field name="model">product.review</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="product_id"/>
+                <field name="rating"/>
+                <field name="review_text"/>
+                <field name="partner_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="product_review_form" model="ir.ui.view">
+        <field name="name">product.review.list</field>
+        <field name="model">product.review</field>
+        <field name="arch" type="xml">
+            <form string="Product Review">
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="rating"/>
+                        <field name="review_text"/>
+                        <field name="partner_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu Action -->
+    <record id="action_product_review" model="ir.actions.act_window">
+        <field name="name">Product Review</field>
+        <field name="res_model">product.review</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="product_review_menu" name="Product_review" parent="education_management_root" action="action_product_review"/>
+</odoo>

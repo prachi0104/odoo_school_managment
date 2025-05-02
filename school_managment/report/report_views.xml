@@ -46,6 +46,18 @@
     <field name="report_name">school_managment.print_style_3</field>
     <field name="report_file">school_managment.print_style_3</field>
 </record>
+
+<record id="saleorderinheritsreport" model="ir.actions.report">
+            <field name="name">Sale order receipt</field>
+            <field name="model">saleinherits</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">school_managment.report_saleinherits</field>
+            <field name="report_file">school_managment.report_saleinherits</field>
+            <field name="binding_model_id" ref="model_saleinherits"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
 </odoo>
 
 

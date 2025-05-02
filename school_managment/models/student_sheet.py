@@ -97,22 +97,25 @@ class Stulist(models.Model):
                 rec.is_paid = True
 
 
+#nameget and search function
+    def name_get(self):
+        """Customize the display name of records."""
+        result = []
+        for rec in self:
+            display_name = '%s - %s' % (rec.enrollment, rec.name)
+            result.append((rec.id, display_name))
+        print(result)
+        return result
 
-    # def get_display_name(self):
-    #     result = []
-    #     for rec in self:
-    #         display_name = '%s - %s' % (rec.enrollment, rec.name)
-    #     result.append((rec.id, display_name))
-    #     print(result)
-    #     return result
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        """Enable search by enrollment or name in dropdowns."""
+        if args is None:
+            args = []
+        domain = args + ['|', ('enrollment', operator, name), ('name', operator, name)]
+        records = self.search(domain, limit=limit)
+        return records.name_get()
 
-
-    # @api.model
-    # def name_search(self,name='',args=None):
-    #     if args is None:
-    #         args = []
-    #     domain = args + [ '|',('enrollment',name),('name',name)]
-    #     return super(Stulist,self).search(domain).name_get()
 
 
 

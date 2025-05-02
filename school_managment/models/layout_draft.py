@@ -1,8 +1,5 @@
 from odoo import models,fields,api
-from datetime import date
-from pdf2image import convert_from_bytes
-import base64
-import io
+
 
 
 class LayoutDraft(models.Model):

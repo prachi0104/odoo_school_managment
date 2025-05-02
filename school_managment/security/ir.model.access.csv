@@ -51,11 +51,18 @@ school_managment.access_student_courses,access_student_courses,school_managment.
 school_managment.access_student_document,access_student_document,school_managment.model_student_document,base.group_user,1,1,1,1
 
 
+school_managment.access_busroute_model,access_busroute_model,school_managment.model_busroute_model,base.group_user,1,1,1,1
 
 
 
 
+school_managment.access_saleinherits,access_saleinherits,school_managment.model_saleinherits,school_managment.group_school_teacher,1,1,1,1
+school_managment.access_test_saleinherits,access_test_saleinherits,school_managment.model_saleinherits,school_managment.group_school_student,1,0,0,0
+
+school_managment.access_saleorderwizard,access_saleorderwizard,school_managment.model_saleorderwizard,base.group_user,1,1,1,1
 
 
+
+school_managment.access_product_review,access_product_review,school_managment.model_product_review,base.group_user,1,1,1,1
 
 

@@ -1,7 +1,7 @@
 from odoo import models, fields, api
-import base64
-import tempfile
-from pdf2image import convert_from_bytes
+# import base64
+# import tempfile
+# from pdf2image import convert_from_bytes
 
 
 class LayoutWizard(models.TransientModel):
@@ -11,20 +11,21 @@ class LayoutWizard(models.TransientModel):
     image_preview = fields.Binary("Report Preview", readonly=True)
 
     def _render_report_to_image(self, report_name):
-        layout = self.env['layout.draft'].browse(self.env.context.get('active_id'))
-
-        # Step 1: Render PDF from QWeb report
-        pdf_data, _ = self.env['ir.actions.report']._render_qweb_pdf(report_name, [layout.id])
-
-        # Step 2: Convert PDF (bytes) to image using pdf2image
-        images = convert_from_bytes(pdf_data, fmt='png', single_file=True)  # Only first page
-
-        if images:
-            with tempfile.NamedTemporaryFile(suffix='.png') as tmp:
-                images[0].save(tmp.name, 'PNG')
-                tmp.seek(0)
-                image_base64 = base64.b64encode(tmp.read())
-                return image_base64
+        pass
+        # layout = self.env['layout.draft'].browse(self.env.context.get('active_id'))
+        #
+        # # Step 1: Render PDF from QWeb report
+        # pdf_data, _ = self.env['ir.actions.report']._render_qweb_pdf(report_name, [layout.id])
+        #
+        # # Step 2: Convert PDF (bytes) to image using pdf2image
+        # images = convert_from_bytes(pdf_data, fmt='png', single_file=True)  # Only first page
+        #
+        # if images:
+        #     with tempfile.NamedTemporaryFile(suffix='.png') as tmp:
+        #         images[0].save(tmp.name, 'PNG')
+        #         tmp.seek(0)
+        #         image_base64 = base64.b64encode(tmp.read())
+        #         return image_base64
         return False
 
     def action_set_style(self):
