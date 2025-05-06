@@ -56,6 +56,7 @@
         "views/student_document.xml",
         "views/busroute.xml",
         "views/product_review.xml",
+        "views/crm_lead_dashboard_view.xml",
         'report/inherit_report.xml'
 
 

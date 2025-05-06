@@ -66,3 +66,16 @@ school_managment.access_saleorderwizard,access_saleorderwizard,school_managment.
 school_managment.access_product_review,access_product_review,school_managment.model_product_review,base.group_user,1,1,1,1
 
 
+
+
+
+access_account_move_auditor,access_account_move_auditor,account.model_account_move,school_managment.group_school_teacher,1,1,0,0
+
+
+access_product_template_teacher,access_product_template,product.model_product_template,school_managment.group_school_teacher,1,1,1,1
+access_product_template_student,access_product_template,product.model_product_template,school_managment.group_school_student,1,0,0,0
+
+
+
+
+

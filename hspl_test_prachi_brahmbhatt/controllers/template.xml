@@ -1,0 +1,15 @@
+
+    <template id="teacher_temp" name="Teacher profile">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Our Teachers</h2>
+                <div class="row">
+                    <t t-foreach="member" t-as="mem">
+                       <t t-esc="mem.name"/>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+

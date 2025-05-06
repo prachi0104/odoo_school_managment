@@ -1,0 +1,59 @@
+<odoo>
+    <record id="view_membership_level_list" model="ir.ui.view">
+        <field name="name">membership.level.list</field>
+        <field name="model">membership.level</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"  widget="handle"/>
+                <field name="ranking"/>
+                <field name="display_name"/>
+                <field name="color" widget="color"/>
+                  <field name="user_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_membership_level_form" model="ir.ui.view">
+        <field name="name">membership.level.form</field>
+        <field name="model">membership.level</field>
+        <field name="arch" type="xml">
+            <form string="Membership form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                <field name="ranking"/>
+                <field name="display_name"/>
+                <field name="color"/>
+                        <field name="user_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record id="membership_level_model_search" model="ir.ui.view">
+        <field name="name">membership.level.form</field>
+        <field name="model">membership.level</field>
+        <field name="arch" type="xml">
+            <search string="Member-ship level">
+                 <filter name="member_ship" string="Menber-ship" domain="[('name', '=', 'Gold')]"/>
+            </search>
+
+        </field>
+    </record>
+
+
+
+    <!-- Menu Action -->
+    <record id="action_membership_level" model="ir.actions.act_window">
+        <field name="name">membership.level</field>
+        <field name="res_model">membership.level</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="member_ship_root" name="Membership Levels" sequence="1"/>
+    <menuitem id="sale_member_root" name="Sale" sequence="2"/>
+    <menuitem id="configuration_model_root" name="configuration" parent="sale_member_root" sequence="2"  />
+    <menuitem id="membership_level_submenu" name="Membership levels" parent="configuration_model_root" action="action_membership_level" />
+</odoo>

@@ -148,15 +148,14 @@ class School(http.Controller):
         return request.render("school_managment.student_busroute_template_new", {'route': route})
 
 
+
+
+    # 12 ans
     @http.route('/product_review', website=True, auth='public')
     def product_review(self, **kw):
         current_partner = request.env.user.partner_id
-
         products = request.env['product.review'].sudo().search([('partner_id','=',current_partner.id)])
-        stock= request.env['product.product'].sudo().search([])
-        partners = request.env['res.partner'].sudo().search([])
-
-        return request.render("school_managment.product_review_template", {'products':products,'stock':stock,'partners':partners})
+        return request.render("school_managment.product_review_template", {'products':products})
 
 
 

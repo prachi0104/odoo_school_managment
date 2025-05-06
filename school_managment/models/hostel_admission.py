@@ -105,12 +105,12 @@ class HostelAdmission(models.Model):
 
 
  #cron method to change state from allocated to deallocate written in cron file
-    # @api.model
-    # def update_meeting_state(self):
-    #     meetings = self.search([('state', '=', 'allocated')])
-    #     for meeting in meetings:
-    #         meeting.write({'state': 'deallocated'})
-    #     return True
+    @api.model
+    def update_meeting_state(self):
+        meetings = self.search([('state', '=', 'allocated')])
+        for meeting in meetings:
+            meeting.write({'state': 'deallocated'})
+        return True
 
     def action_open_url(self):
         return {

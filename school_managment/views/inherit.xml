@@ -98,7 +98,7 @@
 
 <!--<menuitem id="sale_order_inherit" name="inherit" parent="sale.sale_order_menu" sequence="5" action="action_syllabus"/>-->
 
-
+<!--#1 question Add a constraint in the Employee form such that the work_email must end with @yourcompany.com. Raise a validation error if it doesn't.-->
      <record id="employee_code_gen_form" model="ir.ui.view">
             <field name="name">hr.employee.code</field>
             <field name="model">hr.employee</field>
@@ -110,6 +110,9 @@
             </field>
  </record>
 
+
+<!--    3rd ans Add a filter in the employee tree/search view to filter employees who are marked as "Managers"
+(job position = Manager).-->
       <record id="view_hr_employee_filter" model="ir.ui.view">
             <field name="name">hr.employee.inherit</field>
             <field name="model">hr.employee</field>
@@ -122,7 +125,56 @@
         </record>
 
 
-     <record id="view_crm_priority_filter" model="ir.ui.view">
+
+
+
+
+
+
+    <menuitem id="inventory_add_menu" name="low stock report" parent="stock.menu_warehouse_report" sequence="5" action="action_saleorderwizard_new"/>
+
+
+
+<!-- 7th ans  Computed Field - Total Weight (4 Marks)
+In the stock picking model, add a computed field total_weight that sums the weight of all products
+in the picking lines.-->
+    <record id="view_picking_form_inherit_weight" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.total.weight</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- Insert total_weight after scheduled_date -->
+            <field name="scheduled_date" position="after">
+                <group>
+                    <field name="total_weight" readonly="1"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+
+
+<!--9 Add Auditor Approval (7 Marks)
+Add a checkbox auditor_approved in journal entries. Only users from a new group “Account Auditor”
+should be able to check/uncheck it. Use record rules and access rights-->
+
+    <record id="view_move_form_inherit_auditor" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.auditor</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+           <field name="ref" position="after">
+               <group>
+                     <field name="auditor_approved" groups="school_managment.group_school_teacher"/>
+               </group>
+            </field>
+        </field>
+    </record>
+
+<!-- 10 ans CRM Lead Priority Filter (4 Marks)​
+In CRM, ensure that the “Priority” field (High, Medium, Low) is added and searchable in the search
+view with filters.-->
+    <record id="view_crm_priority_filter" model="ir.ui.view">
             <field name="name">crm.lead.inherit</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
@@ -136,6 +188,67 @@
         </record>
 
 
-    <menuitem id="inventory_add_menu" name="low stock report" parent="stock.menu_warehouse_report" sequence="5" action="action_saleorderwizard_new"/>
+
+<!--Product Tags on Website Shop (5 Marks)
+Display product tags below each product in the Shop page (only visible if product has tags).-->
+<template id="product_tags_shop_inherit" inherit_id="website_sale.products_item" priority="20">
+    <xpath expr="//div[contains(@class, 'product_price')]" position="after">
+      <t t-if="product.product_tag_ids">
+        <div class="mt-1 text-muted" style="font-size: 13px;">
+          <span t-foreach="product.product_tag_ids" t-as="tag">
+            <span class="badge badge-secondary mr-1" t-esc="tag.name"/>
+          </span>
+        </div>
+      </t>
+    </xpath>
+  </template>
+
+
+
+
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document" priority="20">
+
+        <!-- Add Total Weight after the order line table -->
+        <xpath expr="//table[contains(@class, 'o_has_total_table')]" position="after">
+            <div class="mt16 mb16">
+                <strong>Total Weight:</strong>
+                <span t-esc="doc._get_total_weight()"/> kg
+
+            </div>
+        </xpath>
+
+        <!-- Add Thank You message before the last structure block -->
+        <xpath expr="//div[@class='oe_structure'][last()]" position="before">
+            <div class="mt32 text-center">
+                <p>Thank you for your purchase, <t t-esc="doc.partner_id.name"/>!</p>
+            </div>
+        </xpath>
+
+    </template>
+
+
+
+<record id="hr_employee_form_inherit_sensitive_fields" model="ir.ui.view">
+    <field name="name">hr.employee.form.sensitive.fields</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="arch" type="xml">
+        <!-- Hide bank_account_id for users not in HR Manager group -->
+        <field name="bank_account_id" position="attributes">
+            <attribute name="groups">school_managment.group_school_teacher</attribute>
+        </field>
+
+        <!-- Hide identification_id for users not in HR Manager group -->
+        <field name="identification_id" position="attributes">
+            <attribute name="groups">school_managment.group_school_teacher</attribute>
+        </field>
+    </field>
+</record>
+
+
+
+
+
+
 
 </odoo>

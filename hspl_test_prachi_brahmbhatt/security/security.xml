@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="module_security_group" model="ir.module.category">
+        <field name="name">security</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="group_procurement_controller"  model="res.groups">
+        <field name="name">Procurement controller</field>
+        <field name="category_id" ref="hspl_test_prachi_brahmbhatt.module_security_group"/>
+    </record>
+
+</odoo>
+
+

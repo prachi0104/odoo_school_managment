@@ -1,0 +1,9 @@
+<odoo>
+
+    <record id="membership_level_demo_data" model="membership.level">
+        <field name="name">Gold</field>
+        <field name="ranking">1</field>
+        <field name="display_name"></field>
+        <field name="color">#FFD700</field>
+    </record>
+</odoo>

@@ -30,7 +30,6 @@
 </record>
 
 
-
 <record id="layout_receipt_style_2" model="ir.actions.report">
     <field name="name">Receipt Style 2</field>
     <field name="model">layout.draft</field>
